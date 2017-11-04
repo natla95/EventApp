@@ -165,6 +165,8 @@
     <Compile Include="Models\DB\Role.cs" />
     <Compile Include="Models\DB\User.cs" />
     <Compile Include="Models\DB\UserEvent.cs" />
+    <Compile Include="Models\ViewModels\EventViewModel.cs" />
+    <Compile Include="Models\ViewModels\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -189,7 +191,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\" />
-    <Folder Include="Models\ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
