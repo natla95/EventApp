@@ -171,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\main_img.jpg" />
     <Content Include="Content\style\startPageStyle.css">
       <DependentUpon>startPageStyle.scss</DependentUpon>
     </Content>
@@ -178,7 +179,6 @@
       <DependentUpon>startPageStyle.css</DependentUpon>
     </Content>
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -195,15 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\style\startPageStyle.scss" />
@@ -211,6 +203,10 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="fonts\Montserrat-ExtraLight.ttf" />
+    <Content Include="fonts\OpenSans-Light.ttf" />
+    <Content Include="fonts\OpenSans-Regular.ttf" />
+    <Content Include="fonts\Montserrat-Regular.ttf" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_StartPageLayout.cshtml" />
   </ItemGroup>
