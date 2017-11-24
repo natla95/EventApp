@@ -1,4 +1,7 @@
 ﻿$backgroundColor: #efefef;
+$accentColor: #fecccb ;
+$textColor: #757575 ;
+
 @font-face {
     font-family: MontserratLight;
     src: url("/fonts/Montserrat-ExtraLight.ttf") format("opentype");
@@ -29,15 +32,22 @@ main {
     > div {
         width: 50%;
         float: left;
+        padding: 26px 0;
     }
 }
 
 .account_form {
     background: #fff;
-    width: 50%;
+    width: 56%;
     height: 60vh;
     float: left;
     margin: 14vh 0px;
+    color: $textColor;
+    font-family: OpenRegular;
+}
+
+app_desc {
+    display: none;
 }
 
 .app_presentation {
@@ -51,6 +61,10 @@ main {
     box-sizing: border-box;
     color: #fff;
     font-family: OpenLight;
+
+    > div:first-child {
+        position: relative;
+    }
 }
 .description_img {
     margin-top: 40px;
@@ -66,9 +80,27 @@ main {
     margin-top: 20px;
 }
 .description {
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
     margin-top: 20px;
+}
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.dot:hover{
+    background: $accentColor;
+}
+.dot.activeDot{
+    background: $accentColor;
+    width: 16px;
+    height: 16px;
 }
 .header_title {
     display: inline-block;
@@ -86,18 +118,75 @@ main {
     padding: 10px 0 10px 30px;
 }
 
+.login_box, .register_box {
+    width: 50%;
+    float: left;
+    height: 30px;
+    padding-top: 70px;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 1px solid #c4c4c4;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login_box:hover, .register_box:hover {
+    border-bottom: 1px solid $accentColor;
+    color: $accentColor;
+}
+
+.login_box.active, .register_box.active {
+    border-bottom: 1px solid $accentColor;
+    color: $accentColor;
+}
+.slider{
+    margin: 40px 0px;
+    text-align: center;
+
+    > div:nth-child(2){
+        width: 16px;
+        height: 16px;
+    }
+    > div:first-child , > div:last-child{
+        margin-bottom: 8px;
+    }
+}
+
+
 @media(min-width: 1920px){
     .app_presentation {
+        height: 74vh;
         margin: 70px 0px 10px;
     }
     .description{
         margin-top: 40px;
     }
     description_img{
-        margin-top: 60px;
+        margin-top: 40px;
     }
     .description_title{
         margin-top: 22px;
     }
+    .login_box, .register_box{
+        padding-top: 84px;
+    }
 
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: .4 }
+    to {opacity: 1 }
 }

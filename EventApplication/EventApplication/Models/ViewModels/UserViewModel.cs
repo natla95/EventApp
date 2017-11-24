@@ -40,5 +40,6 @@ namespace EventApplication.Models.ViewModels
         public string Password { get; set; }
 
         public int RoleID { get; set; }
+
     }
 }

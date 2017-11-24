@@ -13,27 +13,62 @@
     <main>
         <div>
             <div class="app_presentation">
-                <div class="description_title">
-                    sporządzanie listy gości
-                    @*zarządzanie zaproszeniami
-                    potwierdzanie obecności online*@
+                <div>
+                    <!-- desc1-->
+                    <div class="app_desc fade">
+                        <div class="description_title">sporządzanie listy gości</div>
+                        <div class="description">
+                            Sporządź listę gości bez stosu kartek i skreśleń.<br />
+                            Dodawaj, edytuj, usuwaj informacje.
+                        </div>
+                        <div class="description_img"><img src="/Content/images/main_img.jpg" /></div>
+                    </div>
+
+                    <!-- desc2-->
+                    <div class="app_desc fade">
+                        <div class="description_title">zarządzanie zaproszeniami</div>
+                        <div class="description">
+                            Dodawaj zaproszenia oraz przypisuj im gości. <br />Oznacz informację o przekazaniu  zaproszenia.
+                        </div>
+                        <div class="description_img"><img src="/Content/images/main_img.jpg" /></div>
+                    </div>
+
+                    <!-- desc3-->
+                    <div class="app_desc fade">
+                        <div class="description_title">
+                            potwierdzanie obecności online
+                        </div>
+                        <div class="description">
+                            Udostępnij swoim gościom możliwość potwierdzenia online wysyłająć maila aktywacyjnego.
+                            Gość po aktywacji może określić dla siebie i swoich osób towarzyszących na które uroczystości przybędzie.
+                        </div>
+                        <div class="description_img"><img src="/Content/images/main_img.jpg" /></div>
+                    </div>
                 </div>
-                <div class="description">
-                    Sporządź listę gości w jednym miejsu bez stosu kartek i skreśleń.<br/>
-                    Dodawaj, edytuj, usuwaj informacje.
-                    @*Dodawaj zaproszenia oraz przypisuj im gości. Oznacz informację o przekazaniu  zaproszenia.
-                    Udostępnij swoim gościom możliwość potwierdzenia online wysyłająć maila aktywacyjnego.
-                    Gość po aktywacji może określić dla siebie i swoich osób towarzyszących na które uroczystości przybędzie.*@
+                <!--slider -->
+                <div class="slider">
+                    <div class="dot" onclick="CurrentSlide(1)"></div>
+                    <div class="dot" onclick="CurrentSlide(2)"></div>
+                    <div class="dot" onclick="CurrentSlide(3)"></div>
                 </div>
-                <div class="description_img"><img src="/Content/images/main_img.jpg"/></div>
             </div>
         </div>
         <div>
-            <div class="account_form"></div>
+            <div class="account_form">
+                <div>
+                    <div class="login_box">
+                        <span>logowanie</span>
+                    </div>
+                    <div class="register_box">
+                        <span>rejestracja</span>
+                    </div>
+                </div>
+                <div>
+                    @RenderBody()
+                </div>
+                
+            </div>
         </div>
     </main>
-    <div>
-        @RenderBody()
-    </div>
 </body>
 </html>
