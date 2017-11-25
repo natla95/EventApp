@@ -37,7 +37,7 @@ main > div {
   color: #757575;
   font-family: OpenRegular; }
 
-app_desc {
+.app_desc {
   display: none; }
 
 .app_presentation {
@@ -127,11 +127,6 @@ app_desc {
 .slider {
   margin: 40px 0px;
   text-align: center; }
-  .slider > div:nth-child(2) {
-    width: 16px;
-    height: 16px; }
-  .slider > div:first-child, .slider > div:last-child {
-    margin-bottom: 8px; }
 
 @media (min-width: 1920px) {
   .app_presentation {

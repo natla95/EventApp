@@ -15,7 +15,7 @@
             <div class="app_presentation">
                 <div>
                     <!-- desc1-->
-                    <div class="app_desc fade">
+                    <div class="app_desc fade" id="slide1">
                         <div class="description_title">sporządzanie listy gości</div>
                         <div class="description">
                             Sporządź listę gości bez stosu kartek i skreśleń.<br />
@@ -25,7 +25,7 @@
                     </div>
 
                     <!-- desc2-->
-                    <div class="app_desc fade">
+                    <div class="app_desc fade" id="slide2">
                         <div class="description_title">zarządzanie zaproszeniami</div>
                         <div class="description">
                             Dodawaj zaproszenia oraz przypisuj im gości. <br />Oznacz informację o przekazaniu  zaproszenia.
@@ -34,13 +34,12 @@
                     </div>
 
                     <!-- desc3-->
-                    <div class="app_desc fade">
+                    <div class="app_desc fade" id="slide3">
                         <div class="description_title">
                             potwierdzanie obecności online
                         </div>
                         <div class="description">
-                            Udostępnij swoim gościom możliwość potwierdzenia online wysyłająć maila aktywacyjnego.
-                            Gość po aktywacji może określić dla siebie i swoich osób towarzyszących na które uroczystości przybędzie.
+                            Udostępnij swoim gościom możliwość potwierdzenia obecności online.  
                         </div>
                         <div class="description_img"><img src="/Content/images/main_img.jpg" /></div>
                     </div>
@@ -48,7 +47,7 @@
                 <!--slider -->
                 <div class="slider">
                     <div class="dot" onclick="CurrentSlide(1)"></div>
-                    <div class="dot" onclick="CurrentSlide(2)"></div>
+                    <div class="dot" id="slideDot2" onclick="CurrentSlide(2)"></div>
                     <div class="dot" onclick="CurrentSlide(3)"></div>
                 </div>
             </div>
@@ -70,5 +69,7 @@
             </div>
         </div>
     </main>
+    <script src="/Scripts/external/jquery.min.js"></script>
+    <script src="/Scripts/custom/customAccount.js"></script>
 </body>
 </html>
