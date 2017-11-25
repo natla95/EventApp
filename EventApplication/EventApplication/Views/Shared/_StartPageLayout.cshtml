@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width" />
     <title></title>
     <link  type="text/css" rel="stylesheet" href="/Content/style/startPageStyle.min.css"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
     <header>
@@ -39,7 +40,8 @@
                             potwierdzanie obecności online
                         </div>
                         <div class="description">
-                            Udostępnij swoim gościom możliwość potwierdzenia obecności online.  
+                            Udostępnij swoim gościom możliwość potwierdzenia obecności online. <br/>
+                            Wystarczy przesłać indywidualny link aktywacyjny przypisany każdemu zaproszeniu.
                         </div>
                         <div class="description_img"><img src="/Content/images/main_img.jpg" /></div>
                     </div>
@@ -61,6 +63,7 @@
                     <div class="register_box">
                         <span>rejestracja</span>
                     </div>
+                    <div style="clear: both;"></div>
                 </div>
                 <div>
                     @RenderBody()
@@ -69,6 +72,9 @@
             </div>
         </div>
     </main>
+    <script>
+        var nr = "@ViewBag.PageNumber";
+    </script>
     <script src="/Scripts/external/jquery.min.js"></script>
     <script src="/Scripts/custom/customAccount.js"></script>
 </body>

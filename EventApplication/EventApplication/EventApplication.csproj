@@ -173,6 +173,7 @@
   <ItemGroup>
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\main_img.jpg" />
+    <Content Include="Content\style\font-awesome.min.css" />
     <Content Include="Content\style\startPageStyle.css">
       <DependentUpon>startPageStyle.scss</DependentUpon>
     </Content>
@@ -212,6 +213,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_StartPageLayout.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

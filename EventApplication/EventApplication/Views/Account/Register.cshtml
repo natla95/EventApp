@@ -4,4 +4,32 @@
     Layout = "~/Views/Shared/_StartPageLayout.cshtml";
 }
 
+<div class="register_form">
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @id = "registerForm", @name = "registerForm" }))
+    {
 
+        <div class="field_box">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+            @Html.EditorFor(model => Model.FirstName, new { type = "text", htmlAttributes = new { @class = "field", placeholder = "Imię" }} )
+            @Html.ValidationMessageFor(m => Model.FirstName)
+        </div>
+        <div class="field_box">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+            @Html.EditorFor(model => Model.LastName, new { type = "text", htmlAttributes = new { @class = "field", placeholder = "Nazwisko" } })
+            @Html.ValidationMessageFor(m => Model.LastName)
+        </div>
+        <div class="field_box">
+            <i class="fa fa-envelope-square" aria-hidden="true"></i>
+            @Html.EditorFor(model => Model.Email, new { type = "text", htmlAttributes = new { @class = "field", placeholder = "Email" } })
+            @Html.ValidationMessageFor(m => Model.Email)
+        </div>
+        <div class="field_box">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+            @Html.EditorFor(model => Model.Password, new { type = "text", htmlAttributes = new { @class = "field", placeholder = "Hasło" } })
+            @Html.ValidationMessageFor(m => Model.Password)
+        </div>
+        <div>
+            <input class="account_send_button" type="submit" name="register" value="zarejestruj" />
+        </div>
+    }
+</div>

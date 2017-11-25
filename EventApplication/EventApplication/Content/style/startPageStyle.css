@@ -128,6 +128,47 @@ main > div {
   margin: 40px 0px;
   text-align: center; }
 
+input:focus {
+  outline: none; }
+
+.account_send_button {
+  width: 100%;
+  height: 40px;
+  background: #fecccb;
+  border: none;
+  margin-top: 30px;
+  color: #757575;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 1; }
+
+.account_send_button:hover {
+  opacity: 0.8; }
+
+.field {
+  width: 92%;
+  height: 36px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  padding-left: 10px; }
+
+.field_box {
+  border-bottom: 1px solid #efefef;
+  margin: 30px 0; }
+  .field_box i.active {
+    color: #fecccb; }
+
+.field_box.active {
+  border-bottom: 1px solid #fecccb; }
+
+.field_box.error {
+  border-bottom: 1px solid red; }
+
+.register_form {
+  padding: 30px;
+  width: 74%;
+  margin: 0 auto; }
+
 @media (min-width: 1920px) {
   .app_presentation {
     height: 74vh;

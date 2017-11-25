@@ -7,7 +7,7 @@ namespace EventApplication
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-          
+         
         }
     }
 }

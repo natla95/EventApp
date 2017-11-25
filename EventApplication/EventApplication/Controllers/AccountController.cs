@@ -20,16 +20,13 @@ namespace EventApplication.Controllers
 
         public ActionResult Register()
         {
-            var user = new UserViewModel()
-            {
-                FirstName = "Jan",
-                LastName = "Gawęda"
-            };
-            return View(user);
+            ViewBag.PageNumber = 1;
+            return View();
         }
 
         public ActionResult Login()
         {
+            ViewBag.PageNumber = 2;
             return View();
         }
     }
