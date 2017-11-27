@@ -10,13 +10,13 @@
         <div class="field_box">
             <i class="fa fa-envelope-square" aria-hidden="true"></i>
             @Html.EditorFor(model => Model.Email, new { type = "text", htmlAttributes = new { @class = "field", placeholder = "Email" } })
-            @Html.ValidationMessageFor(m => Model.Email)
         </div>
+        @Html.ValidationMessageFor(m => Model.Email)
         <div class="field_box">
             <i class="fa fa-lock" aria-hidden="true"></i>
             @Html.EditorFor(model => Model.Password, new { type = "password", htmlAttributes = new { @class = "field", placeholder = "Hasło" } })
-            @Html.ValidationMessageFor(m => Model.Password)
         </div>
+        @Html.ValidationMessageFor(m => Model.Password)
         <div>
             <input class="account_send_button" type="submit" name="login" value="zaloguj" />
         </div>

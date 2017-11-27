@@ -7,7 +7,7 @@
 <div class="register_form">
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @id = "registerForm", @name = "registerForm" }))
     {
-
+        @Html.AntiForgeryToken()
         <div class="field_box">
             <i class="fa fa-user-circle" aria-hidden="true"></i>
             @Html.EditorFor(model => Model.FirstName, new { type = "text", htmlAttributes = new { @class = "field", placeholder = "Imię" }} )

@@ -45,6 +45,7 @@ function ShowSlide(n) {
         var obj = $(this).val();
         if (obj.match(firstNameReq) != null) {
             $(this).closest(".field_box").removeClass("error");
+            $(this).siblings().removeClass("field-validation-error");
         }
         else {
             $(this).closest(".field_box").addClass("error");
@@ -55,15 +56,18 @@ function ShowSlide(n) {
         var obj = $(this).val();
         if (obj.match(lastNameReq) != null) {
             $(this).closest(".field_box").removeClass("error");
+            $(this).siblings().removeClass("field-validation-error");
         }
         else {
             $(this).closest(".field_box").addClass("error");
+            $(this).siblings().removeClass("field-validation-error");
         }
     });
     $('#Email').on("change", function () {
         var obj = $(this).val();
         if (obj.match(emailReq) != null) {
             $(this).closest(".field_box").removeClass("error");
+            $(this).siblings().removeClass("field-validation-error");
         }
         else {
             $(this).closest(".field_box").addClass("error");
@@ -74,6 +78,7 @@ function ShowSlide(n) {
         var obj = $(this);
         if (obj.length <= 8) {
             $(this).closest(".field_box").addClass("error");
+            $(this).siblings().removeClass("field-validation-error");
         }
         else {
             $(this).closest(".field_box").removeClass("error");

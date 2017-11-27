@@ -39,7 +39,7 @@ main {
 .account_form {
     background: #fff;
     width: 56%;
-    height: 60vh;
+    min-height: 60vh;
     float: left;
     margin: 14vh 0px;
     color: $textColor;
@@ -101,6 +101,10 @@ main {
     background: $accentColor;
     width: 16px;
     height: 16px;
+}
+.field-validation-error{
+    font-size: 10px;
+    color: $accentColor;
 }
 .header_title {
     display: inline-block;

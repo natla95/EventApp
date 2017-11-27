@@ -31,7 +31,7 @@ main > div {
 .account_form {
   background: #fff;
   width: 56%;
-  height: 60vh;
+  min-height: 60vh;
   float: left;
   margin: 14vh 0px;
   color: #757575;
@@ -88,6 +88,10 @@ main > div {
   background: #fecccb;
   width: 16px;
   height: 16px; }
+
+.field-validation-error {
+  font-size: 10px;
+  color: #fecccb; }
 
 .header_title {
   display: inline-block;
