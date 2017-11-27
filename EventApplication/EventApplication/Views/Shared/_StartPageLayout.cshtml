@@ -57,15 +57,15 @@
         <div>
             <div class="account_form">
                 <div>
-                    <div class="login_box">
+                    <div class="login_box" onclick="location.href='@Url.Action("Login", "Account")'">
                         <span>logowanie</span>
                     </div>
-                    <div class="register_box">
+                    <div class="register_box" onclick="location.href='@Url.Action("Register", "Account")'">
                         <span>rejestracja</span>
                     </div>
                     <div style="clear: both;"></div>
                 </div>
-                <div>
+                <div class="partial">
                     @RenderBody()
                 </div>
                 

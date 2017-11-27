@@ -25,11 +25,11 @@
         </div>
         <div class="field_box">
             <i class="fa fa-lock" aria-hidden="true"></i>
-            @Html.EditorFor(model => Model.Password, new { type = "text", htmlAttributes = new { @class = "field", placeholder = "Hasło" } })
+            @Html.EditorFor(model => Model.Password, new { type = "password", htmlAttributes = new { @class = "field", placeholder = "Hasło" } })
             @Html.ValidationMessageFor(m => Model.Password)
         </div>
         <div>
-            <input class="account_send_button" type="submit" name="register" value="zarejestruj" />
+            <input class="account_send_button" id="loginButton" type="submit" name="register" value="zarejestruj" />
         </div>
     }
 </div>

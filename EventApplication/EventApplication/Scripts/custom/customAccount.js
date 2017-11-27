@@ -1,8 +1,12 @@
-﻿
-if (nr == 1)
+﻿if (nr == 1)
     $('.register_box').addClass('active')
 if (nr == 2)
     $('.login_box').addClass('active')
+
+//req 
+var firstNameReq = /^[A-Z-a-ząóęćłśńżźĄÓĘĆŁŚŃŻŹ]{2,50}$/;
+var lastNameReq = /^[A-Z-a-ząóęćłśńżźĄÓĘĆŁŚŃŻŹ]{2,50}$/;
+var emailReq = /^[A-Za-z0-9_\-\.]{1,}@[a-z0-9_\.]{1,}\.[a-z]{2,5}$/;
 
 function CurrentSlide(n) {
     ShowSlide(slideIndex = n);
@@ -35,4 +39,46 @@ function ShowSlide(n) {
         $(this).addClass("active");
         $(this).find("i").addClass("active");
     });
+
+    //validation for forms' fields
+    $('#FirstName').on("change", function () {
+        var obj = $(this).val();
+        if (obj.match(firstNameReq) != null) {
+            $(this).closest(".field_box").removeClass("error");
+        }
+        else {
+            $(this).closest(".field_box").addClass("error");
+        }
+        
+    });
+    $('#LastName').on("change", function () {
+        var obj = $(this).val();
+        if (obj.match(lastNameReq) != null) {
+            $(this).closest(".field_box").removeClass("error");
+        }
+        else {
+            $(this).closest(".field_box").addClass("error");
+        }
+    });
+    $('#Email').on("change", function () {
+        var obj = $(this).val();
+        if (obj.match(emailReq) != null) {
+            $(this).closest(".field_box").removeClass("error");
+        }
+        else {
+            $(this).closest(".field_box").addClass("error");
+        }
+        
+    });
+    $('#Password').on("change", function () {
+        var obj = $(this);
+        if (obj.length <= 8) {
+            $(this).closest(".field_box").addClass("error");
+        }
+        else {
+            $(this).closest(".field_box").removeClass("error");
+        }
+
+    });
+
 })();

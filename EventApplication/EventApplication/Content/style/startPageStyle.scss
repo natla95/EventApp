@@ -172,6 +172,7 @@ input:focus{
     border: 1px solid transparent;
     box-sizing: border-box;
     padding-left: 10px;
+    color: $textColor;
 }
 .field_box {
     border-bottom: 1px solid $backgroundColor;
@@ -185,7 +186,11 @@ input:focus{
     border-bottom: 1px solid $accentColor;
 }
 .field_box.error {
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid #D50000;
+
+    i {
+        color: #D50000
+    }
 }
 
 .register_form {

@@ -150,7 +150,8 @@ input:focus {
   height: 36px;
   border: 1px solid transparent;
   box-sizing: border-box;
-  padding-left: 10px; }
+  padding-left: 10px;
+  color: #757575; }
 
 .field_box {
   border-bottom: 1px solid #efefef;
@@ -162,7 +163,9 @@ input:focus {
   border-bottom: 1px solid #fecccb; }
 
 .field_box.error {
-  border-bottom: 1px solid red; }
+  border-bottom: 1px solid #D50000; }
+  .field_box.error i {
+    color: #D50000; }
 
 .register_form {
   padding: 30px;

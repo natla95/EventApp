@@ -17,13 +17,13 @@ namespace EventApplication.Controllers
         {
             return View();
         }
-
+        [HttpGet]
         public ActionResult Register()
         {
             ViewBag.PageNumber = 1;
             return View();
         }
-
+        [HttpGet]
         public ActionResult Login()
         {
             ViewBag.PageNumber = 2;
