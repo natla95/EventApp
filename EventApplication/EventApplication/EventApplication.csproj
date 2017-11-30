@@ -167,12 +167,19 @@
     <Compile Include="Models\DB\User.cs" />
     <Compile Include="Models\DB\UserEvent.cs" />
     <Compile Include="Models\ViewModels\EventViewModel.cs" />
+    <Compile Include="Models\ViewModels\LoginViewModel.cs" />
     <Compile Include="Models\ViewModels\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\main_img.jpg" />
+    <Content Include="Content\style\organizerMainPage.css">
+      <DependentUpon>organizerMainPage.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\style\organizerMainPage.min.css">
+      <DependentUpon>organizerMainPage.css</DependentUpon>
+    </Content>
     <Content Include="Content\style\startPageStyle.css">
       <DependentUpon>startPageStyle.scss</DependentUpon>
     </Content>
@@ -209,10 +216,16 @@
     <Content Include="fonts\OpenSans-Light.ttf" />
     <Content Include="fonts\OpenSans-Regular.ttf" />
     <Content Include="fonts\Montserrat-Regular.ttf" />
+    <Content Include="Content\style\organizerMainPage.scss" />
+    <Content Include="Content\style\organizerPanel.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_StartPageLayout.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_OrganizerMainPageLayout.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Partial\_LeftMenu.cshtml" />
+    <Content Include="Views\Partial\_TopMenu.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

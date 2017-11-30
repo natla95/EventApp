@@ -2,5 +2,9 @@
   {
     "outputFile": "Content/style/startPageStyle.css",
     "inputFile": "Content/style/startPageStyle.scss"
+  },
+  {
+    "outputFile": "Content/style/organizerMainPage.css",
+    "inputFile": "Content/style/organizerMainPage.scss"
   }
 ]

@@ -11,11 +11,17 @@ namespace EventApplication.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: Account
+        private EventDbContext _db;
+        public AccountController()
+        {
+            _db = new EventDbContext();
+        }   
+
         public ActionResult Index()
         {
             return View();
         }
+
         [HttpGet]
         public ActionResult Register()
         {
@@ -28,31 +34,23 @@ namespace EventApplication.Controllers
         public ActionResult Register(UserViewModel _model)
         {
             if (ModelState.IsValid){
-                try {
-                    using(EventDbContext db = new EventDbContext()){
-                        var item = (from li in db.Users
-                                    where li.Email.Equals(_model.Email)
-                                    select li).FirstOrDefault();
-                        if (item == null){
-                            User user = new User();
-                            user.FirstName = _model.FirstName;
-                            user.LastName = _model.LastName;
-                            user.Email = _model.Email;
-                            user.Password = _model.Password;
-                            db.Users.Add(user);
-                            db.SaveChanges();
-                            return RedirectToAction("Index");
-                        }
-                        else {
-                            Console.WriteLine("Niepoprawny model");
-                        }
+                using(_db){
+                    var item = _db.Users.SingleOrDefault(x => x.Email == _model.Email);
+                    if (item == null){
+                        User user = new User();
+                        user.FirstName = _model.FirstName;
+                        user.LastName = _model.LastName;
+                        user.Email = _model.Email;
+                        user.Password = _model.Password;
+                        user.RoleID = 2;
+                        _db.Users.Add(user);
+                        _db.SaveChanges();
+                        return RedirectToAction("Login");
                     }
-                }
-                catch(Exception e) {
-                    Console.WriteLine(e);
-                }    
+                    ModelState.AddModelError("Email", "Użytkownik o podanym loginie już istnieje");
+                }  
             }
-            return View();
+            return View(_model);
         }
 
         [HttpGet]
@@ -63,7 +61,7 @@ namespace EventApplication.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(UserViewModel _model)
+        public ActionResult Login(LoginViewModel _model)
         {
             return View();
         }

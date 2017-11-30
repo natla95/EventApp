@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -13,32 +12,8 @@
         @Html.Partial("~/Views/Partial/_LeftMenu.cshtml")
     </aside>
     <main>
-        <section class="panel_title">
-            <div>panel organizatora</div>
-        </section>
-        <section class="panel_guest_number">
-            <div></div>
-            <div></div>
-            <div></div>
-        </section>
-        <section>
-            <div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </section>
+        @RenderBody()
     </main>
     <script src="/Scripts/external/jquery.min.js"></script>
 </body>
 </html>
-
-
-
-
-
