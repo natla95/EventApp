@@ -4,14 +4,14 @@
         width: 100%;
         box-sizing: border-box;
         border-bottom: 1px solid #fff;
+        font-family: MontserratLight;
+        font-size: 16px;
     }
 
     .header_title {
         display: inline-block;
         position: relative;
         bottom: 18px;
-        font-family: MontserratLight;
-        font-size: 16px;
         font-weight: 500;
         color: #acabab;
     }
@@ -21,13 +21,40 @@
         max-width: 90px;
         padding: 10px 0 10px 30px;
     }
+
+    .log_out {
+        text-align: center;
+        background: lightgrey;
+        padding: 20px 0px;
+
+    }
+    .log_out.not_active {
+        display: none;
+    }
+    log_out.active{
+        display: block;
+    } 
+    #userIcon{
+        cursor:pointer;
+    }
+    .user_log {
+        position: absolute;
+        top: 36px;
+        right: 30px;
+        color: grey;
+    }
+
+    #userName {
+        margin-right: 10px;
+    }
 </style>
 
 <header>
     <img class="logo" src="/Content/images/logo.png" />
     <div class="header_title">Gość weselny</div>
     <div class="user_log">
-        <div></div>
-        <div></div>
+        <span id="userName">Admin</span>
+        <i id="userIcon" class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+        <div class="log_out not_active" id="logOut">wyloguj</div>
     </div>
 </header>

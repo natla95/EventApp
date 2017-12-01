@@ -27,29 +27,78 @@ body {
     margin: 0;
 }
 
+.guests_count_panel {
+    width: 30%;
+    height: 100px;
+    background: #ffecec;
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    box-shadow: 0px 1px 4px grey;
+    padding: 20px 0;
+    box-sizing: border-box;
+
+    div {
+        width: 50%;
+        float: left;
+    }
+}
+
 main{
     width: 84%;
 }
+
 main , aside{
     float: left;
 }
 
-.panel_guest_numbers {
+.panel_block {
+    padding: 0 30px;
+    text-align: center;
+}
+
+.panel {
+    width: 400px;
+    height: 200px;
+    background: #fff;
+    display: inline-block;
+    margin: 40px;
+    padding: 70px;
+    border: 1px solid lightgrey;
+    box-sizing: border-box;
+    color: $textColor;
+    font-family: OpenLight;
+    font-weight:600;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.panel:hover {
+    background: #F5F5F5;
+    color: $accentColor;
+}
+
+
+.panel_guest_number {
     padding: 0px 30px;
     box-sizing: border-box;
+    color: $textColor;
+    font-family: OpenLight;
+    text-align: center;
+    font-family: OpenRegular;
 
-    div {
-        width: 34%;
-        height: 100px;
-        background: yellow;
-        float: left;
-        margin: 0 10px;
+    span {
+        font-family: OpenRegular;
+        font-size: 20px;
+        font-weight: 900;
     }
 }
 
 .panel_title {
     color: $textColor;
     font-family: OpenRegular;
+    font-weight: 600;
     font-size: 14px;
     text-transform: uppercase;
     height: 100px;
@@ -60,3 +109,12 @@ main , aside{
     }
 }
 
+@media(min-width: 960px) and (max-width: 1441px){
+    .panel_block{
+        margin-top: 30px;
+    }
+    .panel{
+        width: 30%;
+        margin: 10px;
+    }
+}

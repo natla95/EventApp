@@ -217,12 +217,10 @@
     <Content Include="fonts\OpenSans-Regular.ttf" />
     <Content Include="fonts\Montserrat-Regular.ttf" />
     <Content Include="Content\style\organizerMainPage.scss" />
-    <Content Include="Content\style\organizerPanel.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_StartPageLayout.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Shared\_OrganizerMainPageLayout.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Partial\_LeftMenu.cshtml" />
     <Content Include="Views\Partial\_TopMenu.cshtml" />

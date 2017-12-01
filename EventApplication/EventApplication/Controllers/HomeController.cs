@@ -10,6 +10,7 @@ namespace EventApplication.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.PageNumber = 1;
             return View();
         }
 
