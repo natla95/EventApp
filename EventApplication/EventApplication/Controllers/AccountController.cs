@@ -17,13 +17,16 @@ namespace EventApplication.Controllers
             _db = new EventDbContext();
         }   
 
+        [HttpGet]
+        [ActionName("Home")]
         public ActionResult Index()
         {
             ViewBag.PageNumber = 1;
-            return View();
+            return View("Index");
         }
 
         [HttpGet]
+        [ActionName("Register")]
         public ActionResult Register()
         {
             ViewBag.PageNumber = 1;
@@ -31,6 +34,7 @@ namespace EventApplication.Controllers
         }
 
         [HttpPost]
+        [ActionName("Register")]
         [ValidateAntiForgeryToken]
         public ActionResult Register(UserViewModel _model)
         {
@@ -55,6 +59,7 @@ namespace EventApplication.Controllers
         }
 
         [HttpGet]
+        [ActionName("Login")]
         public ActionResult Login()
         {
             ViewBag.PageNumber = 2;
@@ -62,9 +67,17 @@ namespace EventApplication.Controllers
         }
 
         [HttpPost]
+        [ActionName("Login")]
         public ActionResult Login(LoginViewModel _model)
         {
             return View();
+        }
+
+        [HttpGet]
+        [ActionName("Logout")]
+        public ActionResult Loginout()
+        {
+           return RedirectToAction("Login");
         }
     }
 }

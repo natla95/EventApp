@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -9,22 +8,21 @@
 </head>
 <body>
     @Html.Partial("~/Views/Partial/_TopMenu.cshtml")
-    <aside>
+   
         @Html.Partial("~/Views/Partial/_LeftMenu.cshtml")
-    </aside>
     <main>
         <section class="panel_title">
             <div>panel organizatora</div>
         </section>
         <section class="panel_guest_number">
             <div class="guests_count_panel">
-                <span class="number">200 </span> osób <br /> na liście gości
+                <span class="number" id="guestsList">200 </span> osób <br /> na liście gości
             </div>
             <div class="guests_count_panel">
-                <span class="number">100 </span>osób<br /> zaproszonych
+                <span class="number" id="guestsInvited">100 </span>osób<br /> zaproszonych
             </div>
             <div class="guests_count_panel">
-                <span class="number">50 </span>osób <br /> potwierdzających obecność
+                <span class="number" id="guestsConfirmedBy">50 </span>osób <br /> potwierdzających obecność
             </div>
             <div style="clear: both;"></div>
         </section>
@@ -55,6 +53,9 @@
             </div>
         </section>
     </main>
+    <script>
+        var nr = "@ViewBag.PageNumber";
+    </script>
     <script src="/Scripts/external/jquery.min.js"></script>
     <script src="~/Scripts/custom/customAccount.js"></script>
 </body>

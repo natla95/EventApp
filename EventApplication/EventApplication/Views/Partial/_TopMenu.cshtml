@@ -24,10 +24,15 @@
 
     .log_out {
         text-align: center;
+        font-size: 12px;
         background: lightgrey;
         padding: 20px 0px;
-
+        cursor: pointer;
     }
+    .log_out:hover{
+        opacity: 0.9;
+    }
+
     .log_out.not_active {
         display: none;
     }
@@ -55,6 +60,6 @@
     <div class="user_log">
         <span id="userName">Admin</span>
         <i id="userIcon" class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
-        <div class="log_out not_active" id="logOut">wyloguj</div>
+        <div class="log_out not_active" id="logOut" onclick="location.href='@Url.Action("Logout", "Account")'">wyloguj</div>
     </div>
 </header>
