@@ -1,11 +1,83 @@
 ﻿$backgroundColor: #efefef;
 $accentColor: #fecccb;
 $textColor: #b0afaf;
+$textColorDarken: #757575 ;
+
+@font-face {
+    font-family: OpenLight;
+    src: url("/fonts/OpenSans-Light.ttf") format("opentype");
+}
 
 main {
     width: 84%;
+    font-family: OpenLight;
+    font-size: 14px;
 }
 
 main, aside {
     float: left;
 }
+.button {
+    width: 200px;
+    height: 50px;
+    background: $accentColor;
+    box-sizing: border-box;
+    padding: 16px;
+    color: $textColorDarken;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 0px 4px #b3b2b2;
+}
+.action_buttons {
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+
+    div {
+        float: right;
+        margin: 10px 0 10px 20px;
+    }
+
+    div:hover {
+        opacity: 0.8;
+    }
+
+    div:first-child {
+        background: #dedede;
+    }
+}
+
+.action_button {
+    float: left;
+    margin: 0px 40px 30px;
+}
+.action_button:hover{
+    opacity: 0.9;
+}
+.event_description {
+    width: 70%;
+    height: 400px;
+    background: #dedede;
+    display: block;
+    margin: 0 auto;
+    padding: 40px;
+    box-sizing: border-box;
+    box-shadow: 0 0px 4px #b3b2b2;
+    color: grey;
+    font-size: 16px;
+    text-align: center;
+
+    span{
+        font-weight: 700;
+    }
+}
+.event_info{
+    text-transform: uppercase;
+}
+.event_organizators{
+    text-align: left;
+}
+

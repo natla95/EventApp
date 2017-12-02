@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "EventList";
+    Layout = "~/Views/Shared/_EventPageLayout.cshtml";
+}
+<section class="panel_title">
+    <div>wydarzenia</div>
+</section>
+<section>
+    <div id="addEvent" class="button action_button">dodaj uroczystość</div>
+    <div style="clear:both"></div>
+    <div class="event_description">
+        <div class="event_info">
+            <p id="eventName">ślub i wesele</p>
+            <span id="organizerName1">Hanna Hak</span> i <span id="organizerName2">Alfred Huk</span>
+            <p id="eventDate">22.06.2019</p>
+            <p id="eventTime">16:00</p>
+        </div>
+        <div class="event_organizators">
+            <p>Organizatorzy:</p>
+            <p>Hanna Hak</p>
+            <p>Alfred Huk</p>
+            <p>Maria Miłorząb</p>
+        </div>
+    </div>
+    <div class="action_buttons">
+        <div class="button"><a href='@Url.Action("EditAdminUser", "Admnistrators")'>Usuń</a></div>
+        <div class="button"><a href='@Url.Action("EditAdminUser", "Admnistrators")'>Edytuj</a></div>
+        <div style="clear: both"></div>
+    </div>
+</section>

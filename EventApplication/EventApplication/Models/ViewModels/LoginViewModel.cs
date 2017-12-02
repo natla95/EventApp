@@ -10,7 +10,7 @@ namespace EventApplication.Models.ViewModels
     {
         [StringLength(100)]
         [Display(Name = "Email")]
-        [Required(ErrorMessage = "Email jest wymagany", AllowEmptyStrings = false)]
+        [Required(ErrorMessage = "Wprowadź email", AllowEmptyStrings = false)]
         [RegularExpression(@"^[A-Za-z0-9_\-\.]{1,}@[a-z0-9_\.]{1,}\.[a-z]{2,5}$", ErrorMessage = "Niepoprawny email")]
         public string Email { get; set; }
 
@@ -18,8 +18,8 @@ namespace EventApplication.Models.ViewModels
         [StringLength(50)]
         [DataType(DataType.Password)]
         [Display(Name = "Hasło")]
-        [Required(ErrorMessage = "Hasło jest wymagane", AllowEmptyStrings = false)]
-        [RegularExpression(@"^[A-Z-a-z0-9_\@\.\!]{8,16}$", ErrorMessage = "Niepoprawne hasło (co najmniej 8 znaków)")]
+        [Required(ErrorMessage = "Wprowadź hasło", AllowEmptyStrings = false)]
+        [RegularExpression(@"^[A-Z-a-z0-9_\@\.\!]{8,16}$", ErrorMessage = "Niepoprawne hasło")]
         public string Password { get; set; }
     }
 }

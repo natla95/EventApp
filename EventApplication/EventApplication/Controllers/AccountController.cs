@@ -46,7 +46,7 @@ namespace EventApplication.Controllers
                         user.FirstName = _model.FirstName;
                         user.LastName = _model.LastName;
                         user.Email = _model.Email;
-                        user.Password = _model.Password;
+                        user.Password = Security.Hash(_model.Password);
                         user.RoleID = 2;
                         _db.Users.Add(user);
                         _db.SaveChanges();
@@ -70,6 +70,10 @@ namespace EventApplication.Controllers
         [ActionName("Login")]
         public ActionResult Login(LoginViewModel _model)
         {
+            //bool isError = true;
+            //if (ModelState.IsValid){
+
+            //}
             return View();
         }
 

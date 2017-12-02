@@ -70,19 +70,7 @@ main , aside{
     }
 }
 
-.panel_title {
-    color: $textColor;
-    font-family: OpenRegular;
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-    height: 100px;
 
-    div {
-        padding: 42px;
-        box-sizing: border-box;
-    }
-}
 
 @media(min-width: 960px) and (max-width: 1441px){
     .panel_block{
