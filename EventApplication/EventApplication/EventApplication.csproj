@@ -176,8 +176,20 @@
   <ItemGroup>
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\main_img.jpg" />
+    <Content Include="Content\style\eventPageStyle.css">
+      <DependentUpon>eventPageStyle.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\style\eventPageStyle.min.css">
+      <DependentUpon>eventPageStyle.css</DependentUpon>
+    </Content>
+    <Content Include="Content\style\mainStyle.css">
+      <DependentUpon>mainStyle.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\style\mainStyle.min.css">
+      <DependentUpon>mainStyle.css</DependentUpon>
+    </Content>
     <Content Include="Content\style\organizerMainPage.css">
-      <DependentUpon>organizerMainPage.scss</DependentUpon>
+      <DependentUpon>organizerMainPageStyle.scss</DependentUpon>
     </Content>
     <Content Include="Content\style\organizerMainPage.min.css">
       <DependentUpon>organizerMainPage.css</DependentUpon>
@@ -194,6 +206,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\custom\customAccount.js" />
+    <Content Include="Scripts\custom\customMain.js" />
     <Content Include="Scripts\external\jquery.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -219,7 +232,9 @@
     <Content Include="fonts\OpenSans-Light.ttf" />
     <Content Include="fonts\OpenSans-Regular.ttf" />
     <Content Include="fonts\Montserrat-Regular.ttf" />
-    <Content Include="Content\style\organizerMainPage.scss" />
+    <Content Include="Content\style\organizerMainPageStyle.scss" />
+    <Content Include="Content\style\eventPageStyle.scss" />
+    <Content Include="Content\style\mainStyle.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_StartPageLayout.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
@@ -228,7 +243,8 @@
     <Content Include="Views\Partial\_LeftMenu.cshtml" />
     <Content Include="Views\Partial\_TopMenu.cshtml" />
     <Content Include="Views\Partial\_LeftMenuFull.cshtml" />
-    <Content Include="Views\Event\EventsList.cshtml" />
+    <Content Include="Views\Shared\_EventPageLayout.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

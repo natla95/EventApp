@@ -3,13 +3,15 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Panel użytkownika</title>
+    <link type="text/css" rel="stylesheet" href="~/Content/style/mainStyle.min.css" />
     <link type="text/css" rel="stylesheet" href="~/Content/style/organizerMainPage.min.css" />
+
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
     @Html.Partial("~/Views/Partial/_TopMenu.cshtml")
    
-        @Html.Partial("~/Views/Partial/_LeftMenu.cshtml")
+    @Html.Partial("~/Views/Partial/_LeftMenuFull.cshtml")
     <main>
         <section class="panel_title">
             <div>panel organizatora</div>
@@ -54,10 +56,10 @@
         </section>
     </main>
     <script>
-        var nr = "@ViewBag.PageNumber";
+        var iconNr = "@ViewBag.IconNumber";
     </script>
     <script src="/Scripts/external/jquery.min.js"></script>
-    <script src="~/Scripts/custom/customAccount.js"></script>
+    <script src="/Scripts/custom/customMain.js"></script>
 </body>
 </html>
 

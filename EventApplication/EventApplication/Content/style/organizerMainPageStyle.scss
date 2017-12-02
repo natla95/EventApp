@@ -2,31 +2,6 @@
 $accentColor: #fecccb;
 $textColor: #b0afaf;
 
-@font-face {
-    font-family: MontserratLight;
-    src: url("/fonts/Montserrat-ExtraLight.ttf") format("opentype");
-}
-
-@font-face {
-    font-family: MontserratRegular;
-    src: url("/fonts/Montserrat-Regular.ttf") format("opentype");
-}
-
-@font-face {
-    font-family: OpenLight;
-    src: url("/fonts/OpenSans-Light.ttf") format("opentype");
-}
-
-@font-face {
-    font-family: OpenRegular;
-    src: url("/fonts/OpenSans-Regular.ttf") format("opentype");
-}
-
-body {
-    background: $backgroundColor;
-    margin: 0;
-}
-
 .guests_count_panel {
     width: 30%;
     height: 100px;

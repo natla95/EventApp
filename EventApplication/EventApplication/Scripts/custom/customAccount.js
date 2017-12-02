@@ -86,17 +86,4 @@ function ShowSlide(n) {
 
     });
 
-    $('#userIcon').on("click", function(){
-        var objLog = $('#logOut');
-        if (objLog.hasClass('not_active')) {
-            objLog.removeClass('not_active');
-            objLog.addClass('active');
-            $('.log_out').slideDown(600);
-        }
-        else {
-            objLog.removeClass('active');
-            objLog.addClass('not_active');
-        }
-    });
-
 })();

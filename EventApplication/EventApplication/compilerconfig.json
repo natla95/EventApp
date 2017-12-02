@@ -6,5 +6,13 @@
   {
     "outputFile": "Content/style/organizerMainPage.css",
     "inputFile": "Content/style/organizerMainPage.scss"
+  },
+  {
+    "outputFile": "Content/style/eventPageStyle.css",
+    "inputFile": "Content/style/eventPageStyle.scss"
+  },
+  {
+    "outputFile": "Content/style/mainStyle.css",
+    "inputFile": "Content/style/mainStyle.scss"
   }
 ]

@@ -9,10 +9,11 @@ namespace EventApplication.Controllers
     public class EventController : Controller
     {
         [HttpGet]
-        [ActionName("EventsList")]
+        [ActionName("EventList")]
         public ActionResult Index()
         {
-            return View();
+            ViewBag.IconNr = 1;
+            return View("Index");
         }
     }
 }

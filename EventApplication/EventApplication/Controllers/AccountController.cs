@@ -21,7 +21,7 @@ namespace EventApplication.Controllers
         [ActionName("Home")]
         public ActionResult Index()
         {
-            ViewBag.PageNumber = 1;
+            ViewBag.IconNumber = 0;
             return View("Index");
         }
 
