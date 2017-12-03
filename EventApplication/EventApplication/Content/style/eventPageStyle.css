@@ -46,7 +46,7 @@ main, aside {
 .event_description {
   width: 70%;
   height: 400px;
-  background: #dedede;
+  background: #ffffff;
   display: block;
   margin: 0 auto;
   padding: 40px;
@@ -63,4 +63,42 @@ main, aside {
 
 .event_organizators {
   text-align: left; }
+
+.event_form {
+  width: 50%;
+  font-family: OpenLight;
+  font-size: 14px;
+  padding: 0 40px;
+  margin-top: -24px;
+  box-sizing: border-box; }
+
+.field {
+  color: #757575;
+  height: 36px;
+  width: 300px;
+  padding-left: 10px;
+  box-sizing: border-box;
+  border: 1px solid #d3d3d3; }
+
+.form_buttons div {
+  width: 144px;
+  height: 40px;
+  padding: 12px;
+  float: left; }
+
+.form_buttons div:hover {
+  opacity: 0.8; }
+
+.form_buttons div:first-child {
+  margin-right: 10px;
+  background: #dedede; }
+
+.form-group {
+  margin: 20px 0; }
+  .form-group label {
+    color: #b0afaf;
+    font-weight: 600; }
+  .form-group input:focus {
+    outline: none;
+    border: 1px solid #fecccb; }
 

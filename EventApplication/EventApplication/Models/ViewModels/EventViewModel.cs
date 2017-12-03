@@ -15,7 +15,7 @@ namespace EventApplication.Models.ViewModels
         [StringLength(100)]
         [Display(Name ="Nazwa")]
         [Required(ErrorMessage = "Nazwa jest wymagana", AllowEmptyStrings = false)]
-        [RegularExpression(@"^[A-Z-a-z0-9ąóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-\_\.\,]{5,100}$", ErrorMessage = "Niepoprawna nazwa uroczystości")]
+        [RegularExpression(@"^[A-Z-a-z0-9ąóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-\ \.\,_\!]{5,100}$", ErrorMessage = "Niepoprawna nazwa uroczystości")]
         public string EventName { get; set; }
 
         [StringLength(100)]

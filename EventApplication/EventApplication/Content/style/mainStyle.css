@@ -19,7 +19,7 @@ body {
   margin: 0; }
 
 header {
-  background: #efefef;
+  background: #f7f7f7;
   width: 100%;
   box-sizing: border-box;
   border-bottom: 1px solid #fff;
@@ -30,7 +30,7 @@ header {
   display: inline-block;
   position: relative;
   bottom: 18px;
-  font-weight: 500;
+  font-weight: 600;
   color: #acabab; }
 
 .logo {

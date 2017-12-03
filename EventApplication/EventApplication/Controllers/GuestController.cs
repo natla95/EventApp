@@ -12,6 +12,7 @@ namespace EventApplication.Controllers
         [ActionName("GuestsList")]
         public ActionResult Index()
         {
+            ViewBag.IconNumber = 3;
             return View();
         }
     }

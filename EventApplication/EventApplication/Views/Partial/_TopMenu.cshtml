@@ -1,61 +1,6 @@
-﻿<style>
-    header {
-        background: #efefef;
-        width: 100%;
-        box-sizing: border-box;
-        border-bottom: 1px solid #fff;
-        font-family: MontserratLight;
-        font-size: 16px;
-    }
-
-    .header_title {
-        display: inline-block;
-        position: relative;
-        bottom: 18px;
-        font-weight: 500;
-        color: #acabab;
-    }
-
-    .logo {
-        height: 60px;
-        max-width: 90px;
-        padding: 10px 0 10px 30px;
-    }
-
-    .log_out {
-        text-align: center;
-        font-size: 12px;
-        background: lightgrey;
-        padding: 20px 0px;
-        cursor: pointer;
-    }
-    .log_out:hover{
-        opacity: 0.9;
-    }
-
-    .log_out.not_active {
-        display: none;
-    }
-    log_out.active{
-        display: block;
-    } 
-    #userIcon{
-        cursor:pointer;
-    }
-    .user_log {
-        position: absolute;
-        top: 36px;
-        right: 30px;
-        color: grey;
-    }
-
-    #userName {
-        margin-right: 10px;
-    }
-</style>
-
+﻿
 <header>
-    <img class="logo" src="/Content/images/logo.png" />
+    <a href='@Url.Action("Home", "Account")'><img class="logo" src="/Content/images/logo.png" /></a>
     <div class="header_title">Gość weselny</div>
     <div class="user_log">
         <span id="userName">Admin</span>

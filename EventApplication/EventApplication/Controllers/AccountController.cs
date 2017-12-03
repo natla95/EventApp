@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using EventApplication.Models;
 using EventApplication.Models.DB;
 using EventApplication.Models.ViewModels;
+using System.Web.Security;
 
 namespace EventApplication.Controllers
 {
@@ -70,18 +71,39 @@ namespace EventApplication.Controllers
         [ActionName("Login")]
         public ActionResult Login(LoginViewModel _model)
         {
-            //bool isError = true;
-            //if (ModelState.IsValid){
+            if (ModelState.IsValid)
+            {
+                string login = _model.Email;
+                string password = Security.Hash(_model.Password);
 
-            //}
-            return View();
+                User user = null;
+
+                using (_db){
+                    var users = _db.Users.ToList();
+                    user = users.Where(u => u.Email.Equals(login) && u.Password.Equals(password)).SingleOrDefault();
+                }
+                if(user != null){
+                    FormsAuthentication.SetAuthCookie(user.Email, false);
+                    var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.UtcNow, DateTime.UtcNow.AddMinutes(1), false, "");
+                    var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(authTicket));
+                    authCookie.Expires = DateTime.UtcNow.AddMinutes(1);
+                    Response.SetCookie(authCookie);
+                    return RedirectToAction("Home", "Account");
+                }
+                else {
+                    ModelState.AddModelError("Password", "Niepoprawny login lub hasło");
+                    return View(_model);
+                }
+            }
+            return View(_model);
         }
 
         [HttpGet]
         [ActionName("Logout")]
         public ActionResult Loginout()
         {
-           return RedirectToAction("Login");
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
         }
     }
 }

@@ -1,13 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "EventList";
+    ViewBag.Title = "Lista wydarzeń";
     Layout = "~/Views/Shared/_EventPageLayout.cshtml";
 }
 <section class="panel_title">
     <div>wydarzenia</div>
 </section>
 <section>
-    <div id="addEvent" class="button action_button">dodaj uroczystość</div>
+    <div id="addEvent" class="button action_button" onclick="location.href='@Url.Action("AddEvent", "Event")'">dodaj uroczystość</div>
     <div style="clear:both"></div>
     <div class="event_description">
         <div class="event_info">
@@ -24,8 +24,8 @@
         </div>
     </div>
     <div class="action_buttons">
-        <div class="button"><a href='@Url.Action("EditAdminUser", "Admnistrators")'>Usuń</a></div>
-        <div class="button"><a href='@Url.Action("EditAdminUser", "Admnistrators")'>Edytuj</a></div>
+        <div class="button" onclick="location.href='@Url.Action("DeleteEvent", "Event")'">Usuń</div>
+        <div class="button" onclick="location.href='@Url.Action("EditEvent", "Event")'">Edytuj</div>
         <div style="clear: both"></div>
     </div>
 </section>

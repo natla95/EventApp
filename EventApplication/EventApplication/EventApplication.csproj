@@ -249,6 +249,8 @@
     <Content Include="Views\Partial\_LeftMenuFull.cshtml" />
     <Content Include="Views\Shared\_EventPageLayout.cshtml" />
     <Content Include="Views\Event\EventList.cshtml" />
+    <Content Include="Views\Event\AddEvent.cshtml" />
+    <Content Include="Views\Event\EditEvent.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

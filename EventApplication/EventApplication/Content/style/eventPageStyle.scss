@@ -60,7 +60,7 @@ main, aside {
 .event_description {
     width: 70%;
     height: 400px;
-    background: #dedede;
+    background: #ffffff;
     display: block;
     margin: 0 auto;
     padding: 40px;
@@ -70,7 +70,7 @@ main, aside {
     font-size: 16px;
     text-align: center;
 
-    span{
+    span {
         font-weight: 700;
     }
 }
@@ -81,3 +81,50 @@ main, aside {
     text-align: left;
 }
 
+// add event
+.event_form {
+    width: 50%;
+    font-family: OpenLight;
+    font-size: 14px;
+    padding: 0 40px;
+    margin-top: -24px;
+    box-sizing: border-box;
+}
+.field {
+    color: $textColorDarken;
+    height: 36px;
+    width: 300px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    border: 1px solid #d3d3d3;
+}
+.form_buttons {
+    div {
+        width: 144px;
+        height: 40px;
+        padding: 12px;
+        float: left;
+    }
+
+    div:hover {
+        opacity: 0.8;
+    }
+
+    div:first-child {
+        margin-right: 10px;
+        background:#dedede 
+    }
+}
+.form-group {
+    margin: 20px 0;
+
+    label{
+       color: $textColor;
+       font-weight: 600;
+    }
+
+    input:focus{
+        outline: none;
+        border: 1px solid $accentColor;
+    }
+}

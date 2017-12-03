@@ -1,0 +1,80 @@
+﻿@model EventApplication.Models.ViewModels.EventViewModel
+
+@{
+    ViewBag.Title = "Edycja uroczystości";
+    Layout = "~/Views/Shared/_EventPageLayout.cshtml";
+}
+
+<section class="panel_title">
+    <div>Edytuj uroczystość</div>
+</section>
+<section>
+    @using (Html.BeginForm("EditEvent", "Event", FormMethod.Post, new { @id = "editEventForm", @name = "editEventForm" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="event_form">
+            <div class="form-group">
+                @Html.LabelFor(model => model.EventName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "field form-control" } })
+                    @Html.ValidationMessageFor(model => model.EventName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OrganizerName1, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.OrganizerName1, new { htmlAttributes = new { @class = "field form-control" } })
+                    @Html.ValidationMessageFor(model => model.OrganizerName1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OrganizerName2, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.OrganizerName2, new { htmlAttributes = new { @class = "field form-control" } })
+                    @Html.ValidationMessageFor(model => model.OrganizerName2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EventDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.EventDate, new { htmlAttributes = new { @class = "field form-control" } })
+                    @Html.ValidationMessageFor(model => model.EventDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EventTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.EventTime, new { htmlAttributes = new { @class = "field form-control" } })
+                    @Html.ValidationMessageFor(model => model.EventTime, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChurchAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.ChurchAddress, new { htmlAttributes = new { @class = "field form-control" } })
+                    @Html.ValidationMessageFor(model => model.ChurchAddress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.WeddingAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.EditorFor(model => model.WeddingAddress, new { htmlAttributes = new { @class = "field form-control" } })
+                    @Html.ValidationMessageFor(model => model.WeddingAddress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form_buttons">
+                <div class="button" onclick="location.href='@Url.Action("EventList", "Event")'">Anuluj</div>
+                <div class="button" onclick="location.href='@Url.Action("EditEvent", "Event")'">Zapisz</div>
+                <div style="clear: both"></div>
+            </div>
+
+        </div>
+    }
+</section>

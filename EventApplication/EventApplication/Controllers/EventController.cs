@@ -9,6 +9,7 @@ using EventApplication.Models.ViewModels;
 
 namespace EventApplication.Controllers
 {
+
     public class EventController : Controller
     {
         [HttpGet]
