@@ -39,6 +39,7 @@ namespace EventApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(UserViewModel _model)
         {
+            ViewBag.PageNumber = 1;
             if (ModelState.IsValid){
                 using(_db){
                     var item = _db.Users.SingleOrDefault(x => x.Email == _model.Email);
@@ -71,6 +72,7 @@ namespace EventApplication.Controllers
         [ActionName("Login")]
         public ActionResult Login(LoginViewModel _model)
         {
+            ViewBag.PageNumber = 2;
             if (ModelState.IsValid)
             {
                 string login = _model.Email;
@@ -79,8 +81,7 @@ namespace EventApplication.Controllers
                 User user = null;
 
                 using (_db){
-                    var users = _db.Users.ToList();
-                    user = users.Where(u => u.Email.Equals(login) && u.Password.Equals(password)).SingleOrDefault();
+                    user = _db.Users.SingleOrDefault(u => u.Email.Equals(login) && u.Password.Equals(password));
                 }
                 if(user != null){
                     FormsAuthentication.SetAuthCookie(user.Email, false);
