@@ -10,6 +10,7 @@ using System.Web.Security;
 
 namespace EventApplication.Controllers
 {
+    
     public class AccountController : Controller
     {
         private EventDbContext _db;
@@ -20,6 +21,7 @@ namespace EventApplication.Controllers
 
         [HttpGet]
         [ActionName("Home")]
+        [Authorize]
         public ActionResult Index()
         {
             ViewBag.IconNumber = 0;
@@ -27,6 +29,7 @@ namespace EventApplication.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [ActionName("Register")]
         public ActionResult Register()
         {
@@ -35,6 +38,7 @@ namespace EventApplication.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ActionName("Register")]
         [ValidateAntiForgeryToken]
         public ActionResult Register(UserViewModel _model)
@@ -42,7 +46,7 @@ namespace EventApplication.Controllers
             ViewBag.PageNumber = 1;
             if (ModelState.IsValid){
                 using(_db){
-                    var item = _db.Users.SingleOrDefault(x => x.Email == _model.Email);
+                    var item = _db.Users.FirstOrDefault(x => x.Email == _model.Email);
                     if (item == null){
                         User user = new User();
                         user.FirstName = _model.FirstName;
@@ -61,6 +65,7 @@ namespace EventApplication.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [ActionName("Login")]
         public ActionResult Login()
         {
@@ -69,6 +74,7 @@ namespace EventApplication.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ActionName("Login")]
         public ActionResult Login(LoginViewModel _model)
         {
@@ -81,7 +87,7 @@ namespace EventApplication.Controllers
                 User user = null;
 
                 using (_db){
-                    user = _db.Users.SingleOrDefault(u => u.Email.Equals(login) && u.Password.Equals(password));
+                    user = _db.Users.FirstOrDefault(u => u.Email.Equals(login) && u.Password.Equals(password));
                 }
                 if(user != null){
                     FormsAuthentication.SetAuthCookie(user.Email, false);
@@ -100,6 +106,7 @@ namespace EventApplication.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         [ActionName("Logout")]
         public ActionResult Loginout()
         {

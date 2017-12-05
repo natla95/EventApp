@@ -3,7 +3,7 @@
     <a href='@Url.Action("Home", "Account")'><img class="logo" src="/Content/images/logo.png" /></a>
     <div class="header_title">Gość weselny</div>
     <div class="user_log">
-        <span id="userName">Admin</span>
+        <span id="userName">@ViewBag.Username</span>
         <i id="userIcon" class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
         <div class="log_out not_active" id="logOut" onclick="location.href='@Url.Action("Logout", "Account")'">wyloguj</div>
     </div>

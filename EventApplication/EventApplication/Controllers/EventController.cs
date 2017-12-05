@@ -9,7 +9,7 @@ using EventApplication.Models.ViewModels;
 
 namespace EventApplication.Controllers
 {
-
+    [Authorize]
     public class EventController : Controller
     {
         private EventDbContext _db;
@@ -22,7 +22,10 @@ namespace EventApplication.Controllers
         [ActionName("EventList")]
         public ActionResult Index()
         {
+            var user = User as MyPrincipal;
+            ViewBag.UserName = user.UserDetails.Email;
             ViewBag.IconNr = 1;
+
             List<EventViewModel> list;
             using (_db)
             {

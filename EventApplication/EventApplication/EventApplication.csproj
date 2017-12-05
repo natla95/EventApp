@@ -160,6 +160,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AuthUser.cs" />
     <Compile Include="Models\DB\Event.cs" />
     <Compile Include="Models\DB\EventDbContext.cs" />
     <Compile Include="Models\DB\EventOption.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Models\DB\Role.cs" />
     <Compile Include="Models\DB\User.cs" />
     <Compile Include="Models\DB\UserEvent.cs" />
+    <Compile Include="Models\MyPrincipal.cs" />
     <Compile Include="Models\Security.cs" />
     <Compile Include="Models\ViewModels\EventViewModel.cs" />
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
