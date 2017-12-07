@@ -1,7 +1,9 @@
-﻿@model EventApplication.Models.ViewModels.EventViewModel
+﻿@using EventApplication.Models.ViewModels;
+@model EventOptionViewModel
 @{ 
     ViewBag.Title = "Nowa uroczystość";
     Layout = "/Views/Shared/_EventPageLayout.cshtml";
+    var optionList= (List<OptionViewModel>)ViewBag.Options;
 }
 
 <section class="panel_title">
@@ -68,9 +70,15 @@
                     @Html.ValidationMessageFor(model => model.WeddingAddress, "", new { @class = "text-danger" })
                 </div>
             </div>
+            <div class="form-group">
+               
+                <div>
+
+                </div>
+            </div>
             <div class="form_buttons">
                 <div class="button" onclick="location.href='@Url.Action("EventList", "Event")'">Anuluj</div>
-                <div class="button" onclick="location.href='@Url.Action("AddEvent", "Event")'">Dodaj</div>
+                <input class="button" type="submit" name="adduser" value="dodaj" />
                 <div style="clear: both"></div>
             </div>
         </div>

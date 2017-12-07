@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Lista gości";
+    Layout = "~/Views/Shared/_GuestPageLayout.cshtml";
+}
+
+<section class="panel_title">
+    <div>Lista gości</div>
+</section>
+<div id="addGuest" class="button action_button" onclick="location.href='@Url.Action("AddGuest", "Guest")'">dodaj gościa</div>
+

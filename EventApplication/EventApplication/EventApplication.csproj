@@ -174,7 +174,9 @@
     <Compile Include="Models\DB\UserEvent.cs" />
     <Compile Include="Models\MyPrincipal.cs" />
     <Compile Include="Models\Security.cs" />
+    <Compile Include="Models\ViewModels\EventOptionViewModel.cs" />
     <Compile Include="Models\ViewModels\EventViewModel.cs" />
+    <Compile Include="Models\ViewModels\GuestViewModel.cs" />
     <Compile Include="Models\ViewModels\LoginViewModel.cs" />
     <Compile Include="Models\ViewModels\OptionViewModel.cs" />
     <Compile Include="Models\ViewModels\UserViewModel.cs" />
@@ -188,6 +190,12 @@
     </Content>
     <Content Include="Content\style\eventPageStyle.min.css">
       <DependentUpon>eventPageStyle.css</DependentUpon>
+    </Content>
+    <Content Include="Content\style\guestPageStyle.css">
+      <DependentUpon>guestPageStyle.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\style\guestPageStyle.min.css">
+      <DependentUpon>guestPageStyle.css</DependentUpon>
     </Content>
     <Content Include="Content\style\mainStyle.css">
       <DependentUpon>mainStyle.scss</DependentUpon>
@@ -226,7 +234,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Guest\" />
     <Folder Include="Views\Invitation\" />
   </ItemGroup>
   <ItemGroup>
@@ -242,6 +249,7 @@
     <Content Include="Content\style\organizerMainPageStyle.scss" />
     <Content Include="Content\style\eventPageStyle.scss" />
     <Content Include="Content\style\mainStyle.scss" />
+    <Content Include="Content\style\guestPageStyle.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_StartPageLayout.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
@@ -254,6 +262,9 @@
     <Content Include="Views\Event\EventList.cshtml" />
     <Content Include="Views\Event\AddEvent.cshtml" />
     <Content Include="Views\Event\EditEvent.cshtml" />
+    <Content Include="Views\Shared\_GuestPageLayout.cshtml" />
+    <Content Include="Views\Guest\GuestsList.cshtml" />
+    <Content Include="Views\Guest\AddGuest.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

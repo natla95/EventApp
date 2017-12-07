@@ -7,13 +7,12 @@ using System.Web;
 
 namespace EventApplication.Models.ViewModels
 {
-    public class EventViewModel
+    public class EventOptionViewModel
     {
-
         public int EventID { get; set; }
-        
+
         [StringLength(100)]
-        [Display(Name ="Nazwa")]
+        [Display(Name = "Nazwa")]
         [Required(ErrorMessage = "Nazwa jest wymagana", AllowEmptyStrings = false)]
         [RegularExpression(@"^[A-Z-a-z0-9ąóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-\ \.\,_\!]{5,100}$", ErrorMessage = "Niepoprawna nazwa uroczystości")]
         public string EventName { get; set; }
@@ -53,5 +52,7 @@ namespace EventApplication.Models.ViewModels
         [RegularExpression(@"^[A-Z-a-z0-9ąóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-\.\/\,]{5,150}$", ErrorMessage = "Niepoprawny adres")]
         public string WeddingAddress { get; set; }
 
+        public List<OptionViewModel> EventOptions { get; set; }
+        public bool IsSelected { get; set; }
     }
 }

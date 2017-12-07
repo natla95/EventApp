@@ -74,16 +74,5 @@ function ShowSlide(n) {
         }
         
     });
-    $('#Password').on("change", function () {
-        var obj = $(this);
-        if (obj.length <= 8) {
-            $(this).closest(".field_box").addClass("error");
-            $(this).siblings().removeClass("field-validation-error");
-        }
-        else {
-            $(this).closest(".field_box").removeClass("error");
-        }
-
-    });
 
 })();

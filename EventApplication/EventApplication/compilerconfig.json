@@ -14,5 +14,9 @@
   {
     "outputFile": "Content/style/mainStyle.css",
     "inputFile": "Content/style/mainStyle.scss"
+  },
+  {
+    "outputFile": "Content/style/guestPageStyle.css",
+    "inputFile": "Content/style/guestPageStyle.scss"
   }
 ]

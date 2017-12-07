@@ -9,7 +9,7 @@ using EventApplication.Models.ViewModels;
 
 namespace EventApplication.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class EventController : Controller
     {
         private EventDbContext _db;
@@ -23,47 +23,38 @@ namespace EventApplication.Controllers
         public ActionResult Index()
         {
             var user = User as MyPrincipal;
+            var login = user.UserDetails.Email;
             ViewBag.UserName = user.UserDetails.Email;
             ViewBag.IconNr = 1;
 
-            List<EventViewModel> list;
+            EventOptionViewModel model = new EventOptionViewModel();
+            User userLogged = new User();
             using (_db)
             {
-                list = (from li in _db.Events.AsNoTracking()
-                        select new EventViewModel()
-                        {
-                            EventName = li.EventName,
-                            OrganizerName1 = li.OrganizerName1,
-                            OrganizerName2 = li.OrganizerName2,
-                            EventDate = li.EventDate,
-                            EventTime = li.EventTime,
-                            ChurchAddress = li.ChurchAddress,
-                            WeddingAddress = li.WeddingAddress           
-                        }).ToList();
-
-                ViewBag.Organizators = 
-                    (from li in _db.Users.AsNoTracking()
-                    select new UserViewModel()
-                    {
-                        FirstName = li.FirstName,
-                        LastName = li.LastName,
-                        Email = li.Email
-                    }).ToList();
+                var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+                if (itemUser != null)
+                {
+                    var loggedID = itemUser.UserID;
+                    var eventList = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == loggedID)).ToList();
+                }
             }
-            return View("EventList",list);    
+            return View("EventList");    
         }
 
         [HttpGet]
         [ActionName("AddEvent")]
         public ActionResult AddEvent()
         {
+            var user = User as MyPrincipal;
+            ViewBag.UserName = user.UserDetails.Email;
             ViewBag.IconNr = 1;
             using (_db)
             {
                 ViewBag.Options = (from li in _db.Options.AsNoTracking()
                                    select new OptionViewModel()
                                    {
-                                      OptionName = li.OptionName
+                                        OptionID = li.OptionID,
+                                        OptionName = li.OptionName
                                    }).ToList();
             }
             return View();
@@ -71,8 +62,32 @@ namespace EventApplication.Controllers
 
         [HttpPost]
         [ActionName("AddEvent")]
-        public ActionResult AddEvent(EventViewModel _model)
+        public ActionResult AddEvent(EventOptionViewModel _model)
         {
+            if (ModelState.IsValid)
+            {
+                using (_db)
+                {
+                    var item = _db.Events.FirstOrDefault(e => e.EventName.Equals(_model.EventName) && e.OrganizerName1.Equals(_model.OrganizerName1) && e.OrganizerName2.Equals(_model.OrganizerName2));
+                    if (item != null)
+                    {
+                        Event added = new Event()
+                        {
+                            EventName = _model.EventName,
+                            OrganizerName1 = _model.OrganizerName1,
+                            OrganizerName2 = _model.OrganizerName2,
+                            EventDate = _model.EventDate,
+                            EventTime = _model.EventTime,
+                            ChurchAddress = _model.ChurchAddress,
+                            WeddingAddress = _model.WeddingAddress
+                        };
+                        _db.Events.Add(added);
+                        _db.SaveChanges();
+                        return RedirectToAction("EventList");                    
+                    }
+                    
+                }
+            }
 
             return View();
         }
@@ -81,6 +96,8 @@ namespace EventApplication.Controllers
         [ActionName("EditEvent")]
         public ActionResult EditEvent()
         {
+            var user = User as MyPrincipal;
+            ViewBag.UserName = user.UserDetails.Email;
             ViewBag.IconNr = 1;
             return View();
         }
