@@ -1,6 +1,7 @@
 ﻿var EventNameReq = /^[A-Z-a-z0-9ąóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-\ \.\,_\!]{5,100}$/;
 var OrganizatorNameReq = /^[A-Z-a-ząóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-]{2,100}$/;
 var AddressEventReq = /^[A-Z-a-z0-9ąóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-\.\/\,]{5,150}$/;
+var GuestName = /^[A-Z-a-ząóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-]{2,50}$/;
 
 function ValidateEventForm() {
     var error = false;
@@ -92,6 +93,52 @@ function ValidateEventForm() {
     return !error;
 }
 
+function ValidateGuestForm() {
+    var error = false;
+    var firstName = $('#guestFirstName').val();
+    var lastName = $('#guestLastName').val();
+
+    if (firstName != "") {
+        if (firstName.match(GuestName) != null) {
+            error = false;
+            $('#guestFirstName').removeClass("error");
+            $('#guestFirstName_e').html("");
+        }
+        else {
+            error = true;
+            $('#guestFirstName').addClass("error");
+            $('#guestFirstName_e').html("Niepoprawny format");
+        }
+    }
+    else {
+        error = true;
+        $('#guestFirstName').addClass("error");
+        $('#guestFirstName_e').html("Pole wymagane");
+    }
+
+    if (lastName != "") {
+        if (lastName.match(GuestName) != null) {
+            error = false;
+            $('#guestLastName').removeClass("error");
+            $('#guestLastName_e').html("");
+
+        }
+        else {
+            error = true;
+            $('#guestLastName').addClass("error");
+            $('#guestLastName_e').html("Niepoprawny format");
+        }
+    }
+    else {
+        error = true;
+        $('#guestLastName').addClass("error");
+        $('#guestLastName_e').html("Pole wymagane");
+    }
+
+    return !error;
+}
+
+
 (function () {
 
     // ---- EVENT form ----
@@ -113,7 +160,6 @@ function ValidateEventForm() {
             $('#eventName_e').html("Pole wymagane");
         }   
     })
-
     $('#organizer1Name').on("change", function () {
         var obj = $(this);
         var val = obj.val();
@@ -132,7 +178,6 @@ function ValidateEventForm() {
             $('#organizer1Name_e').html("Pole wymagane");
         }     
     })
-
     $('#organizer2Name').on("change", function () {
         var obj = $(this);
         var val = obj.val();
@@ -152,7 +197,6 @@ function ValidateEventForm() {
         }
         
     })
-
     $('#churchAddress').on("change", function () {
         var obj = $(this);
         var val = obj.val();
@@ -172,7 +216,6 @@ function ValidateEventForm() {
         }
         
     })
-
     $('#weddingAddress').on("change", function () {
         var obj = $(this);
         var val = obj.val();
@@ -191,7 +234,6 @@ function ValidateEventForm() {
             $('#weddingAddress_e').html(" ");
         }         
     })
-    // ---- end EVENT form ------ 
 
     $('#addEventButton').on("click", function () {
         if (ValidateEventForm()) {
@@ -203,6 +245,50 @@ function ValidateEventForm() {
             $('#editEventForm').submit();
         }
     })
+        // ---- end EVENT form ------ 
 
+    // -- GUEST form ---
+    $('#guestFirstName').on("change", function () {
+        var obj = $(this);
+        var val = obj.val();
+        if (val != "") {
+            if (val.match(GuestName) != null) {
+                obj.removeClass("error");
+                $('#guestFirstName_e').html(" ");
+            }
+            else {
+                obj.addClass("error");
+                $('#guestFirstName_e').html("Niepoprawny format");
+            }
+        }
+        else {
+            obj.addClass("error");
+            $('#guestFirstName_e').html("Pole wymagane");
+        }
+    })
 
+    $('#guestLastName').on("change", function () {
+        var obj = $(this);
+        var val = obj.val();
+        if (val != "") {
+            if (val.match(GuestName) != null) {
+                obj.removeClass("error");
+                $('#guestLastName_e').html(" ");
+            }
+            else {
+                obj.addClass("error");
+                $('#guestLastName_e').html("Niepoprawny format");
+            }
+        }
+        else {
+            obj.addClass("error");
+            $('#guestLastName_e').html("Pole wymagane");
+        }
+    })
+
+    $('#addNewGuest').on("click", function () {
+        if (ValidateGuestForm()) {
+            $('#addGuestForm').submit();
+        }
+    })
 })();

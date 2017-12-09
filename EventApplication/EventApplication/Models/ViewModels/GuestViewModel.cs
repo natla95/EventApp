@@ -11,14 +11,14 @@ namespace EventApplication.Models.ViewModels
         [StringLength(50)]
         [Display(Name = "Imię")]
         [Required(ErrorMessage = "Imię jest wymagane", AllowEmptyStrings = false)]
-        [RegularExpression(@"^[A-Z-a-ząóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-]{2,100}$", ErrorMessage = "Niepoprawne imię")]
+        [RegularExpression(@"^[A-Z-a-ząóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-]{2,50}$", ErrorMessage = "Niepoprawne imię")]
         public string FirstName { get; set; }
 
 
         [StringLength(50)]
         [Display(Name = "Nazwisko")]
         [Required(ErrorMessage = "Nazwisko jest wymagane", AllowEmptyStrings = false)]
-        [RegularExpression(@"^[A-Z-a-ząóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-]{2,100}$", ErrorMessage = "Niepoprawne nazwisko")]
+        [RegularExpression(@"^[A-Z-a-ząóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-]{2,50}$", ErrorMessage = "Niepoprawne nazwisko")]
         public string LastName { get; set; }
 
         [Required]

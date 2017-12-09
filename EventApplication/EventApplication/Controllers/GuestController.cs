@@ -23,6 +23,11 @@ namespace EventApplication.Controllers
         [ActionName("AddGuest")]
         public ActionResult AddGuest()
         {
+            ViewBag.AgeList = new List<SelectListItem>
+                        {
+                            new SelectListItem { Text = "Dorosły", Value = "Dorosły" },
+                            new SelectListItem { Text = "Dziecko",  Value = "Dziecko" },
+                        };
             return View();
         }
 
@@ -30,6 +35,11 @@ namespace EventApplication.Controllers
         [ActionName("AddGuest")]
         public ActionResult AddGuest(GuestViewModel _model)
         {
+       
+            if (ModelState.IsValid)
+            {
+
+            }
             return View();
 
         }

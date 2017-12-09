@@ -2,13 +2,14 @@
 @{
     ViewBag.Title = "Nowy gość";
     Layout = "~/Views/Shared/_GuestPageLayout.cshtml";
+    var listAge = (List<SelectListItem>)ViewBag.AgeList;
 }
 
 <section class="panel_title">
     <div>Uzupełnij dane gościa</div>
 </section>
 <section>
-    @using (Html.BeginForm("", "", FormMethod.Post, new { @id = "addGuestForm", @name = "addGuestForm" }))
+    @using (Html.BeginForm("AddGuest", "Guest", FormMethod.Post, new { @id = "addGuestForm", @name = "addGuestForm" }))
     {
         @Html.AntiForgeryToken()
 
@@ -16,38 +17,36 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "field form-control" } })
-                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "field form-control" , @id="guestFirstName"} })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger", @id= "guestFirstName_e" })
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "field form-control" } })
-                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "field form-control", @id = "guestLastName" } })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" , @id= "guestLastName_e" })
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                   @{
-                       var listaNatka = new List<SelectListItem>
+                    <select class="field" id="age" name="age">
+                        @foreach (var item in listAge)
                         {
-                            new SelectListItem { Text = "Dorosły", Value = "Dorosły" },
-                            new SelectListItem { Text = "Dzieco",  Value = "Dziecko" },
-                        };
-                   }
-                    
-                    @Html.DropDownList("Exemplo", new SelectList(listaNatka, "Value", "Text"))
+                            <option value="@item.Value"> @item.Text</option>
+                        }
+                    </select>
+
                     @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form_buttons">
                 <div class="button" onclick="location.href='@Url.Action("GuestsList", "Guest")'">Anuluj</div>
-                <div><input class="button" type="submit" name="addGuest" value="dodaj"/></div>
+                <div class="button" id="addNewGuest">dodaj</div>
                 <div style="clear: both"></div>
             </div>
         </div>
