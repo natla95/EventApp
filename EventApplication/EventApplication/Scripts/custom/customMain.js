@@ -13,6 +13,7 @@ if (iconNr == 6)
     $('#menu6').addClass('active');
 
 
+
 (function () {
 
     $('#userIcon').on("click", function () {

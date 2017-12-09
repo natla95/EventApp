@@ -9,7 +9,7 @@ using EventApplication.Models.ViewModels;
 
 namespace EventApplication.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class EventController : Controller
     {
         private EventDbContext _db;
@@ -69,7 +69,7 @@ namespace EventApplication.Controllers
                 using (_db)
                 {
                     var item = _db.Events.FirstOrDefault(e => e.EventName.Equals(_model.EventName) && e.OrganizerName1.Equals(_model.OrganizerName1) && e.OrganizerName2.Equals(_model.OrganizerName2));
-                    if (item != null)
+                    if (item == null)
                     {
                         Event added = new Event()
                         {

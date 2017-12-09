@@ -21,7 +21,7 @@ namespace EventApplication.Controllers
 
         [HttpGet]
         [ActionName("Home")]
-        [Authorize]
+        //[Authorize]
         public ActionResult Index()
         {
             ViewBag.IconNumber = 0;
@@ -91,9 +91,9 @@ namespace EventApplication.Controllers
                 }
                 if(user != null){
                     FormsAuthentication.SetAuthCookie(user.Email, false);
-                    var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.UtcNow, DateTime.UtcNow.AddMinutes(1), false, "");
+                    var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.UtcNow, DateTime.UtcNow.AddMinutes(30), false, "");
                     var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, FormsAuthentication.Encrypt(authTicket));
-                    authCookie.Expires = DateTime.UtcNow.AddMinutes(1);
+                    authCookie.Expires = DateTime.UtcNow.AddMinutes(30);
                     Response.SetCookie(authCookie);
                     return RedirectToAction("Home", "Account");
                 }

@@ -18,24 +18,24 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.EventName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div>
-                    @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "field form-control" } })
-                    @Html.ValidationMessageFor(model => model.EventName, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "field form-control" , @id = "eventName" } })
+                    @Html.ValidationMessageFor(model => model.EventName, "", new { @class = "text-danger" , @id = "eventName_e" })
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.OrganizerName1, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div>
-                    @Html.EditorFor(model => model.OrganizerName1, new { htmlAttributes = new { @class = "field form-control" } })
-                    @Html.ValidationMessageFor(model => model.OrganizerName1, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.OrganizerName1, new { htmlAttributes = new { @class = "field form-control", @id = "organizer1Name" } })
+                    @Html.ValidationMessageFor(model => model.OrganizerName1, "", new { @class = "text-danger", @id = "organizer1Name_e" })
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.OrganizerName2, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div>
-                    @Html.EditorFor(model => model.OrganizerName2, new { htmlAttributes = new { @class = "field form-control" } })
-                    @Html.ValidationMessageFor(model => model.OrganizerName2, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.OrganizerName2, new { htmlAttributes = new { @class = "field form-control", @id = "organizer2Name" } })
+                    @Html.ValidationMessageFor(model => model.OrganizerName2, "", new { @class = "text-danger", @id = "organizer2Name_e" })
                 </div>
             </div>
 
@@ -58,16 +58,16 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.ChurchAddress, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div>
-                    @Html.EditorFor(model => model.ChurchAddress, new { htmlAttributes = new { @class = "field form-control" } })
-                    @Html.ValidationMessageFor(model => model.ChurchAddress, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.ChurchAddress, new { htmlAttributes = new { @class = "field form-control", @id = "churchAddress" } })
+                    @Html.ValidationMessageFor(model => model.ChurchAddress, "", new { @class = "text-danger", @id = "churchAddress_e" })
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.WeddingAddress, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div>
-                    @Html.EditorFor(model => model.WeddingAddress, new { htmlAttributes = new { @class = "field form-control" } })
-                    @Html.ValidationMessageFor(model => model.WeddingAddress, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.WeddingAddress, new { htmlAttributes = new { @class = "field form-control", @id = "weddingAddress" } })
+                    @Html.ValidationMessageFor(model => model.WeddingAddress, "", new { @class = "text-danger", @id = "weddingAddress_e" })
                 </div>
             </div>
             <div class="form-group">
@@ -78,7 +78,7 @@
             </div>
             <div class="form_buttons">
                 <div class="button" onclick="location.href='@Url.Action("EventList", "Event")'">Anuluj</div>
-                <input class="button" type="submit" name="adduser" value="dodaj" />
+                <div class="button" id="addEventButton">Dodaj</div>
                 <div style="clear: both"></div>
             </div>
         </div>

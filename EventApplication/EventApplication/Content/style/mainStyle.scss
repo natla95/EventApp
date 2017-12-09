@@ -23,6 +23,9 @@ $textColorDarken: #757575;
     src: url("/fonts/OpenSans-Regular.ttf") format("opentype");
 }
 
+.padding_section {
+    padding-left: 40px;
+}
 body {
     background: $backgroundColor;
     margin: 0;
@@ -164,6 +167,7 @@ aside {
     text-transform: uppercase;
     cursor: pointer;
     box-shadow: 0 0px 4px #b3b2b2;
+
 }
 
 .event_form, .guest_form {
@@ -193,7 +197,6 @@ aside {
     }
 
     > div:nth-child(2) {
-        padding: 0;
 
         input {
             width: 100%;
@@ -225,7 +228,13 @@ aside {
     box-sizing: border-box;
     border: 1px solid #d3d3d3;
 }
-
+.field.error {
+    border: 1px solid red;
+}
+.text-danger{
+    color: red;
+    font-size: 12px;
+}
 
 
 
