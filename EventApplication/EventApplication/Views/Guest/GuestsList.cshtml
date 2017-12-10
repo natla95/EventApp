@@ -9,25 +9,59 @@
 <section class="padding_section">
     <div id="addGuest" class="button action_button" onclick="location.href='@Url.Action("AddGuest", "Guest")'">dodaj gościa</div>
 </section>
-<section>
-    <table>
+<section class="table padding_section">
+    <table id="guestsTable" class="find-duplicates table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
         <thead>
             <tr>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th><span class="columnName">Checkbox</span></th>
+                <th><span class="columnName">Gość</span></th>
+                <th><span class="columnName">Wiek</span></th>
+                <th><span class="columnName">Wesele</span></th>
+                <th><span class="columnName">Poprawiny</span></th>
+                <th><span class="columnName">Nocleg</span></th>
+                <th><span class="columnName">Menu</span></th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>1</td>
+                <td><span class="columnValue">Natalia Gawęda</span></td>
+                <td><span class="columnValue">Dorosły</span></td>
+                <td><span class="columnValue">Tak</span></td>
+                <td><span class="columnValue">Tak</span></td>
+                <td><span class="columnValue">Tak</span></td>
+                <td><span class="columnValue">Standard</span></td>
+                <td><span class="columnValue"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><i class="fa fa-trash-o" aria-hidden="true"></i></span></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><span>Zosia Gawęda</span></td>
+                <td><span class="columnValue">Dziecko</span></td>
+                <td><span class="columnValue">Tak</span></td>
+                <td><span class="columnValue">Tak</span></td>
+                <td><span class="columnValue">Tak</span></td>
+                <td><span class="columnValue">Standard</span></td>
+                <td><span class="columnValue"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><i class="fa fa-trash-o" aria-hidden="true"></i></span></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><span class="columnValue">Przemek Gawęda</span></td>
+                <td><span class="columnValue">Dorosły</span></td>
+                <td><span class="columnValue">Tak</span></td>
+                <td><span class="columnValue">Tak</span></td>
+                <td><span class="columnValue">Tak</span></td>
+                <td><span class="columnValue">Standard</span></td>
+                <td><span class="columnValue"><i class="fa fa-pencil-square-o" aria-hidden="true"></i><i class="fa fa-trash-o" aria-hidden="true"></i></span></td>
             </tr>
         </tbody>
     </table>
 </section>
+<script src="/Scripts/external/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#guestsTable').DataTable();
+    });
+</script>
 
 
