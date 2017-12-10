@@ -245,9 +245,9 @@ function ValidateGuestForm() {
             $('#editEventForm').submit();
         }
     })
-        // ---- end EVENT form ------ 
+        // ---- end EVENT form -----
 
-    // -- GUEST form ---
+        // ---- GUEST form ----
     $('#guestFirstName').on("change", function () {
         var obj = $(this);
         var val = obj.val();
@@ -291,4 +291,10 @@ function ValidateGuestForm() {
             $('#addGuestForm').submit();
         }
     })
+    $('#saveEditGuest').on("click", function () {
+        if (ValidateGuestForm()) {
+            $('#editGuestForm').submit();
+        }
+    })
+    // ---- end guest form ----
 })();

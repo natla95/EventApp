@@ -21,9 +21,11 @@ namespace EventApplication.Controllers
 
         [HttpGet]
         [ActionName("Home")]
-        //[Authorize]
+        [Authorize]
         public ActionResult Index()
         {
+            var user = User as MyPrincipal;
+            ViewBag.UserName = user.UserDetails.Email;
             ViewBag.IconNumber = 0;
             return View("Index");
         }

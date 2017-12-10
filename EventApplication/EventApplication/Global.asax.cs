@@ -46,7 +46,7 @@ namespace EventApplication
             }
             catch (Exception h)
             {
-
+                HttpContext.Current.Response.Redirect("/Account/Login");
             }
         }
     }

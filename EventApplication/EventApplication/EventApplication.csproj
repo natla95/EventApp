@@ -185,18 +185,6 @@
   <ItemGroup>
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\main_img.jpg" />
-    <Content Include="Content\style\eventPageStyle.css">
-      <DependentUpon>eventPageStyle.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\style\eventPageStyle.min.css">
-      <DependentUpon>eventPageStyle.css</DependentUpon>
-    </Content>
-    <Content Include="Content\style\guestPageStyle.css">
-      <DependentUpon>guestPageStyle.scss</DependentUpon>
-    </Content>
-    <Content Include="Content\style\guestPageStyle.min.css">
-      <DependentUpon>guestPageStyle.css</DependentUpon>
-    </Content>
     <Content Include="Content\style\mainStyle.css">
       <DependentUpon>mainStyle.scss</DependentUpon>
     </Content>
@@ -248,9 +236,7 @@
     <Content Include="fonts\OpenSans-Regular.ttf" />
     <Content Include="fonts\Montserrat-Regular.ttf" />
     <Content Include="Content\style\organizerMainPageStyle.scss" />
-    <Content Include="Content\style\eventPageStyle.scss" />
     <Content Include="Content\style\mainStyle.scss" />
-    <Content Include="Content\style\guestPageStyle.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_StartPageLayout.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
@@ -266,6 +252,9 @@
     <Content Include="Views\Shared\_GuestPageLayout.cshtml" />
     <Content Include="Views\Guest\GuestsList.cshtml" />
     <Content Include="Views\Guest\AddGuest.cshtml" />
+    <Content Include="Views\Guest\EditGuest.cshtml" />
+    <Content Include="Views\Shared\_MainLayout.cshtml" />
+    <Content Include="Views\Shared\_ListDataLayout.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

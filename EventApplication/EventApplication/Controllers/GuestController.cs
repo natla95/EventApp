@@ -9,13 +9,16 @@ using EventApplication.Models.ViewModels;
 
 namespace EventApplication.Controllers
 {
+    [Authorize]
     public class GuestController : Controller
     {
         [HttpGet]
         [ActionName("GuestsList")]
         public ActionResult Index()
         {
-            ViewBag.IconNumber = 3;
+            ViewBag.IconNr = 3;
+            var user = User as MyPrincipal;
+            ViewBag.UserName = user.UserDetails.Email;
             return View();
         }
 
@@ -23,6 +26,10 @@ namespace EventApplication.Controllers
         [ActionName("AddGuest")]
         public ActionResult AddGuest()
         {
+            ViewBag.IconNr = 3;
+            var user = User as MyPrincipal;
+            ViewBag.UserName = user.UserDetails.Email;
+
             ViewBag.AgeList = new List<SelectListItem>
                         {
                             new SelectListItem { Text = "Dorosły", Value = "Dorosły" },
@@ -44,6 +51,28 @@ namespace EventApplication.Controllers
 
         }
 
+        [HttpGet]
+        [ActionName("EditGuest")]
+        public ActionResult EditGuest()
+        {
+            ViewBag.IconNr = 3;
+            var user = User as MyPrincipal;
+            ViewBag.UserName = user.UserDetails.Email;
+
+            ViewBag.AgeList = new List<SelectListItem>
+                        {
+                            new SelectListItem { Text = "Dorosły", Value = "Dorosły" },
+                            new SelectListItem { Text = "Dziecko",  Value = "Dziecko" },
+                        };
+            return View("EditGuest");
+        }
+
+        [HttpPost]
+        [ActionName("EditGuest")]
+        public ActionResult EditGuest(GuestViewModel _model)
+        {
+            return RedirectToAction("GuestsList");
+        }
 
     }
 }

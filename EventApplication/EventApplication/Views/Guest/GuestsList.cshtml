@@ -1,7 +1,6 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Lista gości";
-    Layout = "~/Views/Shared/_GuestPageLayout.cshtml";
+    Layout = "~/Views/Shared/_ListDataLayout.cshtml";
 }
 
 <section class="panel_title">
@@ -9,6 +8,26 @@
 </section>
 <section class="padding_section">
     <div id="addGuest" class="button action_button" onclick="location.href='@Url.Action("AddGuest", "Guest")'">dodaj gościa</div>
+</section>
+<section>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 
 

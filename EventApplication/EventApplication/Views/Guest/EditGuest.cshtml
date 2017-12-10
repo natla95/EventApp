@@ -1,15 +1,15 @@
 ﻿@model EventApplication.Models.ViewModels.GuestViewModel
 @{
-    ViewBag.Title = "Nowy gość";
+    ViewBag.Title = "Edycja gościa";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
     var listAge = (List<SelectListItem>)ViewBag.AgeList;
 }
 
 <section class="panel_title">
-    <div>Uzupełnij dane gościa</div>
+    <div>Edycja gościa</div>
 </section>
 <section>
-    @using (Html.BeginForm("AddGuest", "Guest", FormMethod.Post, new { @id = "addGuestForm", @name = "addGuestForm" }))
+    @using (Html.BeginForm("EditGuest", "Guest", FormMethod.Post, new { @id = "editGuestForm", @name = "editGuestForm" }))
     {
         @Html.AntiForgeryToken()
 
@@ -17,8 +17,8 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "field form-control" , @id="guestFirstName"} })
-                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger", @id= "guestFirstName_e" })
+                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "field form-control", @id = "guestFirstName" } })
+                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger", @id = "guestFirstName_e" })
                 </div>
             </div>
 
@@ -26,7 +26,7 @@
                 @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "field form-control", @id = "guestLastName" } })
-                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" , @id= "guestLastName_e" })
+                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger", @id = "guestLastName_e" })
                 </div>
             </div>
 
@@ -46,10 +46,9 @@
 
             <div class="form_buttons">
                 <div class="button" onclick="location.href='@Url.Action("GuestsList", "Guest")'">Anuluj</div>
-                <div class="button" id="addNewGuest">dodaj</div>
+                <div class="button" id="saveEditGuest">zapisz zmiany</div>
                 <div style="clear: both"></div>
             </div>
         </div>
     }
 </section>
-

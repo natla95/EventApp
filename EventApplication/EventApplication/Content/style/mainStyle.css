@@ -14,6 +14,9 @@
   font-family: OpenRegular;
   src: url("/fonts/OpenSans-Regular.ttf") format("opentype"); }
 
+b {
+  font-weight: 600; }
+
 .padding_section {
   padding-left: 40px; }
 
@@ -68,6 +71,14 @@ log_out.active {
 
 #userName {
   margin-right: 10px; }
+
+main {
+  width: 84%;
+  font-family: OpenLight;
+  font-size: 14px; }
+
+main, aside {
+  float: left; }
 
 aside {
   max-width: 100px;
@@ -133,6 +144,9 @@ aside {
   cursor: pointer;
   box-shadow: 0 0px 4px #b3b2b2; }
 
+.button:hover {
+  opacity: 0.8; }
+
 .event_form, .guest_form {
   width: 50%;
   font-family: OpenLight;
@@ -182,4 +196,26 @@ aside {
 .text-danger {
   color: red;
   font-size: 12px; }
+
+.event_description {
+  width: 70%;
+  height: 400px;
+  background: #ffffff;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding: 40px;
+  box-sizing: border-box;
+  color: grey;
+  font-size: 16px;
+  text-align: center;
+  box-shadow: 0 0 4px #b7b7b7; }
+  .event_description span {
+    font-weight: 700; }
+
+.event_info {
+  text-transform: uppercase; }
+
+.event_organizators {
+  text-align: left; }
 
