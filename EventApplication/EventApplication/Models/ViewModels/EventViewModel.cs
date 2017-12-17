@@ -32,16 +32,12 @@ namespace EventApplication.Models.ViewModels
 
         [Column(TypeName = "date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Data uroczystości")]
-        [RegularExpression(@"^\d{2}\.\d{2}.\d{4}$", ErrorMessage = "Niepoprawny format daty (wymagane: dd.mm.rrrr)")]
         public DateTime? EventDate { get; set; }
 
         [Display(Name = "Godzina uroczystości")]
         [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString = "{0:HH:mm}", ApplyFormatInEditMode = true)]
-        [RegularExpression(@"^\d{2}\:\d{2}$", ErrorMessage = "Niepoprawny format godziny")]
-        public DateTime? EventTime { get; set; }
+        public TimeSpan? EventTime { get; set; }
 
         [StringLength(150)]
         [Display(Name = "Miejsce ślubu")]

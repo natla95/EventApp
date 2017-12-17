@@ -31,7 +31,6 @@ namespace EventApplication.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         [ActionName("Register")]
         public ActionResult Register()
         {
@@ -40,7 +39,6 @@ namespace EventApplication.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [ActionName("Register")]
         [ValidateAntiForgeryToken]
         public ActionResult Register(UserViewModel _model)
@@ -67,7 +65,6 @@ namespace EventApplication.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         [ActionName("Login")]
         public ActionResult Login()
         {
@@ -76,7 +73,6 @@ namespace EventApplication.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [ActionName("Login")]
         public ActionResult Login(LoginViewModel _model)
         {
@@ -108,7 +104,6 @@ namespace EventApplication.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         [ActionName("Logout")]
         public ActionResult Loginout()
         {

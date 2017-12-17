@@ -33,7 +33,7 @@ namespace EventApplication.Models.DB
         [Column(TypeName = "date")]
         public DateTime? EventDate { get; set; }
 
-        public DateTime? EventTime { get; set; }
+        public TimeSpan? EventTime { get; set; }
 
         [StringLength(150)]
         public string ChurchAddress { get; set; }

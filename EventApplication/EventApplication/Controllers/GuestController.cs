@@ -74,5 +74,12 @@ namespace EventApplication.Controllers
             return RedirectToAction("GuestsList");
         }
 
+        [HttpPost]
+        [ActionName("DeleteGuest")]
+        public ActionResult DeleteGuest()
+        {
+            return RedirectToAction("GuestsList");
+        }
+
     }
 }

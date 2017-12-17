@@ -5,6 +5,7 @@
     <title>@ViewBag.Title</title>
     <link type="text/css" rel="stylesheet" href="~/Content/style/eventPageStyle.min.css" />
     <link type="text/css" rel="stylesheet" href="~/Content/style/mainStyle.min.css" />
+    @Styles.Render("~/Content/date_picker")
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
@@ -16,8 +17,12 @@
     <script>
         var iconNr = "@ViewBag.IconNr";
     </script>
-    <script src="/Scripts/external/jquery.min.js"></script>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/forms_js")
+    @Scripts.Render("~/bundles/datepicker")
     <script src="~/Scripts/custom/customMain.js"></script>
-    <script src="~/Scripts/custom/customForms.js"></script>
+
 </body>
 </html>

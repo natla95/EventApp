@@ -25,9 +25,16 @@ $textColorDarken: #757575;
 b{
     font-weight: 600;
 }
+
+
+.display_inline{
+    display: inline-block;
+}
+
 .padding_section {
     padding-left: 40px;
 }
+
 body {
     background: $backgroundColor;
     margin: 0;
@@ -149,13 +156,11 @@ aside {
 
 // forms
 .action_buttons {
-    width: 70%;
-    display: block;
-    margin: 0 auto;
+    margin: 10px 0;
 
     div {
-        float: right;
-        margin: 10px 0 10px 20px;
+        display: inline-block;
+        margin-right: 10px;
     }
 
     div:hover {
@@ -254,12 +259,12 @@ aside {
 
 // event style
 .event_description {
-    width: 70%;
+    width: 80%;
     height: 400px;
     background: #ffffff;
     display: block;
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 30px;
     padding: 40px;
     box-sizing: border-box;
     color: grey;
@@ -279,5 +284,28 @@ aside {
 .event_organizators {
     text-align: left;
 }
+#flowerTop {
+    width: 280px;
+    position: absolute;
+    right: -10px;
+    transform: rotate(-100deg);
+    bottom: 2px;
+}
+
+#flowerBottom {
+    width: 280px;
+    position: absolute;
+    bottom: -130px;
+    transform: rotate(-10deg);
+    right: 154px;
+}
 
 
+#userEvent{
+    position:relative;
+}
+// guest_list
+#deleteMore {
+    background: #dedede;
+    padding-left: 10px;
+}

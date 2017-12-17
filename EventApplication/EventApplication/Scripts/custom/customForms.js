@@ -138,6 +138,9 @@ function ValidateGuestForm() {
     return !error;
 }
 
+$(function () {
+    $("#datepicker").datepicker();
+});
 
 (function () {
 

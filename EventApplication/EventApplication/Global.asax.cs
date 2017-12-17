@@ -49,5 +49,14 @@ namespace EventApplication
                 HttpContext.Current.Response.Redirect("/Account/Login");
             }
         }
+
+        protected void Application_EndRequest(object sender, EventArgs e)
+        {
+            if(Response.StatusCode == 401)
+            {
+                Response.ClearContent();
+                Response.Redirect("/Account/Login");
+            }
+        }
     }
 }

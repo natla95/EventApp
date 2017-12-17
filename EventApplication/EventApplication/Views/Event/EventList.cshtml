@@ -1,4 +1,4 @@
-﻿
+﻿@model EventApplication.Models.ViewModels.EventOptionViewModel
 @{
     ViewBag.Title = "Lista wydarzeń";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -6,26 +6,31 @@
 <section class="panel_title">
     <div>wydarzenia</div>
 </section>
-<section class="padding_section">
+<section id="userEvent" class="padding_section">
     <div id="addEvent" class="button action_button" onclick="location.href='@Url.Action("AddEvent", "Event")'">dodaj uroczystość</div>
-    <div style="clear:both"></div>
-    <div class="event_description">
-        <div class="event_info">
-            <p id="eventName">ślub i wesele</p>
-            <span id="organizerName1">Hanna Hak</span> i <span id="organizerName2">Alfred Huk</span>
-            <p id="eventDate">22.06.2019</p>
-            <p id="eventTime">16:00</p>
-        </div>
-        <div class="event_organizators">
-            <p>Organizatorzy:</p>
-            <p>Hanna Hak</p>
-            <p>Alfred Huk</p>
-            <p>Maria Miłorząb</p>
-        </div>
-    </div>
-    <div class="action_buttons">
+    <div class="action_buttons" id="eventButton">
         <div class="button" onclick="location.href='@Url.Action("DeleteEvent", "Event")'">Usuń</div>
         <div class="button" onclick="location.href='@Url.Action("EditEvent", "Event")'">Edytuj</div>
-        <div style="clear: both"></div>
     </div>
+    <div class="event_description">
+        <div class="event_info">
+            @*@foreach(var item in moddel)
+            {
+
+            }*@
+           @*<p id="eventName">ślub i wesele</p>
+            <span id="organizerName1">Hanna Hak</span> i <span id="organizerName2">Alfred Huk</span>
+            <p id="eventDate">22.06.2019</p>
+            <p id="eventTime">16:00</p>*@
+        </div>
+        <div class="event_organizators">
+            @*<p>Organizatorzy:</p>
+            <p>Hanna Hak</p>
+            <p>Alfred Huk</p>
+            <p>Maria Miłorząb</p>*@
+        </div>
+        
+    </div>
+    <img id="flowerTop" src="~/Content/images/flower1.png" />
+    <img id="flowerBottom" src="~/Content/images/flower2.png" />
 </section>

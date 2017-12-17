@@ -12,12 +12,6 @@ namespace EventApplication.Controllers
     [Authorize]
     public class EventController : Controller
     {
-        private EventDbContext _db;
-        public EventController()
-        {
-            _db = new EventDbContext();
-        }
-
         [HttpGet]
         [ActionName("EventList")]
         public ActionResult Index()
@@ -27,9 +21,10 @@ namespace EventApplication.Controllers
             ViewBag.UserName = user.UserDetails.Email;
             ViewBag.IconNr = 1;
 
-            EventOptionViewModel model = new EventOptionViewModel();
+            //EventOptionViewModel model = new EventOptionViewModel();
+            //List<Event> eventList = new List<Event>();
             User userLogged = new User();
-            using (_db)
+            using (EventDbContext _db = new EventDbContext())
             {
                 var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
                 if (itemUser != null)
@@ -48,30 +43,44 @@ namespace EventApplication.Controllers
             var user = User as MyPrincipal;
             ViewBag.UserName = user.UserDetails.Email;
             ViewBag.IconNr = 1;
-            using (_db)
-            {
-                ViewBag.Options = (from li in _db.Options.AsNoTracking()
-                                   select new OptionViewModel()
-                                   {
-                                        OptionID = li.OptionID,
-                                        OptionName = li.OptionName
-                                   }).ToList();
-            }
-            return View();
+
+            EventOptionViewModel model = new EventOptionViewModel();
+            model.Options = OptionsQuery();
+            return View(model);
         }
 
-        [HttpPost]
+        private static List<SelectListItem> OptionsQuery()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            using(EventDbContext _db = new EventDbContext())
+                {
+                    items = (from li in _db.Options.AsNoTracking()
+                             select new SelectListItem
+                             {
+                                 Text = li.OptionName,
+                                 Value = li.OptionID.ToString()
+                             }).ToList();
+                }
+            return items;
+        }
+
+    [HttpPost]
         [ActionName("AddEvent")]
         public ActionResult AddEvent(EventOptionViewModel _model)
         {
+            var user = User as MyPrincipal;
+            ViewBag.UserName = user.UserDetails.Email;
+            var login = user.UserDetails.Email;
             if (ModelState.IsValid)
             {
-                using (_db)
+                using (EventDbContext _db = new EventDbContext())
                 {
+                    var logged = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+                    var loggedId = logged.UserID;
                     var item = _db.Events.FirstOrDefault(e => e.EventName.Equals(_model.EventName) && e.OrganizerName1.Equals(_model.OrganizerName1) && e.OrganizerName2.Equals(_model.OrganizerName2));
                     if (item == null)
                     {
-                        Event added = new Event()
+                            Event added = new Event()
                         {
                             EventName = _model.EventName,
                             OrganizerName1 = _model.OrganizerName1,
@@ -81,14 +90,19 @@ namespace EventApplication.Controllers
                             ChurchAddress = _model.ChurchAddress,
                             WeddingAddress = _model.WeddingAddress
                         };
-                        _db.Events.Add(added);
+
+                        UserEvent userEvent = new UserEvent()
+                        {
+                            UserID = loggedId,
+                            Event = added
+                        };
+
+                        _db.UserEvents.Add(userEvent);
                         _db.SaveChanges();
                         return RedirectToAction("EventList");                    
-                    }
-                    
+                    } 
                 }
             }
-
             return View();
         }
 
