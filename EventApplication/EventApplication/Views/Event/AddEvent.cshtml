@@ -17,8 +17,8 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.EventName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div>
-                    @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "field form-control" , @id = "eventName" } })
-                    @Html.ValidationMessageFor(model => model.EventName, "", new { @class = "text-danger" , @id = "eventName_e" })
+                    @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "field form-control", @id = "eventName" } })
+                    @Html.ValidationMessageFor(model => model.EventName, "", new { @class = "text-danger", @id = "eventName_e" })
                 </div>
             </div>
 
@@ -41,7 +41,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.EventDate, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div>
-                    @Html.EditorFor(model => model.EventDate, new { htmlAttributes = new { @class = "field form-control" , @id = "datepicker" }, @placeholder = "Data" })
+                    @Html.EditorFor(model => model.EventDate, new { htmlAttributes = new { @class = "datepicker field form-control", @placeholder="dd-mm-rrrr"} })
                     @Html.ValidationMessageFor(model => model.EventDate, "", new { @class = "text-danger" })
                 </div>
             </div>

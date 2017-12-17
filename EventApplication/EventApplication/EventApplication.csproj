@@ -190,7 +190,6 @@
     <Content Include="Content\images\flowers_2.jpg" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\main_img.jpg" />
-    <Content Include="Content\style\jquery-ui.css" />
     <Content Include="Content\style\mainStyle.css">
       <DependentUpon>mainStyle.scss</DependentUpon>
     </Content>
@@ -215,6 +214,8 @@
     <Content Include="Content\style\tableDataStyle.min.css">
       <DependentUpon>tableDataStyle.css</DependentUpon>
     </Content>
+    <Content Include="Content\themes\datepicker.css" />
+    <Content Include="Content\themes\jquery-ui.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
@@ -223,10 +224,8 @@
     <Content Include="Scripts\custom\customAccount.js" />
     <Content Include="Scripts\custom\customForms.js" />
     <Content Include="Scripts\custom\customMain.js" />
-    <Content Include="Scripts\external\bootstrap-datetimepicker.min.js" />
-    <Content Include="Scripts\external\jquery-1.12.4.js" />
-    <Content Include="Scripts\external\jquery-ui.js" />
     <Content Include="Scripts\external\jquery.min.js" />
+    <Content Include="Scripts\external\jquery-ui-1.12.1.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -238,7 +237,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Default\" />
     <Folder Include="Views\Invitation\" />
   </ItemGroup>
   <ItemGroup>

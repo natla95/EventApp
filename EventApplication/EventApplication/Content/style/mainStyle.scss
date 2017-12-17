@@ -26,7 +26,6 @@ b{
     font-weight: 600;
 }
 
-
 .display_inline{
     display: inline-block;
 }
@@ -252,11 +251,21 @@ aside {
 .field.error {
     border: 1px solid red;
 }
+.event_form select {
+    width: 300px;
+    text-align: center;
+    color: $textColorDarken;
+    font-family: OpenLight;
+}
 .text-danger{
     color: red;
     font-size: 12px;
 }
 
+input[type=time]::-webkit-inner-spin-button,
+input[type=time]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
 // event style
 .event_description {
     width: 80%;

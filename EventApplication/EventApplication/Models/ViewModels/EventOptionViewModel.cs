@@ -33,7 +33,6 @@ namespace EventApplication.Models.ViewModels
         public string OrganizerName2 { get; set; }
 
         [Column(TypeName = "date")]
-        [DataType(DataType.Date)]
         [Display(Name = "Data uroczystości")]
         [Required(ErrorMessage = "Data jest wymagana", AllowEmptyStrings = false)]
         public DateTime? EventDate { get; set; }

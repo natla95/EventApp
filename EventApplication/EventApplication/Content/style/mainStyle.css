@@ -194,9 +194,19 @@ aside {
 .field.error {
   border: 1px solid red; }
 
+.event_form select {
+  width: 300px;
+  text-align: center;
+  color: #757575;
+  font-family: OpenLight; }
+
 .text-danger {
   color: red;
   font-size: 12px; }
+
+input[type=time]::-webkit-inner-spin-button,
+input[type=time]::-webkit-outer-spin-button {
+  -webkit-appearance: none; }
 
 .event_description {
   width: 80%;

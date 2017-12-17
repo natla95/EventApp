@@ -21,8 +21,6 @@ namespace EventApplication.Controllers
             ViewBag.UserName = user.UserDetails.Email;
             ViewBag.IconNr = 1;
 
-            //EventOptionViewModel model = new EventOptionViewModel();
-            //List<Event> eventList = new List<Event>();
             User userLogged = new User();
             using (EventDbContext _db = new EventDbContext())
             {

@@ -7,14 +7,18 @@ namespace EventApplication
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-               "~/Scripts/external/jquery.min.js"
+            bundles.Add(new ScriptBundle("~/bundles/account_js").Include(
+               "~/Scripts/external/jquery.min.js",
+               "~/Scripts/custom/customAccount.js"
+             ));
+
+            bundles.Add(new ScriptBundle("~/bundles/main").Include(
+               "~/Scripts/external/jquery.min.js",
+               "~/Scripts/custom/customMain.js"
                ));
 
-            bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
-                "~/Scripts/external/jquery-1.12.4.js",
-                "~/Scripts/external/jquery-ui.js",
-                "~/Scripts/external/bootstrap-datetimepicker.min.js"
+            bundles.Add(new ScriptBundle("~/bundles/datepicker_js").Include(
+                "~/Scripts/external/jquery-ui-1.12.1.min.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/forms_js").Include(
@@ -22,8 +26,8 @@ namespace EventApplication
               ));
 
 
-            bundles.Add(new StyleBundle("~/Content/date_picker").Include(
-              "~/Content/css/jquery-ui.css"
+            bundles.Add(new StyleBundle("~/Content/date_picker_css").Include(
+                "~/Content/themes/jquery-ui.min.css"
          ));
         }
     }

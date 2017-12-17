@@ -14,15 +14,13 @@
     <main>
         @RenderBody()
     </main>
+
     <script>
         var iconNr = "@ViewBag.IconNr";
     </script>
-
-
-    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/main")
     @Scripts.Render("~/bundles/forms_js")
     @Scripts.Render("~/bundles/datepicker")
-    <script src="~/Scripts/custom/customMain.js"></script>
 
 </body>
 </html>

@@ -3,6 +3,12 @@ var OrganizatorNameReq = /^[A-Z-a-ząóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-]{2,1
 var AddressEventReq = /^[A-Z-a-z0-9ąóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-\.\/\,]{5,150}$/;
 var GuestName = /^[A-Z-a-ząóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-]{2,50}$/;
 
+$(function () {
+    $('.datepicker').datepicker({
+        dateFormat: "dd-mm-yy"
+    });
+})
+
 function ValidateEventForm() {
     var error = false;
     var eventName = $('#eventName').val();
@@ -138,10 +144,6 @@ function ValidateGuestForm() {
     return !error;
 }
 
-$(function () {
-    $("#datepicker").datepicker();
-});
-
 (function () {
 
     // ---- EVENT form ----
@@ -161,8 +163,8 @@ $(function () {
         else {
             obj.addClass("error");
             $('#eventName_e').html("Pole wymagane");
-        }   
-    })
+        }
+    });
     $('#organizer1Name').on("change", function () {
         var obj = $(this);
         var val = obj.val();
@@ -179,8 +181,8 @@ $(function () {
         else {
             obj.addClass("error");
             $('#organizer1Name_e').html("Pole wymagane");
-        }     
-    })
+        }
+    });
     $('#organizer2Name').on("change", function () {
         var obj = $(this);
         var val = obj.val();
@@ -198,8 +200,8 @@ $(function () {
             obj.addClass("error");
             $('#organizer2Name_e').html("Pole wymagane");
         }
-        
-    })
+
+    });
     $('#churchAddress').on("change", function () {
         var obj = $(this);
         var val = obj.val();
@@ -217,8 +219,8 @@ $(function () {
             obj.removeClass("error");
             $('#churchAddress_e').html(" ");
         }
-        
-    })
+
+    });
     $('#weddingAddress').on("change", function () {
         var obj = $(this);
         var val = obj.val();
@@ -235,19 +237,19 @@ $(function () {
         else {
             obj.removeClass("error");
             $('#weddingAddress_e').html(" ");
-        }         
-    })
+        }
+    });
 
     $('#addEventButton').on("click", function () {
         if (ValidateEventForm()) {
             $('#addEventForm').submit();
         }
-    })
+    });
     $('#saveEventEdition').on("click", function () {
         if (ValidateEventForm) {
             $('#editEventForm').submit();
         }
-    })
+    });
         // ---- end EVENT form -----
 
         // ---- GUEST form ----
@@ -268,7 +270,7 @@ $(function () {
             obj.addClass("error");
             $('#guestFirstName_e').html("Pole wymagane");
         }
-    })
+    });
 
     $('#guestLastName').on("change", function () {
         var obj = $(this);
@@ -287,17 +289,17 @@ $(function () {
             obj.addClass("error");
             $('#guestLastName_e').html("Pole wymagane");
         }
-    })
+    });
 
     $('#addNewGuest').on("click", function () {
         if (ValidateGuestForm()) {
             $('#addGuestForm').submit();
         }
-    })
+    });
     $('#saveEditGuest').on("click", function () {
         if (ValidateGuestForm()) {
             $('#editGuestForm').submit();
         }
-    })
+    });
     // ---- end guest form ----
 })();

@@ -1,4 +1,4 @@
-﻿console.log(iconNr)
+﻿
 if (iconNr == 1)
     $('#menu1').addClass('active');
 if (iconNr == 2)
