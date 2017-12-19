@@ -72,28 +72,39 @@ function ValidateEventForm() {
         $('#organizer2Name').addClass("error");
         $('#organizer2Name_e').html("Pole wymagane");
     }
-    
 
-    if (churchAddress.match(AddressEventReq) != null) {
-        error = false;
-        $('#churchAddress').removeClass("error");
-        $('#churchAddress_e').html("");   
+    if (churchAddress != "") {
+        if (churchAddress.match(AddressEventReq) != null) {
+            error = false;
+            $('#churchAddress').removeClass("error");
+            $('#churchAddress_e').html("");
+        }
+        else {
+            error = true;
+            $('#churchAddress').addClass("error");
+            $('#churchAddress_e').html("Niepoprawny format adresu");
+        }
     }
     else {
-        error = true;
-        $('#churchAddress').addClass("error");
-        $('#churchAddress_e').html("Niepoprawny format adresu");
+        $('#churchAddress').removeClass("error");
+        $('#churchAddress_e').html("");
     }
 
-    if (weddingAddress.match(AddressEventReq) != null) {
-        error = false;
+    if (weddingAddress != "") {
+        if (weddingAddress.match(AddressEventReq) != null) {
+            error = false;
+            $('#weddingAddress').removeClass("error");
+            $('#weddingAddress_e').html("");
+        }
+        else {
+            error = true;
+            $('#weddingAddress').addClass("error");
+            $('#weddingAddress_e').html("Niepoprawny format adresu");
+        }
+    }
+    else {
         $('#weddingAddress').removeClass("error");
         $('#weddingAddress_e').html("");
-    }
-    else {
-        error = true;
-        $('#weddingAddress').addClass("error");
-        $('#weddingAddress_e').html("Niepoprawny format adresu");
     }
 
     return !error;

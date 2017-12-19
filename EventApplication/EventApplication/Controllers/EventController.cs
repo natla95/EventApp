@@ -22,16 +22,56 @@ namespace EventApplication.Controllers
             ViewBag.IconNr = 1;
 
             User userLogged = new User();
+            List<Event> events = new List<Event>();
+            List<Option> options = new List<Option>();
+            EventListViewModel model = new EventListViewModel();
+
             using (EventDbContext _db = new EventDbContext())
             {
                 var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
                 if (itemUser != null)
                 {
                     var loggedID = itemUser.UserID;
-                    var eventList = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == loggedID)).ToList();
-                }
+
+                    events = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == loggedID)).ToList();
+                    foreach(var e in events)
+                    {
+                        EventViewModel ev = new EventViewModel()
+                        {
+                            EventID = e.EventID,
+                            EventName = e.EventName,
+                            EventDate = e.EventDate,
+                            EventTime = e.EventTime,
+                            OrganizerName1 = e.OrganizerName1,
+                            OrganizerName2 = e.OrganizerName2,
+                            WeddingAddress = e.WeddingAddress,
+                            ChurchAddress = e.ChurchAddress
+                        };
+                        model.EventList.Add(ev);
+                    }
+
+                   foreach(var eventss in model.EventList)
+                    {
+                        var currentId = eventss.EventID;
+                        options = _db.Options.Where(e => e.EventOptions.Any(o => o.Event.EventID == currentId)).ToList();
+                        foreach(var o in options)
+                        {
+                            OptionViewModel ov = new OptionViewModel()
+                            {
+                                OptionID = o.OptionID,
+                                OptionName = o.OptionName
+                            };
+                            model.OptionsList.Add(ov);
+                        }
+                    }
+
+                    if (events.Count == 0)
+                        ViewBag.HaveEvent = "no";
+                    else
+                        ViewBag.HaveEvent = "yes";  
+                }              
             }
-            return View("EventList");    
+            return View("EventList",model);    
         }
 
         [HttpGet]
@@ -96,6 +136,17 @@ namespace EventApplication.Controllers
                         };
 
                         _db.UserEvents.Add(userEvent);
+                        if (_model.SelectedOptionsId != null)
+                        {
+                            foreach (var option in _model.SelectedOptionsId)
+                            {
+                                _db.EventOptions.Add(new EventOption()
+                                {
+                                    OptionID = option,
+                                    Event = added
+                                });
+                            }
+                        }
                         _db.SaveChanges();
                         return RedirectToAction("EventList");                    
                     } 
@@ -128,5 +179,16 @@ namespace EventApplication.Controllers
             return RedirectToAction("EventList");
         }
 
+        public ActionResult GetEventInformation()
+        {
+            var user = User as MyPrincipal;
+            ViewBag.UserName = user.UserDetails.Email;
+            ViewBag.IconNr = 2;
+
+            var login = user.UserDetails.Email;
+            
+
+            return View();
+        }
     }
 }

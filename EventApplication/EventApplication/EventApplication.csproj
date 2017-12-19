@@ -174,6 +174,7 @@
     <Compile Include="Models\DB\UserEvent.cs" />
     <Compile Include="Models\MyPrincipal.cs" />
     <Compile Include="Models\Security.cs" />
+    <Compile Include="Models\ViewModels\EventListViewModel.cs" />
     <Compile Include="Models\ViewModels\EventOptionViewModel.cs" />
     <Compile Include="Models\ViewModels\EventViewModel.cs" />
     <Compile Include="Models\ViewModels\GuestViewModel.cs" />
@@ -270,6 +271,7 @@
     <Content Include="Views\Guest\EditGuest.cshtml" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
     <Content Include="Views\Shared\_ListDataLayout.cshtml" />
+    <Content Include="Views\Event\GetEventInformation.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

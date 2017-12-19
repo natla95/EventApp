@@ -1,4 +1,5 @@
-﻿@model EventApplication.Models.ViewModels.EventOptionViewModel
+﻿@using EventApplication.Models.ViewModels
+@model EventListViewModel
 @{
     ViewBag.Title = "Lista wydarzeń";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -6,31 +7,37 @@
 <section class="panel_title">
     <div>wydarzenia</div>
 </section>
-<section id="userEvent" class="padding_section">
+<section class="userEvent padding_section">
     <div id="addEvent" class="button action_button" onclick="location.href='@Url.Action("AddEvent", "Event")'">dodaj uroczystość</div>
     <div class="action_buttons" id="eventButton">
-        <div class="button" onclick="location.href='@Url.Action("DeleteEvent", "Event")'">Usuń</div>
-        <div class="button" onclick="location.href='@Url.Action("EditEvent", "Event")'">Edytuj</div>
+        <div id="deleteEvent" class="button" onclick="location.href='@Url.Action("DeleteEvent", "Event")'">Usuń</div>
+        <div id="editEvent" class="button" onclick="location.href='@Url.Action("EditEvent", "Event")'">Edytuj</div>
     </div>
     <div class="event_description">
         <div class="event_info">
-            @*@foreach(var item in moddel)
+            @foreach(EventViewModel item in Model.EventList)
             {
-
-            }*@
-           @*<p id="eventName">ślub i wesele</p>
-            <span id="organizerName1">Hanna Hak</span> i <span id="organizerName2">Alfred Huk</span>
-            <p id="eventDate">22.06.2019</p>
-            <p id="eventTime">16:00</p>*@
+                <p id="eventName">@item.EventName</p>
+                <span id="organizerName1">@item.OrganizerName1 i</span> <span id="organizerName2">@item.OrganizerName2</span>
+                <p id="eventDate">Data: @item.EventDate</p>
+                <p id="eventTime">Godzina: @item.EventTime</p>
+                <p>Miejsce ślubu: @item.ChurchAddress</p>
+                <p>Miejsce wesela: @item.WeddingAddress</p>
+            }
+           
         </div>
         <div class="event_organizators">
-            @*<p>Organizatorzy:</p>
-            <p>Hanna Hak</p>
-            <p>Alfred Huk</p>
-            <p>Maria Miłorząb</p>*@
+            <p>Wybrane opcje:</p>
+           @foreach(OptionViewModel optionItem in Model.OptionsList)
+           {
+               <p><i class="fa fa-circle" aria-hidden="true"></i>@optionItem.OptionName</p>
+           }
         </div>
         
     </div>
-    <img id="flowerTop" src="~/Content/images/flower1.png" />
-    <img id="flowerBottom" src="~/Content/images/flower2.png" />
+    <img class="flowerTop" src="~/Content/images/flower1.png" />
+    <img class="flowerBottom" src="~/Content/images/flower2.png" />
 </section>
+<script>
+     var haveEvent = "@ViewBag.HaveEvent";
+</script>

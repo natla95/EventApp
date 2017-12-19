@@ -1,6 +1,18 @@
 ﻿
-if (iconNr == 1)
+if (iconNr == 1) {
     $('#menu1').addClass('active');
+    console.log(haveEvent)
+    if (haveEvent == "yes") {
+        $('#addEvent').css("display", "none");
+        $('#editEvent').css("display", "inline-block");
+        $('#deleteEvent').css("display", "inline-block");
+    }
+    else if (haveEvent == "no") {
+        $('#addEvent').css("display", "block");
+        $('#editEvent').css("display", "none");
+        $('#deleteEvent').css("display", "none");
+    }
+} 
 if (iconNr == 2)
     $('#menu2').addClass('active');
 if (iconNr == 3)

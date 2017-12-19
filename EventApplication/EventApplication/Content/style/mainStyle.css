@@ -149,12 +149,20 @@ aside {
   opacity: 0.8; }
 
 .event_form, .guest_form {
-  width: 50%;
+  width: 40%;
   font-family: OpenLight;
   font-size: 14px;
-  padding: 0 40px;
-  margin-top: -24px;
-  box-sizing: border-box; }
+  padding: 20px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 6px;
+  text-align: center;
+  margin-left: 40px;
+  box-shadow: 0 0 4px #b7b7b7; }
+
+.event_form .form_buttons div {
+  display: inline-block;
+  float: none; }
 
 .form_buttons div {
   width: 144px;
@@ -198,7 +206,12 @@ aside {
   width: 300px;
   text-align: center;
   color: #757575;
-  font-family: OpenLight; }
+  font-family: OpenLight;
+  border: 1px solid #d3d3d3; }
+
+.event_form select:focus {
+  outline: none;
+  border: 1px solid #fecccb; }
 
 .text-danger {
   color: red;
@@ -210,7 +223,7 @@ input[type=time]::-webkit-outer-spin-button {
 
 .event_description {
   width: 80%;
-  height: 400px;
+  min-height: 400px;
   background: #ffffff;
   display: block;
   margin: 0 auto;
@@ -225,29 +238,54 @@ input[type=time]::-webkit-outer-spin-button {
     font-weight: 700; }
 
 .event_info {
+  font-weight: 600;
   text-transform: uppercase; }
 
 .event_organizators {
   text-align: left; }
+  .event_organizators p i {
+    color: #fecccb;
+    font-size: 8px;
+    margin-right: 4px;
+    margin-top: -3px;
+    vertical-align: middle; }
 
-#flowerTop {
-  width: 280px;
+.flowerTop {
+  width: 230px;
   position: absolute;
   right: -10px;
   transform: rotate(-100deg);
-  bottom: 2px; }
+  bottom: 22px; }
 
-#flowerBottom {
-  width: 280px;
+.flowerBottom {
+  width: 230px;
   position: absolute;
-  bottom: -130px;
+  bottom: -80px;
   transform: rotate(-10deg);
-  right: 154px; }
+  right: 124px; }
 
-#userEvent {
+#readOnlyEvent {
+  height: 450px;
+  margin-top: 100px; }
+
+.userEvent {
   position: relative; }
 
 #deleteMore {
   background: #dedede;
   padding-left: 10px; }
+
+@media (min-width: 1920px) {
+  #flowerBottom {
+    width: 280px;
+    position: absolute;
+    bottom: -130px;
+    transform: rotate(-10deg);
+    right: 154px; }
+  #flowerTop {
+    width: 280px;
+    position: absolute;
+    right: -10px;
+    transform: rotate(-100deg);
+    bottom: 2px; } }
 
