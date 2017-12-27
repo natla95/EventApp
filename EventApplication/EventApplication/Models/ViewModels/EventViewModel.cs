@@ -33,6 +33,7 @@ namespace EventApplication.Models.ViewModels
         [Column(TypeName = "date")]
         [DataType(DataType.Date)]
         [Display(Name = "Data uroczystości")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}",ApplyFormatInEditMode = true)]
         public DateTime? EventDate { get; set; }
 
         [Display(Name = "Godzina uroczystości")]

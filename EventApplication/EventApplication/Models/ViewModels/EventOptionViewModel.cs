@@ -35,6 +35,7 @@ namespace EventApplication.Models.ViewModels
         [Column(TypeName = "date")]
         [Display(Name = "Data uroczystości")]
         [Required(ErrorMessage = "Data jest wymagana", AllowEmptyStrings = false)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? EventDate { get; set; }
 
         [Display(Name = "Godzina uroczystości")]

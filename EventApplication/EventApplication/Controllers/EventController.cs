@@ -21,7 +21,6 @@ namespace EventApplication.Controllers
             ViewBag.UserName = user.UserDetails.Email;
             ViewBag.IconNr = 1;
 
-            User userLogged = new User();
             List<Event> events = new List<Event>();
             List<Option> options = new List<Option>();
             EventListViewModel model = new EventListViewModel();
@@ -34,7 +33,7 @@ namespace EventApplication.Controllers
                     var loggedID = itemUser.UserID;
 
                     events = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == loggedID)).ToList();
-                    foreach(var e in events)
+                    foreach (var e in events)
                     {
                         EventViewModel ev = new EventViewModel()
                         {
@@ -50,11 +49,11 @@ namespace EventApplication.Controllers
                         model.EventList.Add(ev);
                     }
 
-                   foreach(var eventss in model.EventList)
+                    foreach (var eventss in model.EventList)
                     {
                         var currentId = eventss.EventID;
                         options = _db.Options.Where(e => e.EventOptions.Any(o => o.Event.EventID == currentId)).ToList();
-                        foreach(var o in options)
+                        foreach (var o in options)
                         {
                             OptionViewModel ov = new OptionViewModel()
                             {
@@ -68,10 +67,10 @@ namespace EventApplication.Controllers
                     if (events.Count == 0)
                         ViewBag.HaveEvent = "no";
                     else
-                        ViewBag.HaveEvent = "yes";  
-                }              
+                        ViewBag.HaveEvent = "yes";
+                }
             }
-            return View("EventList",model);    
+            return View("EventList", model);
         }
 
         [HttpGet]
@@ -90,25 +89,25 @@ namespace EventApplication.Controllers
         private static List<SelectListItem> OptionsQuery()
         {
             List<SelectListItem> items = new List<SelectListItem>();
-            using(EventDbContext _db = new EventDbContext())
-                {
-                    items = (from li in _db.Options.AsNoTracking()
-                             select new SelectListItem
-                             {
-                                 Text = li.OptionName,
-                                 Value = li.OptionID.ToString()
-                             }).ToList();
-                }
+            using (EventDbContext _db = new EventDbContext())
+            {
+                items = (from li in _db.Options.AsNoTracking()
+                         select new SelectListItem
+                         {
+                             Text = li.OptionName,
+                             Value = li.OptionID.ToString()
+                         }).ToList();
+            }
             return items;
         }
 
-    [HttpPost]
+        [HttpPost]
         [ActionName("AddEvent")]
         public ActionResult AddEvent(EventOptionViewModel _model)
         {
             var user = User as MyPrincipal;
-            ViewBag.UserName = user.UserDetails.Email;
             var login = user.UserDetails.Email;
+
             if (ModelState.IsValid)
             {
                 using (EventDbContext _db = new EventDbContext())
@@ -118,7 +117,7 @@ namespace EventApplication.Controllers
                     var item = _db.Events.FirstOrDefault(e => e.EventName.Equals(_model.EventName) && e.OrganizerName1.Equals(_model.OrganizerName1) && e.OrganizerName2.Equals(_model.OrganizerName2));
                     if (item == null)
                     {
-                            Event added = new Event()
+                        Event added = new Event()
                         {
                             EventName = _model.EventName,
                             OrganizerName1 = _model.OrganizerName1,
@@ -148,8 +147,8 @@ namespace EventApplication.Controllers
                             }
                         }
                         _db.SaveChanges();
-                        return RedirectToAction("EventList");                    
-                    } 
+                        return RedirectToAction("EventList");
+                    }
                 }
             }
             return View();
@@ -160,35 +159,134 @@ namespace EventApplication.Controllers
         public ActionResult EditEvent()
         {
             var user = User as MyPrincipal;
+            var login = user.UserDetails.Email;
             ViewBag.UserName = user.UserDetails.Email;
             ViewBag.IconNr = 1;
-            return View();
+
+            EventOptionViewModel item = null;
+            using (EventDbContext _db = new EventDbContext())
+            {
+                var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+                var ev = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == itemUser.UserID)).FirstOrDefault();
+                item = new EventOptionViewModel()
+                {
+                    EventID = ev.EventID,
+                    EventName = ev.EventName,
+                    EventDate = ev.EventDate,
+                    EventTime = ev.EventTime,
+                    OrganizerName1 = ev.OrganizerName1,
+                    OrganizerName2 = ev.OrganizerName2,
+                    WeddingAddress = ev.WeddingAddress,
+                    ChurchAddress = ev.ChurchAddress
+                };
+            }
+            return View(item);
         }
 
         [HttpPost]
         [ActionName("EditEvent")]
-        public ActionResult EditEvent(EventViewModel _model)
+        public ActionResult EditEvent(EventOptionViewModel _model)
         {
-            return View();
+            var user = User as MyPrincipal;
+            var login = user.UserDetails.Email;
+
+            if (ModelState.IsValid)
+            {
+                using (EventDbContext _db = new EventDbContext())
+                {
+                    var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+                    var ev = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == itemUser.UserID)).FirstOrDefault();
+                    if (ev != null)
+                    {
+                        ev.EventName = _model.EventName ?? "";
+                        ev.EventDate = _model.EventDate;
+                        ev.EventTime = _model.EventTime;
+                        ev.OrganizerName1 = _model.OrganizerName1 ?? "";
+                        ev.OrganizerName2 = _model.OrganizerName2 ?? "";
+                        ev.WeddingAddress = _model.WeddingAddress;
+                        ev.ChurchAddress = _model.ChurchAddress;
+                    }
+                    _db.SaveChanges();
+                }
+            }
+
+            return RedirectToAction("EventList");
         }
 
         [HttpGet]
         [ActionName("DeleteEvent")]
         public ActionResult DeleteEvent()
         {
+            var user = User as MyPrincipal;
+            var login = user.UserDetails.Email;
+
+            using(EventDbContext _db = new EventDbContext())
+            {
+                var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+                var ev = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == itemUser.UserID)).FirstOrDefault();
+                var evOptions = _db.Options.Where(o => o.EventOptions.Any(e => e.EventID == ev.EventID)).ToList();
+                var evInvitations = (from li in _db.Invitations
+                                     where li.EventID.Equals(ev.EventID)
+                                     select li).ToList();
+
+                foreach (var o in evOptions)
+                {
+                    var optionToRemove = (from li in _db.EventOptions
+                                          where li.OptionID.Equals(o.OptionID)
+                                          select li).FirstOrDefault();
+                    ev.EventOptions.Remove(optionToRemove);
+                }
+
+                if(evInvitations.Count != 0)
+                {
+                    foreach (var i in evInvitations)
+                    {
+                        ev.Invitations.Remove(i);
+                    }
+                }
+                
+                var eventToRemove = (from li in _db.UserEvents
+                                      where li.EventID.Equals(ev.EventID)
+                                      select li).FirstOrDefault();
+                ev.UserEvents.Remove(eventToRemove);
+                _db.Events.Remove(ev);
+                _db.SaveChanges();
+            }
+
             return RedirectToAction("EventList");
         }
 
+        [HttpGet]
+        [ActionName("EventInformation")]
         public ActionResult GetEventInformation()
         {
             var user = User as MyPrincipal;
+            var login = user.UserDetails.Email;
             ViewBag.UserName = user.UserDetails.Email;
             ViewBag.IconNr = 2;
 
-            var login = user.UserDetails.Email;
-            
-
-            return View();
+            EventViewModel item = null;
+            using (EventDbContext _db = new EventDbContext())
+            {
+                var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+                if (itemUser != null)
+                {
+                    var loggedID = itemUser.UserID;
+                    var ev = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == itemUser.UserID)).FirstOrDefault();
+                    item = new EventViewModel()
+                    {
+                        EventID = ev.EventID,
+                        EventName = ev.EventName,
+                        EventDate = ev.EventDate,
+                        EventTime = ev.EventTime,
+                        OrganizerName1 = ev.OrganizerName1,
+                        OrganizerName2 = ev.OrganizerName2,
+                        WeddingAddress = ev.WeddingAddress,
+                        ChurchAddress = ev.ChurchAddress
+                    };
+                }
+            }
+            return View("GetEventInformation",item);
         }
     }
 }

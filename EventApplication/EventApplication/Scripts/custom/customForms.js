@@ -5,7 +5,7 @@ var GuestName = /^[A-Z-a-ząóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-]{2,50}$/;
 
 $(function () {
     $('.datepicker').datepicker({
-        dateFormat: "dd-mm-yy"
+        dateFormat: "dd/mm/yy"
     });
 })
 
@@ -313,4 +313,5 @@ function ValidateGuestForm() {
         }
     });
     // ---- end guest form ----
+
 })();

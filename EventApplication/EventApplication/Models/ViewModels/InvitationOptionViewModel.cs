@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace EventApplication.Models.ViewModels
 {
-    public class InvitationViewModel
+    public class InvitationOptionViewModel
     {
-        [Display(Name = "Lp")]
-        public int InvitationID { get; set; }
-
         [StringLength(100)]
         [Display(Name = "Nazwa")]
         [Required(ErrorMessage = "Nazwa jest wymagana", AllowEmptyStrings = false)]
@@ -28,6 +26,11 @@ namespace EventApplication.Models.ViewModels
 
         [Display(Name = "Konto aktywowane")]
         public bool IsAccountActivated { get; set; }
+
+        public int OptionID { get; set; }
+        public string OptionName { get; set; }
+        public List<SelectListItem> Options { set; get; }
+        public IEnumerable<int> SelectedOptionsId { set; get; }
 
     }
 }

@@ -21,7 +21,7 @@ namespace EventApplication.Controllers
             ViewBag.UserName = user.UserDetails.Email;
 
 
-            return View();
+            return View("Invitations");
         }
     }
 }

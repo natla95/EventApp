@@ -45,7 +45,7 @@ header {
     box-sizing: border-box;
     border-bottom: 1px solid #fff;
     font-family: MontserratLight;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .header_title {
@@ -254,8 +254,12 @@ aside {
     height: 36px;
     width: 300px;
     padding-left: 10px;
+    margin-top: 4px;
     box-sizing: border-box;
     border: 1px solid #d3d3d3;
+    font-family: OpenLight;
+    font-weight: 700;
+    text-align: center;
 }
 .field.error {
     border: 1px solid red;
@@ -292,7 +296,7 @@ input[type=time]::-webkit-outer-spin-button {
     padding: 40px;
     box-sizing: border-box;
     color: grey;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
     box-shadow: 0 0 4px #b7b7b7;
 
@@ -302,8 +306,8 @@ input[type=time]::-webkit-outer-spin-button {
 }
 
 .event_info {
-    font-weight: 600;
-    text-transform: uppercase;
+    /*font-weight: 600;
+    text-transform: uppercase;*/
 }
 
 .event_organizators {

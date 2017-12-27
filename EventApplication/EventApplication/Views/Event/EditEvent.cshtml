@@ -1,5 +1,5 @@
-﻿@model EventApplication.Models.ViewModels.EventViewModel
-
+﻿@using EventApplication.Models.ViewModels
+@model EventOptionViewModel
 @{
     ViewBag.Title = "Edycja uroczystości";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -17,25 +17,25 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.EventName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div>
-                    @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "field form-control" } })
+                    @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "field form-control", @id = "eventName" } })
                 </div>
-                <div>@Html.ValidationMessageFor(model => model.EventName, "", new { @class = "text-danger" })</div>   
+                <div>@Html.ValidationMessageFor(model => model.EventName, "", new { @class = "text-danger", @id = "eventName_e" })</div>   
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.OrganizerName1, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div>
-                    @Html.EditorFor(model => model.OrganizerName1, new { htmlAttributes = new { @class = "field form-control" } })
+                    @Html.EditorFor(model => model.OrganizerName1, new { htmlAttributes = new { @class = "field form-control", @id = "organizer1Name" } })
                 </div>
-                <div>@Html.ValidationMessageFor(model => model.OrganizerName1, "", new { @class = "text-danger" })</div>
+                <div>@Html.ValidationMessageFor(model => model.OrganizerName1, "", new { @class = "text-danger", @id = "organizer1Name_e" })</div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.OrganizerName2, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div>
-                    @Html.EditorFor(model => model.OrganizerName2, new { htmlAttributes = new { @class = "field form-control" } })
+                    @Html.EditorFor(model => model.OrganizerName2, new { htmlAttributes = new { @class = "field form-control", @id = "organizer2Name" } })
                 </div>
-                <div>@Html.ValidationMessageFor(model => model.OrganizerName2, "", new { @class = "text-danger" })</div> 
+                <div>@Html.ValidationMessageFor(model => model.OrganizerName2, "", new { @class = "text-danger", @id = "organizer2Name_e" })</div> 
             </div>
 
             <div class="form-group">
@@ -57,18 +57,24 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.ChurchAddress, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div>
-                    @Html.EditorFor(model => model.ChurchAddress, new { htmlAttributes = new { @class = "field form-control" } })
+                    @Html.EditorFor(model => model.ChurchAddress, new { htmlAttributes = new { @class = "field form-control", @id = "churchAddress" } })
                 </div>
-                <div>@Html.ValidationMessageFor(model => model.ChurchAddress, "", new { @class = "text-danger" })</div> 
+                <div>@Html.ValidationMessageFor(model => model.ChurchAddress, "", new { @class = "text-danger", @id = "churchAddress_e" })</div> 
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.WeddingAddress, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div>
-                    @Html.EditorFor(model => model.WeddingAddress, new { htmlAttributes = new { @class = "field form-control" } })
+                    @Html.EditorFor(model => model.WeddingAddress, new { htmlAttributes = new { @class = "field form-control", @id = "weddingAddress" } })
                 </div>
-                <div>@Html.ValidationMessageFor(model => model.WeddingAddress, "", new { @class = "text-danger" })</div>
+                <div>@Html.ValidationMessageFor(model => model.WeddingAddress, "", new { @class = "text-danger", @id = "weddingAddress_e" })</div>
             </div>
+            @*<div class="form-group">
+                <div>
+                    @Html.ListBoxFor(m => m.SelectedOptionsId, new MultiSelectList(Model.Options, "Value", "Text"),
+                     new { @class = "chosen-select" })
+                </div>
+            </div>*@
             <div class="form_buttons">
                 <div class="button" onclick="location.href='@Url.Action("EventList", "Event")'">Anuluj</div>
                 <div class="button" id="saveEventEdition">Zapisz</div>
