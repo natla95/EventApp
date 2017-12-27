@@ -1,24 +1,4 @@
-﻿@font-face {
-  font-family: MontserratLight;
-  src: url("/fonts/Montserrat-ExtraLight.ttf") format("opentype"); }
-
-@font-face {
-  font-family: MontserratRegular;
-  src: url("/fonts/Montserrat-Regular.ttf") format("opentype"); }
-
-@font-face {
-  font-family: OpenLight;
-  src: url("/fonts/OpenSans-Light.ttf") format("opentype"); }
-
-@font-face {
-  font-family: OpenRegular;
-  src: url("/fonts/OpenSans-Regular.ttf") format("opentype"); }
-
-body {
-  background: #efefef;
-  margin: 0; }
-
-.guests_count_panel {
+﻿.guests_count_panel {
   width: 30%;
   height: 100px;
   background: #ffecec;
@@ -59,13 +39,13 @@ main, aside {
   cursor: pointer;
   transition: 0.3s; }
 
-.disabled {
-    pointer-events: none;
-    background: #e2e2e2;
-}
 .panel:hover {
   background: #F5F5F5;
   color: #fecccb; }
+
+.disabled {
+  pointer-events: none;
+  background: #e2e2e2; }
 
 .panel_guest_number {
   padding: 0px 30px;
@@ -78,17 +58,6 @@ main, aside {
     font-family: OpenRegular;
     font-size: 20px;
     font-weight: 900; }
-
-.panel_title {
-  color: #b0afaf;
-  font-family: OpenRegular;
-  font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
-  height: 100px; }
-  .panel_title div {
-    padding: 42px;
-    box-sizing: border-box; }
 
 @media (min-width: 960px) and (max-width: 1441px) {
   .panel_block {

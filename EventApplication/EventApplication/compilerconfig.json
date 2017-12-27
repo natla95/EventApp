@@ -22,5 +22,9 @@
   {
     "outputFile": "Content/style/tableDataStyle.css",
     "inputFile": "Content/style/tableDataStyle.scss"
+  },
+  {
+    "outputFile": "Content/style/organizerMainPageStyle.css",
+    "inputFile": "Content/style/organizerMainPageStyle.scss"
   }
 ]

@@ -25,8 +25,11 @@ namespace EventApplication.Controllers
         public ActionResult Index()
         {
             var user = User as MyPrincipal;
+            var login = user.UserDetails.Email;
+            var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
             ViewBag.UserName = user.UserDetails.Email;
             ViewBag.IconNumber = 0;
+            ViewBag.Role = itemUser.RoleID;
             return View("Index");
         }
 

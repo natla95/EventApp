@@ -33,18 +33,52 @@
                 <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
                 <p>Wydarzenia</p>
             </div>
-            <div class="panel" onclick="location.href='@Url.Action("EventInformation", "Event")'">
-                <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
-                <p>Moja uroczystość</p>
-            </div>
-            <div class="panel" onclick="location.href='@Url.Action("GuestsList", "Guest")'">
-                <i class="fa fa-users fa-2x" aria-hidden="true"></i>
-                <p>Lista gości</p>
-            </div>
-            <div class="panel" onclick="location.href='@Url.Action("InvitationsList", "Invitation")'">
-                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-                <p>Zaproszenia</p>
-            </div>
+            @if (@ViewBag.Role == 5)
+            {
+                <div class="panel" onclick="location.href='@Url.Action("EventInformation", "Event")'">
+                    <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
+                    <p>Moja uroczystość</p>
+                </div>
+            }
+            @if (@ViewBag.Role != 5)
+            {
+                <div class="panel disabled" onclick="location.href='@Url.Action("EventInformation", "Event")'">
+                    <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
+                    <p>Moja uroczystość</p>
+                </div>
+            }
+            
+            @if (@ViewBag.Role == 5)
+            {
+                <div class="panel" onclick="location.href='@Url.Action("GuestsList", "Guest")'">
+                    <i class="fa fa-users fa-2x" aria-hidden="true"></i>
+                    <p>Lista gości</p>
+                </div>
+            }
+            @if (@ViewBag.Role != 5)
+            {
+                <div class="panel disabled" onclick="location.href='@Url.Action("GuestsList", "Guest")'">
+                    <i class="fa fa-users fa-2x" aria-hidden="true"></i>
+                    <p>Lista gości</p>
+                </div>
+
+            }
+            
+            @if (@ViewBag.Role == 5)
+            {
+                <div class="panel" onclick="location.href='@Url.Action("InvitationsList", "Invitation")'">
+                    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                    <p>Zaproszenia</p>
+                </div>
+            }
+            @if (@ViewBag.Role != 5)
+            {
+                <div class="panel disabled" onclick="location.href='@Url.Action("InvitationsList", "Invitation")'">
+                    <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                    <p>Zaproszenia</p>
+                </div>
+            }
+            
             <div class="panel" onclick="location.href='@Url.Action("EventList", "Event")'">
                 <i class="fa fa-sticky-note fa-2x" aria-hidden="true"></i>
                 <p>Notatki</p>

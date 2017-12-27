@@ -53,7 +53,10 @@ main , aside{
     background: #F5F5F5;
     color: $accentColor;
 }
-
+.disabled {
+    pointer-events: none;
+    background: #e2e2e2;
+}
 
 .panel_guest_number {
     padding: 0px 30px;

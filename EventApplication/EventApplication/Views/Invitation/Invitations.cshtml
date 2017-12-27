@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<EventApplication.Models.ViewModels.InvitationViewModel>
+
 @{
     ViewBag.Title = "Zaproszenia";
     Layout = "~/Views/Shared/_ListDataLayout.cshtml";
@@ -15,16 +16,26 @@
         <thead>
             <tr>
                 <th><span class="columnName"><input type="checkbox" id="checkAllRows" value="all" data-size="sm"></span></th>
-                <th><span class="columnName">Gość</span></th>
-                <th><span class="columnName">Wiek</span></th>
-                <th><span class="columnName">Wesele</span></th>
-                <th><span class="columnName">Poprawiny</span></th>
-                <th><span class="columnName">Nocleg</span></th>
-                <th><span class="columnName">Menu</span></th>
+                <th><span class="columnName">@Html.DisplayNameFor(model => model.InvitationName)</span></th>
+                <th><span class="columnName">@Html.DisplayNameFor(model => model.Email)</span></th>
+                <th><span class="columnName">@Html.DisplayNameFor(model => model.IsEmailSent)</span></th>
+                <th><span class="columnName">@Html.DisplayNameFor(model => model.IsAccountActivated)</span></th>
+                <th><span class="columnName"></span></th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
+           @foreach(var item in Model)
+           {
+               <tr>
+                   <td><span></span></td>
+                   <td><span>@Html.DisplayFor(modelItem => item.InvitationName)</span></td>
+                   <td><span>@Html.DisplayFor(modelItem => item.Email)</span></td>
+                   <td><span>@Html.DisplayFor(modelItem => item.IsEmailSent)</span></td>
+                   <td><span>@Html.DisplayFor(modelItem => item.IsAccountActivated)</span></td>
+                   <td><span></span></td>
+               </tr>
+           }
 
         </tbody>
     </table>

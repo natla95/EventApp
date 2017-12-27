@@ -13,30 +13,32 @@
         <div id="deleteEvent" class="button" onclick="location.href='@Url.Action("DeleteEvent", "Event")'">Usuń</div>
         <div id="editEvent" class="button" onclick="location.href='@Url.Action("EditEvent", "Event")'">Edytuj</div>
     </div>
-    <div class="event_description">
-        <div class="event_info">
-            @foreach(EventViewModel item in Model.EventList)
-            {
-                <p id="eventName">@item.EventName</p>
-                <span id="organizerName1">@item.OrganizerName1 i</span> <span id="organizerName2">@item.OrganizerName2</span>
-                <p id="eventDate">Data: @item.EventDate</p>
-                <p id="eventTime">Godzina: @item.EventTime</p>
-                <p>Miejsce ślubu: @item.ChurchAddress</p>
-                <p>Miejsce wesela: @item.WeddingAddress</p>
-            }
-           
+    <div id="eventInfo">
+        <div class="event_description">
+            <div class="event_info">
+                @foreach (EventViewModel item in Model.EventList)
+                {
+                    <p id="eventName">@item.EventName</p>
+                    <span id="organizerName1">@item.OrganizerName1 i</span> <span id="organizerName2">@item.OrganizerName2</span>
+                    <p id="eventDate">Data: @item.EventDate</p>
+                    <p id="eventTime">Godzina: @item.EventTime</p>
+                    <p>Miejsce ślubu: @item.ChurchAddress</p>
+                    <p>Miejsce wesela: @item.WeddingAddress</p>
+                }
+
+            </div>
+            <div class="event_options">
+                <p>Wybrane opcje:</p>
+                @foreach (OptionViewModel optionItem in Model.OptionsList)
+                {
+                    <p><i class="fa fa-circle" aria-hidden="true"></i>@optionItem.OptionName</p>
+                }
+            </div>
+
         </div>
-        <div class="event_organizators">
-            <p>Wybrane opcje:</p>
-           @foreach(OptionViewModel optionItem in Model.OptionsList)
-           {
-               <p><i class="fa fa-circle" aria-hidden="true"></i>@optionItem.OptionName</p>
-           }
-        </div>
-        
+        <img class="flowerTop" src="~/Content/images/flower1.png" />
+        <img class="flowerBottom" src="~/Content/images/flower2.png" />
     </div>
-    <img class="flowerTop" src="~/Content/images/flower1.png" />
-    <img class="flowerBottom" src="~/Content/images/flower2.png" />
 </section>
 <script>
      var haveEvent = "@ViewBag.HaveEvent";

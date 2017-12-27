@@ -1,4 +1,8 @@
-﻿
+﻿if (iconNr == 0) {
+    if (haveEvent == "yes") {
+
+    }
+}
 if (iconNr == 1) {
     $('#menu1').addClass('active');
     console.log(haveEvent)
@@ -6,11 +10,13 @@ if (iconNr == 1) {
         $('#addEvent').css("display", "none");
         $('#editEvent').css("display", "inline-block");
         $('#deleteEvent').css("display", "inline-block");
+        $('#eventInfo').css("display", "inline-block");
     }
     else if (haveEvent == "no") {
         $('#addEvent').css("display", "block");
         $('#editEvent').css("display", "none");
         $('#deleteEvent').css("display", "none");
+        $('#eventInfo').css("display", "none");
     }
 } 
 if (iconNr == 2)

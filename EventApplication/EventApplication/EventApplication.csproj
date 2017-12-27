@@ -206,6 +206,12 @@
     <Content Include="Content\style\organizerMainPage.min.css">
       <DependentUpon>organizerMainPage.css</DependentUpon>
     </Content>
+    <Content Include="Content\style\organizerMainPageStyle.css">
+      <DependentUpon>organizerMainPageStyle.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\style\organizerMainPageStyle.min.css">
+      <DependentUpon>organizerMainPageStyle.css</DependentUpon>
+    </Content>
     <Content Include="Content\style\startPageStyle.css">
       <DependentUpon>startPageStyle.scss</DependentUpon>
     </Content>

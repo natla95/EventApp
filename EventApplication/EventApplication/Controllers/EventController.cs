@@ -28,10 +28,10 @@ namespace EventApplication.Controllers
             using (EventDbContext _db = new EventDbContext())
             {
                 var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+                ViewBag.Role = itemUser.RoleID;
                 if (itemUser != null)
                 {
                     var loggedID = itemUser.UserID;
-
                     events = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == loggedID)).ToList();
                     foreach (var e in events)
                     {
@@ -114,6 +114,7 @@ namespace EventApplication.Controllers
                 {
                     var logged = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
                     var loggedId = logged.UserID;
+                    logged.RoleID = 5;
                     var item = _db.Events.FirstOrDefault(e => e.EventName.Equals(_model.EventName) && e.OrganizerName1.Equals(_model.OrganizerName1) && e.OrganizerName2.Equals(_model.OrganizerName2));
                     if (item == null)
                     {
@@ -167,6 +168,7 @@ namespace EventApplication.Controllers
             using (EventDbContext _db = new EventDbContext())
             {
                 var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+                ViewBag.Role = itemUser.RoleID;
                 var ev = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == itemUser.UserID)).FirstOrDefault();
                 item = new EventOptionViewModel()
                 {
@@ -212,7 +214,6 @@ namespace EventApplication.Controllers
 
             return RedirectToAction("EventList");
         }
-
         [HttpGet]
         [ActionName("DeleteEvent")]
         public ActionResult DeleteEvent()
@@ -220,7 +221,7 @@ namespace EventApplication.Controllers
             var user = User as MyPrincipal;
             var login = user.UserDetails.Email;
 
-            using(EventDbContext _db = new EventDbContext())
+            using (EventDbContext _db = new EventDbContext())
             {
                 var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
                 var ev = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == itemUser.UserID)).FirstOrDefault();
@@ -229,27 +230,29 @@ namespace EventApplication.Controllers
                                      where li.EventID.Equals(ev.EventID)
                                      select li).ToList();
 
-                foreach (var o in evOptions)
+                var eventOptions = _db.EventOptions.Where(x => x.EventID == ev.EventID).ToList();
+
+                if (eventOptions.Count > 0)
                 {
-                    var optionToRemove = (from li in _db.EventOptions
-                                          where li.OptionID.Equals(o.OptionID)
-                                          select li).FirstOrDefault();
-                    ev.EventOptions.Remove(optionToRemove);
+                    _db.EventOptions.RemoveRange(eventOptions);
+                    _db.SaveChanges();
                 }
 
-                if(evInvitations.Count != 0)
+                if (evInvitations.Count != 0)
                 {
-                    foreach (var i in evInvitations)
-                    {
-                        ev.Invitations.Remove(i);
-                    }
+                    _db.Invitations.RemoveRange(evInvitations);
+                    _db.SaveChanges();
                 }
-                
-                var eventToRemove = (from li in _db.UserEvents
-                                      where li.EventID.Equals(ev.EventID)
-                                      select li).FirstOrDefault();
-                ev.UserEvents.Remove(eventToRemove);
+
+                var userEvents = _db.UserEvents.Where(x => x.EventID == ev.EventID).ToList();
+                if (userEvents.Count > 0)
+                {
+                    _db.UserEvents.RemoveRange(userEvents);
+                    _db.SaveChanges();
+                }
+
                 _db.Events.Remove(ev);
+                itemUser.RoleID = 2;
                 _db.SaveChanges();
             }
 
@@ -269,21 +272,26 @@ namespace EventApplication.Controllers
             using (EventDbContext _db = new EventDbContext())
             {
                 var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+                ViewBag.Role = itemUser.RoleID;
                 if (itemUser != null)
                 {
                     var loggedID = itemUser.UserID;
                     var ev = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == itemUser.UserID)).FirstOrDefault();
-                    item = new EventViewModel()
+                    if(ev != null)
                     {
-                        EventID = ev.EventID,
-                        EventName = ev.EventName,
-                        EventDate = ev.EventDate,
-                        EventTime = ev.EventTime,
-                        OrganizerName1 = ev.OrganizerName1,
-                        OrganizerName2 = ev.OrganizerName2,
-                        WeddingAddress = ev.WeddingAddress,
-                        ChurchAddress = ev.ChurchAddress
-                    };
+                        item = new EventViewModel()
+                        {
+                            EventID = ev.EventID,
+                            EventName = ev.EventName,
+                            EventDate = ev.EventDate,
+                            EventTime = ev.EventTime,
+                            OrganizerName1 = ev.OrganizerName1,
+                            OrganizerName2 = ev.OrganizerName2,
+                            WeddingAddress = ev.WeddingAddress,
+                            ChurchAddress = ev.ChurchAddress
+                        };
+                    }
+               
                 }
             }
             return View("GetEventInformation",item);

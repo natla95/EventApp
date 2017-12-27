@@ -305,12 +305,15 @@ input[type=time]::-webkit-outer-spin-button {
     }
 }
 
+#eventInfo{
+    width: 100%;
+}
 .event_info {
     /*font-weight: 600;
     text-transform: uppercase;*/
 }
 
-.event_organizators {
+.event_options {
     text-align: left;
 
     p{
