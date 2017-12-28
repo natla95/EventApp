@@ -1,7 +1,8 @@
-﻿var EventNameReq = /^[A-Z-a-z0-9ąóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-\ \.\,_\!]{5,100}$/;
+﻿var EventNameReq = /^[A-Z-a-z0-9ąóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-\ \.\,_\!\&]{5,100}$/;
 var OrganizatorNameReq = /^[A-Z-a-ząóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-]{2,100}$/;
 var AddressEventReq = /^[A-Z-a-z0-9ąóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-\.\/\,]{5,150}$/;
 var GuestName = /^[A-Z-a-ząóęćłśńżźĄÓĘĆŁŚŃŻŹ\s\-]{2,50}$/;
+var EmailReq = /^[A-Za-z0-9_\-\.]{1,}@[a-z0-9_\.]{1,}\.[a-z]{2,5}$/;
 
 $(function () {
     $('.datepicker').datepicker({
@@ -154,6 +155,50 @@ function ValidateGuestForm() {
 
     return !error;
 }
+
+function ValidateInvitationForm() {
+    var error = false;
+    var name = $('#invitationName').val();
+    var email = $('#invitationEmail').val();
+
+    if (name != "") {
+        if (name.match(EventNameReq) != null) {
+            error = false;
+            $('#invitationName').removeClass("error");
+            $('#invitationName_e').html("");
+        }
+        else {
+            error = true;
+            $('#invitationName').addClass("error");
+            $('#invitationName_e').html("Niepoprawna nazwa");
+        }
+    }
+    else {
+        error = true;
+        $('#invitationName').addClass("error");
+        $('#invitationName_e').html("Pole wymagane");
+    }
+
+    if (email != "") {
+        if (email.match(EmailReq) != null) {
+            error = false;
+            $('#invitationEmail').removeClass("error");
+            $('#invitationEmail_e').html("");
+        }
+        else {
+            error = true;
+            $('#invitationEmail').addClass("error");
+            $('#invitationEmail_e').html("Niepoprawny email");
+        }
+    }
+    else {
+        error = true;
+        $('#invitationEmail').addClass("error");
+        $('#invitationEmail_e').html("Pole wymagane");
+    }
+    return !error;
+}
+
 
 (function () {
 
@@ -314,4 +359,50 @@ function ValidateGuestForm() {
     });
     // ---- end guest form ----
 
+    // ------ INVITATION form -----
+    $('#invitationName').on("change", function () {
+        var obj = $(this);
+        var val = obj.val();
+        if (val != "") {
+            if (val.match(EventNameReq) != null) {
+                obj.removeClass("error");
+                $('#invitationName_e').html(" ");
+            }
+            else {
+                obj.addClass("error");
+                $('#invitationName_e').html("Niepoprawny format");
+            }
+        }
+        else {
+            obj.addClass("error");
+            $('#invitationName_e').html("Pole wymagane");
+        }
+    });
+
+    $('#invitationEmail').on("change", function () {
+        var obj = $(this);
+        var val = obj.val();
+        if (val != "") {
+            if (val.match(EmailReq) != null) {
+                obj.removeClass("error");
+                $('#invitationEmail_e').html(" ");
+            }
+            else {
+                obj.addClass("error");
+                $('#invitationEmail_e').html("Niepoprawny format");
+            }
+        }
+        else {
+            obj.addClass("error");
+            $('#invitationEmail_e').html("Pole wymagane");
+        }
+    });
+
+    $('#addInvitationButton').on("click", function () {
+        if (ValidateInvitationForm()) {
+            $('#addInvitationForm').submit();
+        }
+    });
+
+    //----- end invitation form ----
 })();

@@ -1,11 +1,6 @@
-﻿if (iconNr == 0) {
-    if (haveEvent == "yes") {
-
-    }
-}
+﻿
 if (iconNr == 1) {
     $('#menu1').addClass('active');
-    console.log(haveEvent)
     if (haveEvent == "yes") {
         $('#addEvent').css("display", "none");
         $('#editEvent').css("display", "inline-block");
@@ -46,5 +41,4 @@ if (iconNr == 6)
             objLog.addClass('not_active');
         }
     });
-
 })();

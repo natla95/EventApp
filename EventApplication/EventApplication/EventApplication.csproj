@@ -187,6 +187,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\balon_pink.png" />
+    <Content Include="Content\images\balon_white.png" />
     <Content Include="Content\images\flower1.png" />
     <Content Include="Content\images\flower2.png" />
     <Content Include="Content\images\flowers.jpg" />
@@ -281,6 +283,7 @@
     <Content Include="Views\Shared\_ListDataLayout.cshtml" />
     <Content Include="Views\Event\GetEventInformation.cshtml" />
     <Content Include="Views\Invitation\Invitations.cshtml" />
+    <Content Include="Views\Invitation\NewInvitation.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

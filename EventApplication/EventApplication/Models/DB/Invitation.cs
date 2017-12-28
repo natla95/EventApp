@@ -26,7 +26,6 @@ namespace EventApplication.Models.DB
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100)]
         public string ConfirmLink { get; set; }
 
         public bool IsEmailSent { get; set; }

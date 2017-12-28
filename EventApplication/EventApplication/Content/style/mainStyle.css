@@ -148,7 +148,7 @@ aside {
 .button:hover {
   opacity: 0.8; }
 
-.event_form, .guest_form {
+.event_form, .guest_form, .invitation_form {
   width: 40%;
   font-family: OpenLight;
   font-size: 14px;
@@ -158,9 +158,10 @@ aside {
   border-radius: 6px;
   text-align: center;
   margin-left: 40px;
+  margin-bottom: 20px;
   box-shadow: 0 0 4px #b7b7b7; }
 
-.event_form .form_buttons div {
+.event_form .form_buttons div, .invitation_form .form_buttons div, .guest_form .form_buttons div {
   display: inline-block;
   float: none; }
 
@@ -206,14 +207,15 @@ aside {
 .field.error {
   border: 1px solid red; }
 
-.event_form select {
+.event_form select, .invitation_form select {
   width: 300px;
   text-align: center;
   color: #757575;
   font-family: OpenLight;
-  border: 1px solid #d3d3d3; }
+  border: 1px solid #d3d3d3;
+  margin-top: 4px; }
 
-.event_form select:focus {
+.event_form select:focus, .invitation_form select:focus {
   outline: none;
   border: 1px solid #fecccb; }
 
@@ -243,10 +245,6 @@ input[type=time]::-webkit-outer-spin-button {
 
 #eventInfo {
   width: 100%; }
-
-.event_info {
-  /*font-weight: 600;
-    text-transform: uppercase;*/ }
 
 .event_options {
   text-align: left; }
@@ -282,6 +280,23 @@ input[type=time]::-webkit-outer-spin-button {
   background: #dedede;
   padding-left: 10px; }
 
+#noInvitations p {
+  text-align: center;
+  color: #757575;
+  font-family: MontserratRegular; }
+
+#noInvitations div {
+  text-align: right; }
+
+#noInvitations div:last-child {
+  width: 90%;
+  margin-top: -100px; }
+  #noInvitations div:last-child img {
+    transform: rotate(20deg); }
+
+.balon_img {
+  width: 130px; }
+
 @media (min-width: 1920px) {
   #flowerBottom {
     width: 280px;
@@ -294,5 +309,7 @@ input[type=time]::-webkit-outer-spin-button {
     position: absolute;
     right: -10px;
     transform: rotate(-100deg);
-    bottom: 2px; } }
+    bottom: 2px; }
+  .balon_img {
+    width: 150px; } }
 

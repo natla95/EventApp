@@ -16,25 +16,38 @@ namespace EventApplication.Controllers
         [ActionName("GuestsList")]
         public ActionResult Index()
         {
-            ViewBag.IconNr = 3;
             var user = User as MyPrincipal;
+            var login = user.UserDetails.Email;
+            ViewBag.IconNr = 3;
             ViewBag.UserName = user.UserDetails.Email;
-            return View();
+
+            using (EventDbContext _db = new EventDbContext())
+            {
+                var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+                ViewBag.Role = itemUser.RoleID;
+            }
+                return View();
         }
 
         [HttpGet]
         [ActionName("AddGuest")]
         public ActionResult AddGuest()
         {
-            ViewBag.IconNr = 3;
             var user = User as MyPrincipal;
+            var login = user.UserDetails.Email;
             ViewBag.UserName = user.UserDetails.Email;
+            ViewBag.IconNr = 3;
 
             ViewBag.AgeList = new List<SelectListItem>
                         {
                             new SelectListItem { Text = "Dorosły", Value = "Dorosły" },
                             new SelectListItem { Text = "Dziecko",  Value = "Dziecko" },
                         };
+            using (EventDbContext _db = new EventDbContext())
+            {
+                var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+                ViewBag.Role = itemUser.RoleID;
+            }
             return View();
         }
 
@@ -55,15 +68,21 @@ namespace EventApplication.Controllers
         [ActionName("EditGuest")]
         public ActionResult EditGuest()
         {
-            ViewBag.IconNr = 3;
             var user = User as MyPrincipal;
+            var login = user.UserDetails.Email;
             ViewBag.UserName = user.UserDetails.Email;
+            ViewBag.IconNr = 3;
 
             ViewBag.AgeList = new List<SelectListItem>
                         {
                             new SelectListItem { Text = "Dorosły", Value = "Dorosły" },
                             new SelectListItem { Text = "Dziecko",  Value = "Dziecko" },
                         };
+            using (EventDbContext _db = new EventDbContext())
+            {
+                var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+                ViewBag.Role = itemUser.RoleID;
+            }
             return View("EditGuest");
         }
 

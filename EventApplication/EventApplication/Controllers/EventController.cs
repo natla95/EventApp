@@ -80,7 +80,7 @@ namespace EventApplication.Controllers
             var user = User as MyPrincipal;
             ViewBag.UserName = user.UserDetails.Email;
             ViewBag.IconNr = 1;
-
+            ViewBag.HaveEvent = "no";
             EventOptionViewModel model = new EventOptionViewModel();
             model.Options = OptionsQuery();
             return View(model);
@@ -181,6 +181,11 @@ namespace EventApplication.Controllers
                     WeddingAddress = ev.WeddingAddress,
                     ChurchAddress = ev.ChurchAddress
                 };
+
+                if (ev != null)
+                    ViewBag.HaveEvent = "no";
+                else
+                    ViewBag.HaveEvent = "yes";
             }
             return View(item);
         }
