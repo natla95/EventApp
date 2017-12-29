@@ -1,4 +1,7 @@
-﻿#guestsTable, #invitationsTable {
+﻿.dataTables_info {
+  color: #b0afaf; }
+
+#guestsTable, #invitationsTable {
   width: 100%; }
 
 .table {
@@ -10,6 +13,8 @@
   .table input:focus, .table select:focus {
     border: 1px solid #fecccb;
     outline: none; }
+  .table input[type='checkbox'] {
+    width: 16px; }
   .table label {
     color: #b0afaf;
     font-weight: 600; }

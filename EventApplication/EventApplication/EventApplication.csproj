@@ -177,6 +177,7 @@
     <Compile Include="Models\ViewModels\EventListViewModel.cs" />
     <Compile Include="Models\ViewModels\EventOptionViewModel.cs" />
     <Compile Include="Models\ViewModels\EventViewModel.cs" />
+    <Compile Include="Models\ViewModels\GuestListViewModel.cs" />
     <Compile Include="Models\ViewModels\GuestViewModel.cs" />
     <Compile Include="Models\ViewModels\InvitationOptionListViewModel.cs" />
     <Compile Include="Models\ViewModels\InvitationOptionViewModel.cs" />

@@ -1,19 +1,6 @@
 ﻿
-if (iconNr == 1) {
+if (iconNr == 1)
     $('#menu1').addClass('active');
-    if (haveEvent == "yes") {
-        $('#addEvent').css("display", "none");
-        $('#editEvent').css("display", "inline-block");
-        $('#deleteEvent').css("display", "inline-block");
-        $('#eventInfo').css("display", "inline-block");
-    }
-    else if (haveEvent == "no") {
-        $('#addEvent').css("display", "block");
-        $('#editEvent').css("display", "none");
-        $('#deleteEvent').css("display", "none");
-        $('#eventInfo').css("display", "none");
-    }
-} 
 if (iconNr == 2)
     $('#menu2').addClass('active');
 if (iconNr == 3)
@@ -24,8 +11,6 @@ if (iconNr == 5)
     $('#menu5').addClass('active');
 if (iconNr == 6)
     $('#menu6').addClass('active');
-
-
 
 (function () {
 

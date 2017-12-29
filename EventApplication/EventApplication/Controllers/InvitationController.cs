@@ -37,6 +37,7 @@ namespace EventApplication.Controllers
                     {
                         InvitationViewModel item = new InvitationViewModel()
                         {
+                            InvitationID = i.InvitationID,
                             InvitationName = i.InvitationName,
                             Email = i.Email,
                             IsEmailSent = i.IsEmailSent,
@@ -107,7 +108,7 @@ namespace EventApplication.Controllers
                         {
                             InvitationName = _model.InvitationName,
                             Email = _model.Email,
-                            ConfirmLink = Security.Hash(_model.Email),
+                            //ConfirmLink = Security.Hash(_model.Email),
                             IsEmailSent = false,
                             IsAccountActivated = false,
                             EventID = loggedEvent.EventID,

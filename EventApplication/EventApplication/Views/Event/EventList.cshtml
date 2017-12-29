@@ -4,42 +4,60 @@
     ViewBag.Title = "Lista wydarzeń";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
+
 <section class="panel_title">
     <div>wydarzenia</div>
 </section>
-<section class="userEvent padding_section">
-    <div id="addEvent" class="button action_button" onclick="location.href='@Url.Action("AddEvent", "Event")'">dodaj uroczystość</div>
-    <div class="action_buttons" id="eventButton">
-        <div id="deleteEvent" class="button" onclick="location.href='@Url.Action("DeleteEvent", "Event")'">Usuń</div>
-        <div id="editEvent" class="button" onclick="location.href='@Url.Action("EditEvent", "Event")'">Edytuj</div>
-    </div>
-    <div id="eventInfo">
-        <div class="event_description">
-            <div class="event_info">
-                @foreach (EventViewModel item in Model.EventList)
-                {
-                    <p id="eventName">@item.EventName</p>
-                    <span id="organizerName1">@item.OrganizerName1 i</span> <span id="organizerName2">@item.OrganizerName2</span>
-                    <p id="eventDate">Data: @item.EventDate</p>
-                    <p id="eventTime">Godzina: @item.EventTime</p>
-                    <p>Miejsce ślubu: @item.ChurchAddress</p>
-                    <p>Miejsce wesela: @item.WeddingAddress</p>
-                }
 
-            </div>
-            <div class="event_options">
-                <p>Wybrane opcje:</p>
-                @foreach (OptionViewModel optionItem in Model.OptionsList)
-                {
-                    <p><i class="fa fa-circle" aria-hidden="true"></i>@optionItem.OptionName</p>
-                }
-            </div>
-
+@if(ViewBag.HaveEvent == "no") {
+    <section class="padding_section">
+        <div id="addEvent" class="button action_button" onclick="location.href='@Url.Action("AddEvent", "Event")'">dodaj uroczystość</div>
+    </section>
+    <section id="noInvitations">
+        <p>Jak na razie nie dodałeś żadnej uroczystości.</p>
+        <p>Dodaj uroczystość używając przycisku obok.</p>
+        <div style="width: 80%">
+            <img class="balon_img" style="transform: rotate(20deg);" src="~/Content/images/balon_pink.png" />
         </div>
-        <img class="flowerTop" src="~/Content/images/flower1.png" />
-        <img class="flowerBottom" src="~/Content/images/flower2.png" />
-    </div>
-</section>
-<script>
-     var haveEvent = "@ViewBag.HaveEvent";
-</script>
+        <div>
+            <img class="balon_img" src="~/Content/images/balon_white.png" />
+        </div>
+    </section>
+}
+
+@if (ViewBag.HaveEvent == "yes") {
+    <section class="padding_section">
+        <div class="action_buttons" id="eventButton">
+            <div id="deleteEvent" class="button" onclick="location.href='@Url.Action("DeleteEvent", "Event")'">Usuń</div>
+            <div id="editEvent" class="button" onclick="location.href='@Url.Action("EditEvent", "Event")'">Edytuj</div>
+        </div>
+    </section>
+
+    <section class="userEvent padding_section">
+        <div id="eventInfo">
+            <div class="event_description">
+                <div class="event_info">
+                    @foreach (EventViewModel item in Model.EventList)
+                    {
+                        <p id="eventName">@item.EventName</p>
+                        <span id="organizerName1">@item.OrganizerName1 i</span> <span id="organizerName2">@item.OrganizerName2</span>
+                        <p id="eventDate">Data: @item.EventDate</p>
+                        <p id="eventTime">Godzina: @item.EventTime</p>
+                        <p>Miejsce ślubu: @item.ChurchAddress</p>
+                        <p>Miejsce wesela: @item.WeddingAddress</p>
+                    }
+
+                </div>
+                <div class="event_options">
+                    <p>Wybrane opcje:</p>
+                    @foreach (OptionViewModel optionItem in Model.OptionsList)
+                    {
+                        <p><i class="fa fa-circle" aria-hidden="true"></i>@optionItem.OptionName</p>
+                    }
+                </div>
+            </div>
+            <img class="flowerTop" src="~/Content/images/flower1.png" />
+            <img class="flowerBottom" src="~/Content/images/flower2.png" />
+        </div>
+    </section>
+}

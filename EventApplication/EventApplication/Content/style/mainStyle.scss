@@ -172,11 +172,11 @@ aside {
 }
 
 .button {
-    width: 200px;
-    height: 50px;
+    width: 150px;
+    height: 40px;
     background: $accentColor;
     box-sizing: border-box;
-    padding: 16px;
+    padding: 12px;
     color: $textColorDarken;
     font-size: 12px;
     font-weight: 600;
@@ -326,15 +326,15 @@ input[type=time]::-webkit-outer-spin-button {
 }
 
 .flowerTop {
-    width: 230px;
+    width: 200px;
     position: absolute;
-    right: -10px;
+    right: 10px;
     transform: rotate(-100deg);
     bottom: 22px;
 }
 
 .flowerBottom {
-    width: 230px;
+    width: 200px;
     position: absolute;
     bottom: -80px;
     transform: rotate(-10deg);

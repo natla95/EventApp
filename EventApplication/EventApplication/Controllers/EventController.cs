@@ -179,7 +179,8 @@ namespace EventApplication.Controllers
                     OrganizerName1 = ev.OrganizerName1,
                     OrganizerName2 = ev.OrganizerName2,
                     WeddingAddress = ev.WeddingAddress,
-                    ChurchAddress = ev.ChurchAddress
+                    ChurchAddress = ev.ChurchAddress,
+                    Options = OptionsQuery()
                 };
 
                 if (ev != null)
@@ -212,6 +213,33 @@ namespace EventApplication.Controllers
                         ev.OrganizerName2 = _model.OrganizerName2 ?? "";
                         ev.WeddingAddress = _model.WeddingAddress;
                         ev.ChurchAddress = _model.ChurchAddress;
+                    }
+
+                    var evOptions = _db.Options.Where(o => o.EventOptions.Any(a => a.EventID == ev.EventID)).ToList();
+                    var selectedOptions = _model.SelectedOptionsId;
+
+                    if (_model.SelectedOptionsId != null)
+                    {
+                        foreach (var selected in selectedOptions)
+                        {
+                            var optionSelected = _db.Options.FirstOrDefault(u => u.OptionID.Equals(selected));
+                            if (!(evOptions.Contains(optionSelected)))
+                            {
+                                _db.EventOptions.Add(new EventOption()
+                                {
+                                    OptionID = selected,
+                                    Event = ev
+                                });
+                            }
+                        }
+                        foreach (var option in evOptions)
+                        {
+                            var currentId = option.OptionID;
+                            if (!(selectedOptions.Contains(currentId))){
+                                var optionToRemove = _db.EventOptions.FirstOrDefault(u => u.OptionID.Equals(currentId) && u.EventID.Equals(ev.EventID));
+                                _db.EventOptions.Remove(optionToRemove);
+                            }
+                        }
                     }
                     _db.SaveChanges();
                 }

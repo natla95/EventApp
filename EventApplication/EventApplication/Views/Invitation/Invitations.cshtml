@@ -6,7 +6,7 @@
 }
 
 <section class="panel_title">
-    <div>List zaproszeń</div>
+    <div>Lista zaproszeń</div>
 </section>
 <section class="padding_section display_inline">
     <div id="addInvitation" class="button action_button" onclick="location.href='@Url.Action("NewInvitation", "Invitation")'">nowe zaproszenie</div>
@@ -44,12 +44,15 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td><span></span></td>
-                        <td><span>@Html.DisplayFor(modelItem => item.InvitationName)</span></td>
-                        <td><span>@Html.DisplayFor(modelItem => item.Email)</span></td>
-                        <td><span>@(item.IsEmailSent == false ? "Nie" : "Tak")</span></td>
-                        <td><span>@(item.IsAccountActivated == false ? "Nie" : "Tak")</span></td>
-                        <td><span></span></td>
+                        <td><span class="columnValue"><input type="checkbox" value="@(item.InvitationID)" name="rowId" id="rowId"></span></td>
+                        <td><span class="columnValue">@Html.DisplayFor(modelItem => item.InvitationName)</span></td>
+                        <td><span class="columnValue">@Html.DisplayFor(modelItem => item.Email)</span></td>
+                        <td><span class="columnValue">@(item.IsEmailSent == false ? "Nie" : "Tak")</span></td>
+                        <td><span class="columnValue">@(item.IsAccountActivated == false ? "Nie" : "Tak")</span></td>
+                        <td><span class="columnValue">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true" onclick="location.href='@Url.Action("EditGuest", "Guest")'"></i>
+                                <i class="fa fa-trash-o" aria-hidden="true" onclick="location.href='@Url.Action("DeleteGuest", "Guest")'"></i>
+                        </span></td>
                     </tr>
                 }
 
@@ -64,7 +67,15 @@
 @Scripts.Render("~/bundles/main")
 <script>
     $(document).ready(function () {
-        $('#invitationsTable').DataTable();
+        $('#invitationsTable').DataTable({
+            "oLanguage": {
+                "sEmptyTable": "Brak danych, przepraszamy",
+                "sSearch": "<span>Wyszukaj:</span> _INPUT_",
+                "sInfo": "Strona _PAGE_ z _PAGES_",
+                "sLengthMenu": "<span>ilość na stronie:</span> _MENU_", 
+                "oPaginate": { "sFirst": "First", "sLast": "Last", "sNext": ">", "sPrevious": "<" }
+            }
+        });
     });
 </script>
 

@@ -8,6 +8,8 @@ namespace EventApplication.Models.ViewModels
 {
     public class GuestViewModel
     {
+        public int GuestID { get; set; }
+
         [StringLength(50)]
         [Display(Name = "Imię")]
         [Required(ErrorMessage = "Imię jest wymagane", AllowEmptyStrings = false)]
@@ -25,5 +27,7 @@ namespace EventApplication.Models.ViewModels
         [StringLength(50)]
         [Display(Name = "Wiek")]
         public string Age { get; set; }
+
+        public int InvitationID { get; set; }
     }
 }
