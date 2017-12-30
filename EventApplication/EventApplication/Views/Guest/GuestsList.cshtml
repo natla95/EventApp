@@ -1,10 +1,13 @@
-﻿@using EventApplication.Models.ViewModels
-@model GuestListViewModel
+﻿@model IEnumerable<EventApplication.Models.ViewModels.GuestViewModel>
 @{
     ViewBag.Title = "Lista gości";
     Layout = "~/Views/Shared/_ListDataLayout.cshtml";
 }
-
+<style>
+    table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting, table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting{
+        padding: 0;
+    }
+</style>
 <section class="panel_title">
     <div>Lista gości</div>
 </section>
@@ -33,52 +36,49 @@
         <table id="guestsTable" class="find-duplicates table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
             <thead>
                 <tr>
-                    <th><span class="columnName"><input type="checkbox" id="checkAllRows" value="all" data-size="sm"></span></th>
-                    <th><span class="columnName">Imię</span></th>
-                    <th><span class="columnName">Nazwisko</span></th>
-                    <th><span class="columnName">Wiek</span></th>
-                    @foreach (OptionViewModel option in Model.optionsList)
-                    {
-                        <th><span class="columnName">@Html.DisplayFor(modelItem => option.OptionName)</span></th>
-                    }
+                    <th class="padding0"><span class="columnName"><input type="checkbox" id="checkAllRows" value="all" data-size="sm"></span></th>
+                    <th class="padding0"><span class="columnName">@Html.DisplayNameFor(model => model.FirstName)</span></th>
+                    <th class="padding0"><span class="columnName">@Html.DisplayNameFor(model => model.LastName)</span></th>
+                    <th class="padding0"><span class="columnName">@Html.DisplayNameFor(model => model.Age)</span></th>
+                    <th class="padding0"><span class="columnName">@Html.DisplayNameFor(model => model.InvitationName)</span></th>
+                    <th class="padding0"><span></span></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (GuestViewModel item in Model.guestsList)
+                @foreach (var item in Model)
                 {
                     <tr>
-                        <td><span><input type="checkbox" value="@(item.InvitationID)" name="rowId" id="rowId"></span></td>
+                        <td><span><input type="checkbox" value="@(item.GuestID)" name="rowId" id="rowId"></span></td>
                         <td><span class="columnValue">@Html.DisplayFor(modelItem => item.FirstName)</span></td>
                         <td><span class="columnValue">@Html.DisplayFor(modelItem => item.LastName)</span></td>
                         <td><span class="columnValue">@Html.DisplayFor(modelItem => item.Age)</span></td>
-                        @foreach(OptionViewModel option in Model.optionsList)
-                        {
-                           <td><span class="columnValue"></span></td>
-                        }
-                        <td>
+                        <td><span class="columnValue">@Html.DisplayFor(modelItem => item.InvitationName)</span></td>
+                        <td class="text_right">
                             <span class="columnValue">
+                                <a href="@Url.Action("", "" , new {@item.GuestID})">Szczegóły</a>
                                 <i class="fa fa-pencil-square-o" aria-hidden="true" onclick="location.href='@Url.Action("EditGuest", "Guest")'"></i>
                                 <i class="fa fa-trash-o" aria-hidden="true" onclick="location.href='@Url.Action("DeleteGuest", "Guest")'"></i>
                             </span>
                         </td>
                     </tr>
-                }
-                
+                }           
             </tbody>
         </table>
     </section>
 }
-
+<script>
+        var iconNr = "@ViewBag.IconNr";
+</script>
 @Scripts.Render("~/bundles/main")
 <script>
     $(document).ready(function () {
         $('#guestsTable').DataTable({
             "oLanguage": {
-                "sEmptyTable": "Brak danych, przepraszamy", 
-                "sInfo": "Strona _PAGE_ z _PAGES_",
+                "sEmptyTable": "Brak danych, przepraszamy",
                 "sSearch": "<span>Wyszukaj:</span> _INPUT_",
-                "sLengthMenu": "<span>ilość na stronie:</span> _MENU_", 
-                "oPaginate": { "sFirst": "Pierwsza", "sLast": "Ostatnia", "sNext": ">", "sPrevious": "<" }
+                "sInfo": "Strona _PAGE_ z _PAGES_",
+                "sLengthMenu": "<span>ilość na stronie:</span> _MENU_",
+                "oPaginate": { "sFirst": "First", "sLast": "Last", "sNext": ">", "sPrevious": "<" }
             }
         });
     });

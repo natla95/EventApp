@@ -30,6 +30,35 @@ namespace EventApplication.Controllers
             ViewBag.UserName = user.UserDetails.Email;
             ViewBag.IconNumber = 0;
             ViewBag.Role = itemUser.RoleID;
+            using(EventDbContext _db = new EventDbContext())
+            {
+                var ev = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == itemUser.UserID)).FirstOrDefault();
+                List<GuestViewModel> guests = new List<GuestViewModel>();
+
+                if (ev != null)
+                {
+                    var evInvitations = (from li in _db.Invitations
+                                         where li.EventID.Equals(ev.EventID)
+                                         select li).ToList();
+
+                    foreach (var i in evInvitations)
+                    {
+                        var currentId = i.InvitationID;
+                        var g = _db.Guests.Where(a => a.InvitationID == i.InvitationID).ToList();
+
+                        foreach (var guest in g)
+                        {
+                            GuestViewModel added = new GuestViewModel() { GuestID = guest.GuestID };
+                            guests.Add(added);
+                        }
+                    }
+                    ViewBag.InvitationsCount = evInvitations.Count();
+                    ViewBag.GuestsCount = guests.Count();
+                }
+                ViewBag.InvitationsCount = 0;
+                ViewBag.GuestsCount = 0;
+            }
+                
             return View("Index");
         }
 

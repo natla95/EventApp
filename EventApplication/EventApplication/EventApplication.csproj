@@ -285,6 +285,7 @@
     <Content Include="Views\Event\GetEventInformation.cshtml" />
     <Content Include="Views\Invitation\Invitations.cshtml" />
     <Content Include="Views\Invitation\NewInvitation.cshtml" />
+    <Content Include="Views\Invitation\EditInvitation.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -9,6 +9,7 @@ namespace EventApplication.Models.ViewModels
 {
     public class InvitationOptionViewModel
     {
+
         [StringLength(100)]
         [Display(Name = "Nazwa")]
         [Required(ErrorMessage = "Nazwa jest wymagana", AllowEmptyStrings = false)]

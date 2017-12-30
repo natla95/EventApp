@@ -18,14 +18,17 @@
         </section>
         <section class="panel_guest_number">
             <div class="guests_count_panel">
-                <span class="number" id="guestsList">0 </span> osób <br /> na liście gości
+                <span class="number" id="countInvitations" style="margin-right:10px;">@ViewBag.InvitationsCount</span>ilość<br /> zaproszeń
+            </div>
+            <div class="guests_count_panel">
+                <span class="number" id="guestsList">@ViewBag.GuestsCount </span> osób <br /> na liście gości
             </div>
             <div class="guests_count_panel">
                 <span class="number" id="guestsInvited">0 </span>osób<br /> zaproszonych
             </div>
-            <div class="guests_count_panel">
+            @*<div class="guests_count_panel">
                 <span class="number" id="guestsConfirmedBy">0 </span>osób <br /> potwierdzających obecność
-            </div>
+            </div>*@
             <div style="clear: both;"></div>
         </section>
         <section class="panel_block">

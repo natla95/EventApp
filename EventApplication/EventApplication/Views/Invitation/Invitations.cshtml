@@ -4,6 +4,11 @@
     ViewBag.Title = "Zaproszenia";
     Layout = "~/Views/Shared/_ListDataLayout.cshtml";
 }
+<style>
+    table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting, table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting{
+        padding:0;
+    }
+</style>
 
 <section class="panel_title">
     <div>Lista zaproszeń</div>
@@ -35,6 +40,7 @@
                     <th><span class="columnName"><input type="checkbox" id="checkAllRows" value="all" data-size="sm"></span></th>
                     <th><span class="columnName">@Html.DisplayNameFor(model => model.InvitationName)</span></th>
                     <th><span class="columnName">@Html.DisplayNameFor(model => model.Email)</span></th>
+                    <th><span class="columnName">@Html.DisplayNameFor(model => model.GuestCount)</span></th>
                     <th><span class="columnName">@Html.DisplayNameFor(model => model.IsEmailSent)</span></th>
                     <th><span class="columnName">@Html.DisplayNameFor(model => model.IsAccountActivated)</span></th>
                     <th></th>
@@ -47,11 +53,13 @@
                         <td><span class="columnValue"><input type="checkbox" value="@(item.InvitationID)" name="rowId" id="rowId"></span></td>
                         <td><span class="columnValue">@Html.DisplayFor(modelItem => item.InvitationName)</span></td>
                         <td><span class="columnValue">@Html.DisplayFor(modelItem => item.Email)</span></td>
+                        <td><span class="columnValue">@Html.DisplayFor(modelItem => item.GuestCount)</span></td>
                         <td><span class="columnValue">@(item.IsEmailSent == false ? "Nie" : "Tak")</span></td>
                         <td><span class="columnValue">@(item.IsAccountActivated == false ? "Nie" : "Tak")</span></td>
-                        <td><span class="columnValue">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true" onclick="location.href='@Url.Action("EditGuest", "Guest")'"></i>
-                                <i class="fa fa-trash-o" aria-hidden="true" onclick="location.href='@Url.Action("DeleteGuest", "Guest")'"></i>
+                        <td class="text_right"><span class="columnValue">
+                                <a href="@Url.Action("InvitationDetails", "Invitation" , new {@item.InvitationID})">Szczegóły</a>
+                                <i class="fa fa-pencil-square-o" aria-hidden="true" onclick="location.href='@Url.Action("EditInvitation", "Invitation", new { id = item.InvitationID })'"></i>
+                                <i class="fa fa-trash-o" aria-hidden="true" onclick="location.href='@Url.Action("DeleteInvitation", "Invitation", new { id = item.InvitationID })'"></i>
                         </span></td>
                     </tr>
                 }

@@ -35,24 +35,35 @@ namespace EventApplication.Controllers
                 {
                     foreach( var i in evInvitations)
                     {
+                        var g = _db.Guests.Where(a => a.InvitationID == i.InvitationID).ToList();
                         InvitationViewModel item = new InvitationViewModel()
                         {
                             InvitationID = i.InvitationID,
                             InvitationName = i.InvitationName,
                             Email = i.Email,
                             IsEmailSent = i.IsEmailSent,
-                            IsAccountActivated = i.IsAccountActivated
+                            IsAccountActivated = i.IsAccountActivated,
+                            GuestCount = g.Count()
                         };
-                        list.Add(item);
+                        list.Add(item);            
                     }
                     ViewBag.HaveInvitations = "yes";
                 }
                 else
                     ViewBag.HaveInvitations = "no";
             }
-
             return View("Invitations", list);
         }
+
+        [HttpGet]
+        [ActionName("InvitationDetails")]
+        public ActionResult InvitationDetails(int id)
+        {
+
+            return View();
+
+        }
+
 
         [HttpGet]
         [ActionName("NewInvitation")]
@@ -108,7 +119,6 @@ namespace EventApplication.Controllers
                         {
                             InvitationName = _model.InvitationName,
                             Email = _model.Email,
-                            //ConfirmLink = Security.Hash(_model.Email),
                             IsEmailSent = false,
                             IsAccountActivated = false,
                             EventID = loggedEvent.EventID,
@@ -132,6 +142,133 @@ namespace EventApplication.Controllers
                     
             }
             return RedirectToAction("InvitationsList");
+        }
+
+        [HttpGet]
+        [ActionName("EditInvitation")]
+        [Route("EditAdminUser/{id}")]
+        public ActionResult EditInvitation(int id)
+        {
+            var user = User as MyPrincipal;
+            var login = user.UserDetails.Email;
+            ViewBag.UserName = user.UserDetails.Email;
+            ViewBag.IconNr = 4;
+            InvitationOptionViewModel item = null;
+            List<SelectListItem> options = new List<SelectListItem>();
+            using(EventDbContext _db = new EventDbContext())
+            {
+                var invOptions = _db.Options.Where(o => o.InvitationOptions.Any(i => i.InvitationID == id)).ToList();
+                foreach( var o in invOptions)
+                {
+                    SelectListItem select = new SelectListItem()
+                    {
+                        Value = o.OptionID.ToString(),
+                        Text = o.OptionName
+                    };
+                    options.Add(select);
+
+                }
+               var inv = _db.Invitations.Where(x => x.InvitationID == id).FirstOrDefault();
+                item = new InvitationOptionViewModel()
+                {
+                    InvitationName = inv.InvitationName,
+                    Email = inv.Email,
+                    IsEmailSent = inv.IsEmailSent,
+                    IsAccountActivated = inv.IsAccountActivated,
+                    Options = options
+                };
+            }
+            return View("EditInvitation", item);
+        }
+
+        [HttpPost]
+        [ActionName("EditInvitation")]
+        [Route("EditAdminUser/{id}")]
+        public ActionResult EditInvitation(InvitationOptionViewModel _model)
+        {
+            if (ModelState.IsValid)
+            {
+                using(EventDbContext _db = new EventDbContext())
+                {
+                    var edited = _db.Invitations.Where(i => i.InvitationName == _model.InvitationName).FirstOrDefault();
+                    if(edited != null)
+                    {
+                        edited.InvitationName = _model.InvitationName ?? "";
+                        edited.Email = _model.Email ?? "";
+                        edited.IsEmailSent = _model.IsEmailSent;
+                        edited.IsAccountActivated = _model.IsAccountActivated;
+                    }
+
+                    var iOptions = _db.Options.Where(o => o.InvitationOptions.Any(a => a.InvitationID == edited.InvitationID)).ToList();
+                    var selectedOptions = _model.SelectedOptionsId;
+                    if (_model.SelectedOptionsId != null)
+                    {
+                        foreach (var selected in selectedOptions)
+                        {
+                            var optionSelected = _db.Options.FirstOrDefault(u => u.OptionID.Equals(selected));
+                            if (!(iOptions.Contains(optionSelected)))
+                            {
+                                _db.InvitationOptions.Add(new InvitationOption()
+                                {
+                                    OptionID = selected,
+                                    Invitation = edited
+                                });
+                            }
+                        }
+                        foreach (var option in iOptions)
+                        {
+                            var currentId = option.OptionID;
+                            if (!(selectedOptions.Contains(currentId)))
+                            {
+                                var optionToRemove = _db.InvitationOptions.FirstOrDefault(u => u.OptionID.Equals(currentId) && u.InvitationID.Equals(edited.InvitationID));
+                                _db.InvitationOptions.Remove(optionToRemove);
+                            }
+                        }
+                    }
+                    _db.SaveChanges();
+                }
+            }
+            return RedirectToAction("InvitationsList");
+        }
+
+        [HttpGet]
+        [ActionName("DeleteInvitation")]
+        public ActionResult DeleteInvitation(int id)
+        {
+            using(EventDbContext _db = new EventDbContext())
+            {
+                var invToRemove = _db.Invitations.Where(i => i.InvitationID == id).FirstOrDefault();
+                var invitationGuests = _db.Guests.Where(g => g.InvitationID == id).ToList();
+
+                if(invitationGuests.Count() > 0)
+                {
+                    foreach(var g in invitationGuests)
+                    {
+                       
+                        var guestOptions = _db.GuestOptions.Where(a => a.GuestID == g.GuestID).ToList();
+                        if(guestOptions.Count() > 0)
+                        {
+                            _db.GuestOptions.RemoveRange(guestOptions);
+                            _db.SaveChanges();
+                        }
+                        _db.Guests.Remove(g);
+                    }
+                    _db.SaveChanges();
+                }
+                var invitationOptions = _db.InvitationOptions.Where(x => x.InvitationID == id).ToList();
+                if (invitationOptions.Count > 0)
+                {
+                    foreach(var o in invitationOptions)
+                    {
+                        _db.InvitationOptions.Remove(o);
+                    }
+                    _db.SaveChanges();
+                }
+                _db.Invitations.Remove(invToRemove);
+                _db.SaveChanges();
+            }
+            return RedirectToAction("InvitationsList");
+
         }
     }
 }

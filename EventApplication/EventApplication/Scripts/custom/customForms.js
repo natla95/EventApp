@@ -404,5 +404,10 @@ function ValidateInvitationForm() {
         }
     });
 
+    $('#editInvitationButton').on("click", function () {
+        if (ValidateInvitationForm()) {
+            $('#editInvitationForm').submit();
+        }
+    });
     //----- end invitation form ----
 })();

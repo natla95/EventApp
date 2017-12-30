@@ -29,5 +29,7 @@ namespace EventApplication.Models.ViewModels
         public string Age { get; set; }
 
         public int InvitationID { get; set; }
+
+        public string InvitationName { get; set; }
     }
 }

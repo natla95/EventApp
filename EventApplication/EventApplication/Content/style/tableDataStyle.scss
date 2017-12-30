@@ -41,8 +41,20 @@ $textColorDarken: #757575;
         color: grey;
         font-size: 18px;
         cursor: pointer;
+        transition: 0.3s;
     }
-    i:hover{
+
+    i:hover {
+        color: $accentColor;
+    }
+
+    a {
+        color: $textColor;
+        text-decoration: none;
+        margin-right: 8px;
+    }
+
+    a:hover {
         color: $accentColor;
     }
 }
@@ -76,7 +88,7 @@ table.dataTable td {
 }
 table.dataTable {
     tr.odd {
-        background-color: #e8e8e8;
+        background-color: #f7efef;
     }
 
     tr.even {

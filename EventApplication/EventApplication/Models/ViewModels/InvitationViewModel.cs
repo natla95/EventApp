@@ -29,5 +29,7 @@ namespace EventApplication.Models.ViewModels
         [Display(Name = "Konto aktywowane")]
         public bool IsAccountActivated { get; set; }
 
+        [Display(Name = "Ilość gości")]
+        public int GuestCount { get; set; }
     }
 }
