@@ -57,7 +57,7 @@
                         <td><span class="columnValue">@(item.IsEmailSent == false ? "Nie" : "Tak")</span></td>
                         <td><span class="columnValue">@(item.IsAccountActivated == false ? "Nie" : "Tak")</span></td>
                         <td class="text_right"><span class="columnValue">
-                                <a href="@Url.Action("InvitationDetails", "Invitation" , new {@item.InvitationID})">Szczegóły</a>
+                                <a href="@Url.Action("InvitationDetails", "Invitation" , new {id = @item.InvitationID})">Szczegóły</a>
                                 <i class="fa fa-pencil-square-o" aria-hidden="true" onclick="location.href='@Url.Action("EditInvitation", "Invitation", new { id = item.InvitationID })'"></i>
                                 <i class="fa fa-trash-o" aria-hidden="true" onclick="location.href='@Url.Action("DeleteInvitation", "Invitation", new { id = item.InvitationID })'"></i>
                         </span></td>

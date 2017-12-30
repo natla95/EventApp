@@ -20,6 +20,7 @@ namespace EventApplication.Controllers
             var login = user.UserDetails.Email;
             ViewBag.IconNr = 3;
             ViewBag.UserName = user.UserDetails.Email;
+            ViewBag.AreGuests = "no";
 
             List<GuestViewModel> guests = new List<GuestViewModel>();
 
@@ -27,6 +28,7 @@ namespace EventApplication.Controllers
             {
                 var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
                 ViewBag.Role = itemUser.RoleID;
+
                 var ev = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == itemUser.UserID)).FirstOrDefault();
                 var evIvitations = (from li in _db.Invitations
                                     where li.EventID.Equals(ev.EventID)
@@ -34,14 +36,14 @@ namespace EventApplication.Controllers
 
                 if(evIvitations.Count != 0)
                 {
-                    ViewBag.AreGuests = "yes"; 
-                    foreach(var i in evIvitations)
+                    foreach (var i in evIvitations)
                     {
                         var iGuests = _db.Guests.Where(g => g.InvitationID == i.InvitationID).ToList();
                         var iName = i.InvitationName;
-                        if(iGuests != null)
+                        if(iGuests.Count() > 0)
                         {
-                            foreach(var g in iGuests)
+                            ViewBag.AreGuests = "yes";
+                            foreach (var g in iGuests)
                             {
                                 GuestViewModel guest = new GuestViewModel()
                                 {
@@ -89,15 +91,32 @@ namespace EventApplication.Controllers
 
         [HttpPost]
         [ActionName("AddGuest")]
-        public ActionResult AddGuest(GuestViewModel _model)
+        public ActionResult AddGuest(GuestViewModel _model, int id)
         {
-       
             if (ModelState.IsValid)
             {
-
+                using(EventDbContext _db = new EventDbContext())
+                {
+                    var inv = _db.Invitations.Where(i => i.InvitationID == id).FirstOrDefault();
+                    if(inv != null)
+                    {
+                        var checkInDb = _db.Guests.Where(g => g.FirstName == _model.FirstName && g.LastName == _model.LastName && g.InvitationID == id).FirstOrDefault();
+                        if(checkInDb == null)
+                        {
+                            Guest added = new Guest()
+                            {
+                                FirstName = _model.FirstName,
+                                LastName = _model.LastName,
+                                Age = _model.Age,
+                                InvitationID = id
+                            };
+                            _db.Guests.Add(added);
+                            _db.SaveChanges();
+                        }
+                    }
+                }
             }
-            return View();
-
+            return View("InvitationDetails");
         }
 
         [HttpGet]

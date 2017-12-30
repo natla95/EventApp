@@ -59,9 +59,62 @@ namespace EventApplication.Controllers
         [ActionName("InvitationDetails")]
         public ActionResult InvitationDetails(int id)
         {
+            var user = User as MyPrincipal;
+            var login = user.UserDetails.Email;
+            ViewBag.UserName = user.UserDetails.Email;
+            ViewBag.IconNr = 4;
 
-            return View();
+            InvitationViewModel details = null;
+            List<OptionViewModel> options = new List<OptionViewModel>();
+            List<GuestViewModel> guests = new List<GuestViewModel>();
+            InvitationDetailsViewModel model = new InvitationDetailsViewModel();
 
+            using(EventDbContext _db = new EventDbContext())
+            {
+                var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+                ViewBag.Role = itemUser.RoleID;
+                var inv = _db.Invitations.Where(i => i.InvitationID == id).FirstOrDefault();
+                if(inv != null)
+                {
+                    var invGuests = _db.Guests.Where(g => g.InvitationID == inv.InvitationID).ToList();
+                    foreach (var g in invGuests)
+                    {
+                        GuestViewModel guest = new GuestViewModel()
+                        {
+                            FirstName = g.FirstName,
+                            LastName = g.LastName,
+                            Age = g.Age,
+                        };
+                        guests.Add(guest);
+                    }
+
+                    var invOptions = _db.Options.Where(o => o.InvitationOptions.Any(x => x.InvitationID == inv.InvitationID)).ToList();
+                    foreach(var o in invOptions)
+                    {
+                        OptionViewModel option = new OptionViewModel()
+                        {
+                            OptionID = o.OptionID,
+                            OptionName = o.OptionName
+                        };
+                        options.Add(option);
+                    }
+
+                    details = new InvitationViewModel()
+                    {
+                        InvitationID = inv.InvitationID,
+                        InvitationName = inv.InvitationName,
+                        Email = inv.Email,
+                        IsEmailSent = inv.IsEmailSent,
+                        IsAccountActivated = inv.IsAccountActivated,
+                        GuestCount = invGuests.Count()
+                    };
+
+                }
+            }
+            model.invitation = details;
+            model.invitationGuests = guests;
+            model.invitationOptions = options;
+            return View("InvitationDetails",model);
         }
 
 
@@ -79,6 +132,7 @@ namespace EventApplication.Controllers
             using(EventDbContext _db = new EventDbContext())
             {
                 var evUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+                ViewBag.Role = evUser.RoleID;
                 var ev = _db.Events.Where(e => e.UserEvents.Any(u => u.UserID == evUser.UserID)).FirstOrDefault();
                 if(ev != null)
                 {
@@ -157,6 +211,8 @@ namespace EventApplication.Controllers
             List<SelectListItem> options = new List<SelectListItem>();
             using(EventDbContext _db = new EventDbContext())
             {
+                var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+                ViewBag.Role = itemUser.RoleID;
                 var invOptions = _db.Options.Where(o => o.InvitationOptions.Any(i => i.InvitationID == id)).ToList();
                 foreach( var o in invOptions)
                 {

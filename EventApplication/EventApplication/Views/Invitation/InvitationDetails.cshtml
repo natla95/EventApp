@@ -1,0 +1,51 @@
+﻿@using EventApplication.Models.ViewModels
+@model InvitationDetailsViewModel
+@{
+    ViewBag.Title = "Szczegóły zaproszenia";
+    Layout = "~/Views/Shared/_GuestPageLayout.cshtml";
+}
+
+<section class="panel_title">
+    <div>Szczegóły zaproszenia</div>
+</section>
+<section class="padding_section">
+    <div class="action_buttons">
+        <div id="addGuest" class="button" onclick="location.href='@Url.Action("AddGuest", "Guest", new { id = Model.invitation.InvitationID })'">Dodaj gościa</div>
+    </div>
+</section>
+<section class="invitation_description event_description">
+    <div>
+        <p class="subtitle">Informacje ogólne</p>
+        <div class="inv_content">
+            <p><b>Nazwa zaproszenia:</b> @Model.invitation.InvitationName</p>
+            <p><b>Email:</b> @Model.invitation.Email</p>
+            <p><b>Ilość gości:</b> @Model.invitation.GuestCount</p>
+            <p><b>Opcje:</b></p>
+            @foreach (OptionViewModel optionItem in Model.invitationOptions)
+            {
+                <p><i class="fa fa-chevron-right" aria-hidden="true"></i>@optionItem.OptionName</p>
+            }
+        </div> 
+    </div>
+    <div>
+        <p class="subtitle">Lista gości</p>
+        <div class="inv_content">
+            @foreach (GuestViewModel guestItem in Model.invitationGuests)
+            {
+            <div>
+                <div style="width: 70%; float: left;"><i class="fa fa-chevron-right" aria-hidden="true"></i> @guestItem.FirstName @guestItem.LastName (@guestItem.Age)</div>
+                <div style="width: 30%; float: left; font-size: 16px; cursor: pointer;">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true" onclick="location.href='@Url.Action("", "", new {})'"></i>
+                    <i class="fa fa-trash-o" aria-hidden="true" onclick="location.href='@Url.Action("", "", new { })'"></i></div>
+                <div class="clear:both"></div>
+            </div>
+            }
+        </div>
+       
+    </div>
+    <div class="clear:both"></div>
+    <img class="balon_img" id="balon1" src="~/Content/images/balon_white.png" />
+    <img class="balon_img" id="balon2" src="~/Content/images/balon_pink.png" />
+</section>
+
+

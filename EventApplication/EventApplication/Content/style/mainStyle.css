@@ -300,6 +300,52 @@ input[type=time]::-webkit-outer-spin-button {
 .balon_img {
   width: 130px; }
 
+#addGuest {
+  background: #fecccb; }
+
+#balon1 {
+  transform: rotate(20deg);
+  right: -100px;
+  top: 0; }
+
+#balon2 {
+  bottom: -60px;
+  transform: rotate(10deg);
+  right: -50px; }
+
+.fa-chevron-right {
+  color: #fecccb;
+  font-size: 12px; }
+
+.inv_content {
+  width: 70%;
+  float: right; }
+  .inv_content i {
+    margin-right: 6px;
+    vertical-align: middle; }
+  .inv_content i:hover {
+    color: #fecccb;
+    transition: 0.3s; }
+  .inv_content p {
+    position: relative; }
+
+.invitation_description {
+  padding: 10px;
+  position: relative; }
+  .invitation_description > div {
+    width: 50%;
+    float: left;
+    text-align: left; }
+  .invitation_description .balon_img {
+    width: 114px;
+    position: absolute; }
+
+.subtitle {
+  text-align: center;
+  font-family: MontserratRegular;
+  font-weight: 700;
+  margin-bottom: 30px; }
+
 @media (min-width: 1920px) {
   #flowerBottom {
     width: 280px;
