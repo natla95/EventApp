@@ -33,10 +33,10 @@
             @foreach (GuestViewModel guestItem in Model.invitationGuests)
             {
             <div>
-                <div style="width: 70%; float: left;"><i class="fa fa-chevron-right" aria-hidden="true"></i> @guestItem.FirstName @guestItem.LastName (@guestItem.Age)</div>
-                <div style="width: 30%; float: left; font-size: 16px; cursor: pointer;">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true" onclick="location.href='@Url.Action("", "", new {})'"></i>
-                    <i class="fa fa-trash-o" aria-hidden="true" onclick="location.href='@Url.Action("", "", new { })'"></i></div>
+                <div style="width: 70%; float: left; padding: 10px 0;"><i class="fa fa-chevron-right" aria-hidden="true"></i> @guestItem.FirstName @guestItem.LastName (@guestItem.Age)</div>
+                <div style="width: 30%; float: left; font-size: 16px; cursor: pointer; padding: 10px 0;">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true" onclick="location.href='@Url.Action("EditGuest", "Guest", new {id = guestItem.GuestID})'"></i>
+                    <i class="fa fa-trash-o" aria-hidden="true" onclick="location.href='@Url.Action("DeleteGuest", "Guest", new {id = guestItem.GuestID})'"></i></div>
                 <div class="clear:both"></div>
             </div>
             }

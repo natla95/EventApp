@@ -14,6 +14,7 @@ namespace EventApplication.Controllers
     {
         [HttpGet]
         [ActionName("GuestsList")]
+        [Route("")]
         public ActionResult Index()
         {
             var user = User as MyPrincipal;
@@ -69,6 +70,7 @@ namespace EventApplication.Controllers
 
         [HttpGet]
         [ActionName("AddGuest")]
+        [Route("AddGuest")]
         public ActionResult AddGuest()
         {
             var user = User as MyPrincipal;
@@ -91,6 +93,7 @@ namespace EventApplication.Controllers
 
         [HttpPost]
         [ActionName("AddGuest")]
+        [Route("AddGuest")]
         public ActionResult AddGuest(GuestViewModel _model, int id)
         {
             if (ModelState.IsValid)
@@ -116,18 +119,20 @@ namespace EventApplication.Controllers
                     }
                 }
             }
-            return View("InvitationDetails");
+            return RedirectToAction("InvitationDetails", "Invitation", new { id = id });
         }
 
         [HttpGet]
         [ActionName("EditGuest")]
-        public ActionResult EditGuest()
+        [Route("EditGuest/{id}")]
+        public ActionResult EditGuest(int id)
         {
             var user = User as MyPrincipal;
             var login = user.UserDetails.Email;
             ViewBag.UserName = user.UserDetails.Email;
             ViewBag.IconNr = 3;
 
+            GuestViewModel item = null;
             ViewBag.AgeList = new List<SelectListItem>
                         {
                             new SelectListItem { Text = "Dorosły", Value = "Dorosły" },
@@ -137,19 +142,46 @@ namespace EventApplication.Controllers
             {
                 var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
                 ViewBag.Role = itemUser.RoleID;
+                var edited = _db.Guests.Where(g => g.GuestID == id).FirstOrDefault();
+                if(edited != null)
+                {
+                    item = new GuestViewModel()
+                    {
+                        FirstName = edited.FirstName,
+                        LastName = edited.LastName,
+                        Age = edited.Age,
+                        GuestID = id
+                    };
+                }
             }
-            return View();
+            return View("EditGuest",item);
         }
 
         [HttpPost]
         [ActionName("EditGuest")]
+        [Route("EditGuest/{id}")]
         public ActionResult EditGuest(GuestViewModel _model)
         {
+            if (ModelState.IsValid)
+            {
+                using(EventDbContext _db = new EventDbContext())
+                {
+                    var edited = _db.Guests.Where(g => g.GuestID == _model.GuestID).FirstOrDefault();
+                    if(edited != null)
+                    {
+                        edited.FirstName = _model.FirstName ?? "";
+                        edited.LastName = _model.LastName ?? "";
+                        edited.Age = _model.Age;
+                    }
+                    _db.SaveChanges();
+                }
+            }
             return RedirectToAction("GuestsList");
         }
 
         [HttpPost]
         [ActionName("DeleteGuest")]
+        [Route("DeleteGuest/{id}")]
         public ActionResult DeleteGuest()
         {
             return RedirectToAction("GuestsList");

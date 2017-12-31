@@ -14,6 +14,7 @@ namespace EventApplication.Controllers
     {
         [HttpGet]
         [ActionName("InvitationsList")]
+        [Route("")]
         public ActionResult Index()
         {  
             var user = User as MyPrincipal;
@@ -57,6 +58,7 @@ namespace EventApplication.Controllers
 
         [HttpGet]
         [ActionName("InvitationDetails")]
+        [Route("InvitationDetails/{id}")]
         public ActionResult InvitationDetails(int id)
         {
             var user = User as MyPrincipal;
@@ -84,6 +86,7 @@ namespace EventApplication.Controllers
                             FirstName = g.FirstName,
                             LastName = g.LastName,
                             Age = g.Age,
+                            GuestID = g.GuestID
                         };
                         guests.Add(guest);
                     }
@@ -120,6 +123,7 @@ namespace EventApplication.Controllers
 
         [HttpGet]
         [ActionName("NewInvitation")]
+        [Route("NewInvitation")]
         public ActionResult AddInvitation()
         {
             var user = User as MyPrincipal;
@@ -154,6 +158,7 @@ namespace EventApplication.Controllers
 
         [HttpPost]
         [ActionName("NewInvitation")]
+        [Route("NewInvitation")]
         public ActionResult AddInvitation(InvitationOptionViewModel _model)
         {
             var user = User as MyPrincipal;
@@ -289,6 +294,7 @@ namespace EventApplication.Controllers
 
         [HttpGet]
         [ActionName("DeleteInvitation")]
+        [Route("DeleteInvitation/{id}")]
         public ActionResult DeleteInvitation(int id)
         {
             using(EventDbContext _db = new EventDbContext())

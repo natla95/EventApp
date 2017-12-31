@@ -20,8 +20,9 @@ namespace EventApplication.Controllers
         }   
 
         [HttpGet]
-        [ActionName("Home")]
         [Authorize]
+        [ActionName("Home")]
+        [Route("")]
         public ActionResult Index()
         {
             var user = User as MyPrincipal;
@@ -55,8 +56,12 @@ namespace EventApplication.Controllers
                     ViewBag.InvitationsCount = evInvitations.Count();
                     ViewBag.GuestsCount = guests.Count();
                 }
-                ViewBag.InvitationsCount = 0;
-                ViewBag.GuestsCount = 0;
+                else
+                {
+                    ViewBag.InvitationsCount = 0;
+                    ViewBag.GuestsCount = 0;
+                }
+
             }
                 
             return View("Index");
@@ -64,6 +69,7 @@ namespace EventApplication.Controllers
 
         [HttpGet]
         [ActionName("Register")]
+        [Route("Register")]
         public ActionResult Register()
         {
             ViewBag.PageNumber = 1;
@@ -98,6 +104,7 @@ namespace EventApplication.Controllers
 
         [HttpGet]
         [ActionName("Login")]
+        [Route("Login")]
         public ActionResult Login()
         {
             ViewBag.PageNumber = 2;

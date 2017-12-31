@@ -30,6 +30,7 @@ namespace EventApplication.Models.ViewModels
 
         public int InvitationID { get; set; }
 
+        [Display(Name = "Nazwa zaproszenia")]
         public string InvitationName { get; set; }
     }
 }

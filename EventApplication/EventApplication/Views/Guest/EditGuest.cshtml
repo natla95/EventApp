@@ -12,42 +12,40 @@
     @using (Html.BeginForm("EditGuest", "Guest", FormMethod.Post, new { @id = "editGuestForm", @name = "editGuestForm" }))
     {
         @Html.AntiForgeryToken()
-
+        <div style="display: none;">@Html.EditorFor(model => model.GuestID)</div>
         <div class="guest_form">
             <div class="form-group">
                 @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div>
                     @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "field form-control", @id = "guestFirstName" } })
-                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger", @id = "guestFirstName_e" })
                 </div>
+                <div>@Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger", @id = "guestFirstName_e" })</div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div>
                     @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "field form-control", @id = "guestLastName" } })
-                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger", @id = "guestLastName_e" })
                 </div>
+                <div>@Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger", @id = "guestLastName_e" })</div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div>
                     <select class="field" id="age" name="age">
                         @foreach (var item in listAge)
                         {
-                            <option value="@item.Value"> @item.Text</option>
+                            <option value="@item.Value" @(Model.Age == item.Text ? "selected" : "")> @item.Text</option>
                         }
                     </select>
-
-                    @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
                 </div>
+                <div> @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })</div>
             </div>
 
             <div class="form_buttons">
                 <div class="button" onclick="location.href='@Url.Action("GuestsList", "Guest")'">Anuluj</div>
                 <div class="button" id="saveEditGuest">zapisz zmiany</div>
-                <div style="clear: both"></div>
             </div>
         </div>
     }

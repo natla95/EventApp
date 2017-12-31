@@ -14,6 +14,7 @@ namespace EventApplication.Controllers
     {
         [HttpGet]
         [ActionName("EventList")]
+        [Route("EventList")]
         public ActionResult Index()
         {
             var user = User as MyPrincipal;
@@ -75,6 +76,7 @@ namespace EventApplication.Controllers
 
         [HttpGet]
         [ActionName("AddEvent")]
+        [Route("AddEvent")]
         public ActionResult AddEvent()
         {
             var user = User as MyPrincipal;
@@ -103,6 +105,7 @@ namespace EventApplication.Controllers
 
         [HttpPost]
         [ActionName("AddEvent")]
+        [Route("AddEvent")]
         public ActionResult AddEvent(EventOptionViewModel _model)
         {
             var user = User as MyPrincipal;
@@ -157,6 +160,7 @@ namespace EventApplication.Controllers
 
         [HttpGet]
         [ActionName("EditEvent")]
+        [Route("EditEvent")]
         public ActionResult EditEvent()
         {
             var user = User as MyPrincipal;
@@ -193,6 +197,7 @@ namespace EventApplication.Controllers
 
         [HttpPost]
         [ActionName("EditEvent")]
+        [Route("EditEvent")]
         public ActionResult EditEvent(EventOptionViewModel _model)
         {
             var user = User as MyPrincipal;
@@ -249,6 +254,7 @@ namespace EventApplication.Controllers
         }
         [HttpGet]
         [ActionName("DeleteEvent")]
+        [Route("DeleteEvent")]
         public ActionResult DeleteEvent()
         {
             var user = User as MyPrincipal;
@@ -294,6 +300,7 @@ namespace EventApplication.Controllers
 
         [HttpGet]
         [ActionName("EventInformation")]
+        [Route("EventInformation")]
         public ActionResult GetEventInformation()
         {
             var user = User as MyPrincipal;
