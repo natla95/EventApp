@@ -179,11 +179,24 @@ namespace EventApplication.Controllers
             return RedirectToAction("GuestsList");
         }
 
-        [HttpPost]
+        [HttpGet]
         [ActionName("DeleteGuest")]
         [Route("DeleteGuest/{id}")]
-        public ActionResult DeleteGuest()
+        public ActionResult DeleteGuest(int id)
         {
+            using(EventDbContext _db = new EventDbContext())
+            {
+                var guestToDelete = _db.Guests.Where(x => x.GuestID == id).FirstOrDefault();
+
+                var guestOptions = _db.GuestOptions.Where(x => x.GuestID == id).ToList();
+                if (guestOptions.Count() > 0)
+                {
+                    _db.GuestOptions.RemoveRange(guestOptions);
+                    _db.SaveChanges();
+                }
+                _db.Guests.Remove(guestToDelete);
+                _db.SaveChanges();
+            }
             return RedirectToAction("GuestsList");
         }
 

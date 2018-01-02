@@ -30,6 +30,12 @@ b{
     display: inline-block;
 }
 
+.form_div_float{
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+}
+
 .text_right{
     text-align: right;
 }
@@ -213,6 +219,13 @@ aside {
         float: none;
     }
 }
+.event_form{
+    width: 70%;
+    margin-top: 30px;
+}
+.event_info{
+    font-weight: 600;
+}
 .form_buttons {
     div {
         width: 144px;
@@ -308,6 +321,7 @@ input[type=time]::-webkit-outer-spin-button {
 
     span {
         font-weight: 700;
+        text-transform: uppercase;
     }
 }
 

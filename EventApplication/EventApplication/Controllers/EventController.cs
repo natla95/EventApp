@@ -252,6 +252,7 @@ namespace EventApplication.Controllers
 
             return RedirectToAction("EventList");
         }
+
         [HttpGet]
         [ActionName("DeleteEvent")]
         [Route("DeleteEvent")]
@@ -264,25 +265,39 @@ namespace EventApplication.Controllers
             {
                 var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
                 var ev = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == itemUser.UserID)).FirstOrDefault();
-                var evOptions = _db.Options.Where(o => o.EventOptions.Any(e => e.EventID == ev.EventID)).ToList();
                 var evInvitations = (from li in _db.Invitations
                                      where li.EventID.Equals(ev.EventID)
                                      select li).ToList();
 
                 var eventOptions = _db.EventOptions.Where(x => x.EventID == ev.EventID).ToList();
-
                 if (eventOptions.Count > 0)
                 {
                     _db.EventOptions.RemoveRange(eventOptions);
                     _db.SaveChanges();
                 }
 
-                if (evInvitations.Count != 0)
+                if (evInvitations.Count > 0)
                 {
-                    _db.Invitations.RemoveRange(evInvitations);
-                    _db.SaveChanges();
-                }
+                    foreach(var i in evInvitations)
+                    {
+                        var currentId = i.InvitationID;
+                        var invOptions = _db.InvitationOptions.Where(a => a.InvitationID == currentId).ToList();
+                        var invGuests = _db.Guests.Where(x => x.InvitationID == currentId).ToList();
+                        if(invOptions.Count() > 0)
+                        {
+                            _db.InvitationOptions.RemoveRange(invOptions);
+                            _db.SaveChanges();
+                        }
+                        if(invGuests.Count() > 0)
+                        {
+                            _db.Guests.RemoveRange(invGuests);
+                            _db.SaveChanges();
+                        }
+                        _db.Invitations.Remove(i);
+                        _db.SaveChanges();
+                    }
 
+                }
                 var userEvents = _db.UserEvents.Where(x => x.EventID == ev.EventID).ToList();
                 if (userEvents.Count > 0)
                 {
@@ -297,7 +312,6 @@ namespace EventApplication.Controllers
 
             return RedirectToAction("EventList");
         }
-
         [HttpGet]
         [ActionName("EventInformation")]
         [Route("EventInformation")]

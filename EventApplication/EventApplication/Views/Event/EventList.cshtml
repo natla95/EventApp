@@ -40,7 +40,7 @@
                     @foreach (EventViewModel item in Model.EventList)
                     {
                         <p id="eventName">@item.EventName</p>
-                        <span id="organizerName1">@item.OrganizerName1 i</span> <span id="organizerName2">@item.OrganizerName2</span>
+                        <p style="margin:20px 0"><span id="organizerName1">@item.OrganizerName1 i</span> <span id="organizerName2">@item.OrganizerName2</span></p>
                         <p id="eventDate">Data: @item.EventDate</p>
                         <p id="eventTime">Godzina: @item.EventTime</p>
                         <p>Miejsce ślubu: @item.ChurchAddress</p>

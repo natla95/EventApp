@@ -20,6 +20,11 @@ b {
 .display_inline {
   display: inline-block; }
 
+.form_div_float {
+  width: 48%;
+  display: inline-block;
+  vertical-align: top; }
+
 .text_right {
   text-align: right; }
 
@@ -168,6 +173,13 @@ aside {
   display: inline-block;
   float: none; }
 
+.event_form {
+  width: 70%;
+  margin-top: 30px; }
+
+.event_info {
+  font-weight: 600; }
+
 .form_buttons div {
   width: 144px;
   height: 40px;
@@ -244,7 +256,8 @@ input[type=time]::-webkit-outer-spin-button {
   text-align: center;
   box-shadow: 0 0 4px #b7b7b7; }
   .event_description span {
-    font-weight: 700; }
+    font-weight: 700;
+    text-transform: uppercase; }
 
 #eventInfo {
   width: 100%; }
