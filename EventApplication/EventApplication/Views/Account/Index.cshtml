@@ -4,9 +4,8 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Panel użytkownika</title>
-    <link type="text/css" rel="stylesheet" href="~/Content/style/mainStyle.min.css" />
-    <link type="text/css" rel="stylesheet" href="~/Content/style/organizerMainPage.min.css" />
-
+    @Styles.Render("~/Content/main_syle")
+    @Styles.Render("~/Content/organizer_style")
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
@@ -24,14 +23,15 @@
                 <span class="number" id="guestsList">@ViewBag.GuestsCount </span> osób <br /> na liście gości
             </div>
             <div class="guests_count_panel">
-                <span class="number" id="guestsInvited">0 </span>osób<br /> zaproszonych
+                <span class="number" id="guestsChild">0 </span>ilość<br /> dzieci
             </div>
-            @*<div class="guests_count_panel">
-                <span class="number" id="guestsConfirmedBy">0 </span>osób <br /> potwierdzających obecność
-            </div>*@
             <div style="clear: both;"></div>
         </section>
         <section class="panel_block">
+            <div class="panel" onclick="location.href='@Url.Action("Home", "Account")'">
+                <i class="fa fa-sticky-note fa-2x" aria-hidden="true"></i>
+                <p>Panel organizatora</p>
+            </div>
             <div class="panel" onclick="location.href='@Url.Action("EventList", "Event")'">
                 <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
                 <p>Wydarzenia</p>
@@ -82,11 +82,7 @@
                 </div>
             }
             
-            <div class="panel" onclick="location.href='@Url.Action("EventList", "Event")'">
-                <i class="fa fa-sticky-note fa-2x" aria-hidden="true"></i>
-                <p>Notatki</p>
-            </div>
-            <div class="panel" onclick="location.href='@Url.Action("EventList", "Event")'">
+            <div class="panel" onclick="location.href='@Url.Action("UserDetails", "Account")'">
                 <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
                 <p>Moje dane</p>
             </div>

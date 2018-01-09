@@ -17,13 +17,13 @@
     <div>
         <p class="subtitle">Informacje ogólne</p>
         <div class="inv_content">
-            <p><b>Nazwa zaproszenia:</b> @Model.invitation.InvitationName</p>
-            <p><b>Email:</b> @Model.invitation.Email</p>
-            <p><b>Ilość gości:</b> @Model.invitation.GuestCount</p>
+            <p><b>Nazwa zaproszenia:</b> @Html.DisplayFor(model => model.invitation.InvitationName)</p>
+            <p><b>Email:</b> @Html.DisplayFor(model => model.invitation.Email)</p>
+            <p><b>Ilość gości:</b>@Html.DisplayFor(model => model.invitation.GuestCount)</p>
             <p><b>Opcje:</b></p>
             @foreach (OptionViewModel optionItem in Model.invitationOptions)
             {
-                <p><i class="fa fa-chevron-right" aria-hidden="true"></i>@optionItem.OptionName</p>
+                <p><i class="fa fa-chevron-right" aria-hidden="true"></i>@Html.DisplayFor(model => optionItem.OptionName)</p>
             }
         </div> 
     </div>
@@ -33,7 +33,7 @@
             @foreach (GuestViewModel guestItem in Model.invitationGuests)
             {
             <div>
-                <div style="width: 70%; float: left; padding: 10px 0;"><i class="fa fa-chevron-right" aria-hidden="true"></i> @guestItem.FirstName @guestItem.LastName (@guestItem.Age)</div>
+                <div style="width: 70%; float: left; padding: 10px 0;"><i class="fa fa-chevron-right" aria-hidden="true"></i> @Html.DisplayFor(modelItem => guestItem.FirstName) @Html.DisplayFor(modelItem => guestItem.LastName) (@Html.DisplayFor(modelItem => guestItem.Age))</div>
                 <div style="width: 30%; float: left; font-size: 16px; cursor: pointer; padding: 10px 0;">
                     <i class="fa fa-pencil-square-o" aria-hidden="true" onclick="location.href='@Url.Action("EditGuest", "Guest", new {id = guestItem.GuestID})'"></i>
                     <i class="fa fa-trash-o" aria-hidden="true" onclick="location.href='@Url.Action("DeleteGuest", "Guest", new {id = guestItem.GuestID})'"></i></div>

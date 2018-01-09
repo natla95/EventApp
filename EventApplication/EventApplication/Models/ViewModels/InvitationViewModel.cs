@@ -31,5 +31,11 @@ namespace EventApplication.Models.ViewModels
 
         [Display(Name = "Ilość gości")]
         public int GuestCount { get; set; }
+
+        [Display(Name = "Ilość dorosłych")]
+        public int AdultCount { get; set; }
+
+        [Display(Name = "Ilość dzieci")]
+        public int ChildCount { get; set; }
     }
 }

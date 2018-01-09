@@ -39,12 +39,12 @@
                 <div class="event_info">
                     @foreach (EventViewModel item in Model.EventList)
                     {
-                        <p id="eventName">@item.EventName</p>
-                        <p style="margin:20px 0"><span id="organizerName1">@item.OrganizerName1 i</span> <span id="organizerName2">@item.OrganizerName2</span></p>
-                        <p id="eventDate">Data: @item.EventDate</p>
-                        <p id="eventTime">Godzina: @item.EventTime</p>
-                        <p>Miejsce ślubu: @item.ChurchAddress</p>
-                        <p>Miejsce wesela: @item.WeddingAddress</p>
+                        <p id="eventName">@Html.DisplayFor(model => item.EventName)</p>
+                        <p style="margin:20px 0"><span id="organizerName1">@Html.DisplayFor(model => item.OrganizerName1) i</span> <span id="organizerName2">@Html.DisplayFor(model => item.OrganizerName2)</span></p>
+                        <p id="eventDate">Data: @Html.DisplayFor(model => item.EventDate)</p>
+                        <p id="eventTime">Godzina: @Html.DisplayFor(model => item.EventTime)</p>
+                        <p>Miejsce ślubu: @Html.DisplayFor(model => item.ChurchAddress)</p>
+                        <p>Miejsce wesela: @Html.DisplayFor(model => item.WeddingAddress)</p>
                     }
 
                 </div>
@@ -52,7 +52,7 @@
                     <p>Wybrane opcje:</p>
                     @foreach (OptionViewModel optionItem in Model.OptionsList)
                     {
-                        <p><i class="fa fa-circle" aria-hidden="true"></i>@optionItem.OptionName</p>
+                        <p><i class="fa fa-circle" aria-hidden="true"></i>@Html.DisplayFor(model => optionItem.OptionName)</p>
                     }
                 </div>
             </div>

@@ -8,12 +8,12 @@
 <section class="userEvent padding_section" >
     <div class="event_description" id="readOnlyEvent">
         <div class="event_info">
-            <p>@Model.EventName</p>
-            <p style="margin:20px 0"><span>@Model.OrganizerName1 i</span> <span>@Model.OrganizerName2</span></p>
-            <p>Data: @Model.EventDate</p>
-            <p>Godzina: @Model.EventTime</p>
-            <p>Miejsce ślubu: @Model.ChurchAddress</p>
-            <p>Miejsce wesela: @Model.WeddingAddress</p>
+            <p>@Html.DisplayFor(model => model.EventName)</p>
+            <p style="margin:20px 0"><span>@Html.DisplayFor(model => model.OrganizerName1) i</span> <span>@Html.DisplayFor(model => model.OrganizerName2)</span></p>
+            <p>Data: @Html.DisplayFor(model => model.EventDate)</p>
+            <p>Godzina: @Html.DisplayFor(model => model.EventTime)</p>
+            <p>Miejsce ślubu: @Html.DisplayFor(model => model.ChurchAddress)</p>
+            <p>Miejsce wesela: @Html.DisplayFor(model => model.WeddingAddress)</p>
         </div>
     </div>
     <img class="flowerTop" src="/Content/images/flower1.png" />

@@ -156,7 +156,7 @@ aside {
 .button:hover {
   opacity: 0.8; }
 
-.event_form, .guest_form, .invitation_form {
+.event_form, .guest_form, .invitation_form, .user_details_form {
   width: 40%;
   font-family: OpenLight;
   font-size: 14px;
@@ -358,6 +358,54 @@ input[type=time]::-webkit-outer-spin-button {
   font-family: MontserratRegular;
   font-weight: 700;
   margin-bottom: 30px; }
+
+#editUserButton {
+  background: #fecccb; }
+
+#editPassword {
+  background: #dedede; }
+
+#saveUserDetails {
+  display: none; }
+
+#cancelEdit {
+  display: none; }
+
+.user_details {
+  padding: 40px; }
+  .user_details span {
+    font-weight: 600; }
+
+.user_details_form {
+  margin-left: 0px; }
+
+.field_edit {
+  display: none; }
+
+.pass_edit {
+  display: none; }
+
+@media (max-width: 700px) {
+  .event_form, .guest_form, .invitation_form, .user_details_form {
+    width: 90%; }
+  .form_buttons div:first-child {
+    margin: 10px; }
+  .form_div_float {
+    width: 100%; } }
+
+@media (min-width: 701px) and (max-width: 1200px) {
+  .event_form, .guest_form, .invitation_form {
+    width: 60%; }
+  .event_form, .user_details_form {
+    width: 90%; } }
+
+@media (max-width: 1200px) {
+  .field {
+    width: 100%; }
+  .event_form select, .invitation_form select {
+    width: 100%; }
+  .balon_img {
+    width: 90px; } }
 
 @media (min-width: 1920px) {
   #flowerBottom {

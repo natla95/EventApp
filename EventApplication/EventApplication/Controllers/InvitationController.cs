@@ -37,6 +37,25 @@ namespace EventApplication.Controllers
                     foreach( var i in evInvitations)
                     {
                         var g = _db.Guests.Where(a => a.InvitationID == i.InvitationID).ToList();
+                        List<Guest> children = new List<Guest>();
+                        List<Guest> adults = new List<Guest>();
+
+                        if(g.Count() > 0)
+                        {
+                            foreach (var guest in g)
+                            {
+                                if (guest.Age == "Dziecko")
+                                {
+                                    children.Add(guest);
+                                }
+                                else
+                                {
+                                    adults.Add(guest);
+                                }
+                            }
+                        }
+                        
+
                         InvitationViewModel item = new InvitationViewModel()
                         {
                             InvitationID = i.InvitationID,
@@ -44,8 +63,11 @@ namespace EventApplication.Controllers
                             Email = i.Email,
                             IsEmailSent = i.IsEmailSent,
                             IsAccountActivated = i.IsAccountActivated,
-                            GuestCount = g.Count()
+                            GuestCount = g.Count(),
+                            ChildCount = children.Count(),
+                            AdultCount = adults.Count()
                         };
+
                         list.Add(item);            
                     }
                     ViewBag.HaveInvitations = "yes";

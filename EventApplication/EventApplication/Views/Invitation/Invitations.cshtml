@@ -41,8 +41,8 @@
                     <th><span class="columnName">@Html.DisplayNameFor(model => model.InvitationName)</span></th>
                     <th><span class="columnName">@Html.DisplayNameFor(model => model.Email)</span></th>
                     <th><span class="columnName">@Html.DisplayNameFor(model => model.GuestCount)</span></th>
-                    <th><span class="columnName">@Html.DisplayNameFor(model => model.IsEmailSent)</span></th>
-                    <th><span class="columnName">@Html.DisplayNameFor(model => model.IsAccountActivated)</span></th>
+                    <th><span class="columnName">@Html.DisplayNameFor(model => model.AdultCount)</span></th>
+                    <th><span class="columnName">@Html.DisplayNameFor(model => model.ChildCount)</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -54,8 +54,8 @@
                         <td><span class="columnValue">@Html.DisplayFor(modelItem => item.InvitationName)</span></td>
                         <td><span class="columnValue">@Html.DisplayFor(modelItem => item.Email)</span></td>
                         <td><span class="columnValue">@Html.DisplayFor(modelItem => item.GuestCount)</span></td>
-                        <td><span class="columnValue">@(item.IsEmailSent == false ? "Nie" : "Tak")</span></td>
-                        <td><span class="columnValue">@(item.IsAccountActivated == false ? "Nie" : "Tak")</span></td>
+                        <td><span class="columnValue">@Html.DisplayFor(modelItem => item.AdultCount)</span></td>
+                        <td><span class="columnValue">@Html.DisplayFor(modelItem => item.ChildCount)</span></td>
                         <td class="text_right"><span class="columnValue">
                                 <a href="@Url.Action("InvitationDetails", "Invitation" , new {id = @item.InvitationID})">Szczegóły</a>
                                 <i class="fa fa-pencil-square-o" aria-hidden="true" onclick="location.href='@Url.Action("EditInvitation", "Invitation", new { id = item.InvitationID })'"></i>

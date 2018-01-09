@@ -9,6 +9,9 @@
 </style>
 <aside>
     <div class="left_panel">
+        <div id="menu5" class="menu_item" onclick="location.href='@Url.Action("Home", "Account")'">
+            <i class="fa fa-sticky-note" aria-hidden="true"></i>
+        </div>
         <div id="menu1" class="menu_item" onclick="location.href='@Url.Action("EventList", "Event")'">
             <i class="fa fa-calendar" aria-hidden="true"></i>
         </div>
@@ -50,10 +53,8 @@
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </div>
         }
-        <div id="menu5" class="menu_item" onclick="location.href='@Url.Action("EventList", "Event")'">
-            <i class="fa fa-sticky-note" aria-hidden="true"></i>
-        </div>
-        <div id="menu6" class="menu_item" onclick="location.href='@Url.Action("EventList", "Event")'">
+
+        <div id="menu6" class="menu_item" onclick="location.href='@Url.Action("UserDetails", "Account")'">
             <i class="fa fa-user-circle" aria-hidden="true"></i>
         </div>
     </div>

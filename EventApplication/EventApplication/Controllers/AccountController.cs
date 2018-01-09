@@ -149,5 +149,58 @@ namespace EventApplication.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
+
+        [HttpGet]
+        [ActionName("UserDetails")]
+        public ActionResult UserDetails()
+        {
+            var user = User as MyPrincipal;
+            var login = user.UserDetails.Email;
+            var itemUser = _db.Users.FirstOrDefault(u => u.Email.Equals(login));
+            ViewBag.UserName = user.UserDetails.Email;
+            ViewBag.IconNumber = 6;
+            UserNewPasswordViewModel item = null;
+
+            using(EventDbContext _db = new EventDbContext())
+            {
+                var logged = _db.Users.Where(a => a.Email == login).FirstOrDefault();
+                ViewBag.Role = logged.RoleID;
+                item = new UserNewPasswordViewModel()
+                {
+                    FirstName = logged.FirstName,
+                    LastName = logged.LastName,
+                    Email = logged.Email
+                };
+
+            }
+            return View("UserDetails", item);
+        }
+
+        [HttpPost]
+        [ActionName("UserDetails")]
+        public ActionResult UserDetails(UserNewPasswordViewModel _model)
+        {
+            if (ModelState.IsValid)
+            {
+                var item = _db.Users.Where(x => x.Email == _model.Email).FirstOrDefault();
+                if (item != null)
+                {
+                    item.FirstName = _model.FirstName ?? "";
+                    item.LastName = _model.LastName ?? "";
+                    item.Email = _model.Email ?? "";
+                    if (!string.IsNullOrEmpty(_model.NewPassword))
+                    {
+                        item.Password = Security.Hash(_model.NewPassword);
+                    }
+                    _db.SaveChanges();
+                    return RedirectToAction("UserDetails");
+                }
+                else
+                {
+                    return RedirectToAction("UserDetails");
+                }
+            }
+            return RedirectToAction("UserDetails");
+        }
     }
 }
