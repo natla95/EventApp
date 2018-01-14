@@ -35,6 +35,8 @@ namespace EventApplication.Controllers
             {
                 var ev = _db.Events.Where(e => e.UserEvents.Any(u => u.User.UserID == itemUser.UserID)).FirstOrDefault();
                 List<GuestViewModel> guests = new List<GuestViewModel>();
+                List<Guest> children = new List<Guest>();
+                List<Guest> adults = new List<Guest>();
 
                 if (ev != null)
                 {
@@ -47,23 +49,32 @@ namespace EventApplication.Controllers
                         var currentId = i.InvitationID;
                         var g = _db.Guests.Where(a => a.InvitationID == i.InvitationID).ToList();
 
+
                         foreach (var guest in g)
                         {
+                            if (guest.Age == "Dziecko")
+                            {
+                                children.Add(guest);
+                            }
+                            else
+                            {
+                                adults.Add(guest);
+                            }
                             GuestViewModel added = new GuestViewModel() { GuestID = guest.GuestID };
                             guests.Add(added);
                         }
                     }
                     ViewBag.InvitationsCount = evInvitations.Count();
                     ViewBag.GuestsCount = guests.Count();
+                    
                 }
                 else
                 {
                     ViewBag.InvitationsCount = 0;
                     ViewBag.GuestsCount = 0;
                 }
-
+                ViewBag.ChildrenCount = children.Count();
             }
-                
             return View("Index");
         }
 

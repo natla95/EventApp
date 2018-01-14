@@ -227,7 +227,7 @@ namespace EventApplication.Controllers
 
         [HttpGet]
         [ActionName("EditInvitation")]
-        [Route("EditAdminUser/{id}")]
+        [Route("EditInvitation/{id}")]
         public ActionResult EditInvitation(int id)
         {
             var user = User as MyPrincipal;
@@ -254,6 +254,7 @@ namespace EventApplication.Controllers
                var inv = _db.Invitations.Where(x => x.InvitationID == id).FirstOrDefault();
                 item = new InvitationOptionViewModel()
                 {
+                    InvitationId = inv.InvitationID,
                     InvitationName = inv.InvitationName,
                     Email = inv.Email,
                     IsEmailSent = inv.IsEmailSent,
@@ -266,14 +267,14 @@ namespace EventApplication.Controllers
 
         [HttpPost]
         [ActionName("EditInvitation")]
-        [Route("EditAdminUser/{id}")]
+        [Route("EditInvitation/{id}")]
         public ActionResult EditInvitation(InvitationOptionViewModel _model)
         {
             if (ModelState.IsValid)
             {
                 using(EventDbContext _db = new EventDbContext())
                 {
-                    var edited = _db.Invitations.Where(i => i.InvitationName == _model.InvitationName).FirstOrDefault();
+                    var edited = _db.Invitations.Where(i => i.InvitationID == _model.InvitationId).FirstOrDefault();
                     if(edited != null)
                     {
                         edited.InvitationName = _model.InvitationName ?? "";

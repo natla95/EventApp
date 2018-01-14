@@ -14,6 +14,7 @@
     
     <div class="invitation_form">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div style="display: none;">@Html.EditorFor(model => model.InvitationId)</div>
         <div class="form-group">
             @Html.LabelFor(model => model.InvitationName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div>
@@ -30,25 +31,6 @@
             <div>@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger", @id = "invitationEmail_e" })</div>  
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsEmailSent, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div>
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsEmailSent)
-                </div>
-                <div>@Html.ValidationMessageFor(model => model.IsEmailSent, "", new { @class = "text-danger" })</div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsAccountActivated, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div>
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsAccountActivated)
-                </div>
-                <div>@Html.ValidationMessageFor(model => model.IsAccountActivated, "", new { @class = "text-danger" })</div>
-            </div>
-        </div>
         <div class="form-group">
             @Html.Label("Opcje dla zaproszenia", htmlAttributes: new { @class = "control-label col-md-2" })
             <div>

@@ -9,6 +9,7 @@ namespace EventApplication.Models.ViewModels
 {
     public class InvitationOptionViewModel
     {
+        public int InvitationId { get; set; }
 
         [StringLength(100)]
         [Display(Name = "Nazwa")]

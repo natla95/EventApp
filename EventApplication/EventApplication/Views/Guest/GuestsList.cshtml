@@ -27,10 +27,6 @@
 
 @if (ViewBag.AreGuests == "yes")
 {
-    <section class="padding_section display_inline">
-        <div id="deleteMore" class="button action_button" onclick="">usuń</div>
-    </section>
-
     <!--list of guest --> 
     <section class="table padding_section">
         <table id="guestsTable" class="find-duplicates table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
@@ -55,7 +51,6 @@
                         <td><span class="columnValue">@Html.DisplayFor(modelItem => item.InvitationName)</span></td>
                         <td class="text_right">
                             <span class="columnValue">
-                                <a href="@Url.Action("", "" , new {@item.GuestID})">Szczegóły</a>
                                 <i class="fa fa-pencil-square-o" aria-hidden="true" onclick="location.href='@Url.Action("EditGuest", "Guest" , new {id = item.GuestID})'"></i>
                                 <i class="fa fa-trash-o" aria-hidden="true" onclick="location.href='@Url.Action("DeleteGuest", "Guest", new {id = item.GuestID})'"></i>
                             </span>
